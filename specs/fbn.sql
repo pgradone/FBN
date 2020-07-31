@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 30, 2020 at 09:36 PM
+-- Generation Time: Jul 31, 2020 at 07:55 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `post_recipe` (
 DROP TABLE IF EXISTS `recipes`;
 CREATE TABLE IF NOT EXISTS `recipes` (
   `recipe_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id of recipe',
-  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'user posing recipe',
+  `author_id` bigint(20) UNSIGNED NOT NULL COMMENT 'user posing recipe',
   `recipe_name` varchar(200) NOT NULL COMMENT 'description of recipe',
   `recipe_status` varchar(10) NOT NULL,
   `recipe_description` varchar(5000) DEFAULT NULL,
@@ -109,7 +109,8 @@ CREATE TABLE IF NOT EXISTS `recipes` (
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last updated',
   `difficulty` int(11) DEFAULT NULL COMMENT 'degree of difficulty',
   PRIMARY KEY (`recipe_id`),
-  UNIQUE KEY `UK_name_user_id` (`recipe_id`,`recipe_name`)
+  UNIQUE KEY `UK_name_user_id` (`recipe_id`,`recipe_name`),
+  KEY `idx_author` (`author_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -181,6 +182,12 @@ ALTER TABLE `posts`
 ALTER TABLE `post_recipe`
   ADD CONSTRAINT `post_recipe_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `post_recipe_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `recipes`
+--
+ALTER TABLE `recipes`
+  ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `recipes_ingredients`
