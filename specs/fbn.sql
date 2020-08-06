@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jul 31, 2020 at 07:55 AM
+-- Generation Time: Aug 06, 2020 at 08:01 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -21,36 +21,89 @@ SET time_zone = "+00:00";
 --
 -- Database: `fbn`
 --
-CREATE DATABASE IF NOT EXISTS `fbn` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `fbn`;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ingredients`
+-- Table structure for table `comment`
 --
 
-DROP TABLE IF EXISTS `ingredients`;
-CREATE TABLE IF NOT EXISTS `ingredients` (
-  `ingredient_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'id of ingredient',
-  `ingredient_name` varchar(60) NOT NULL COMMENT 'description of ingredient',
-  `nutriscore_quality` varchar(1) DEFAULT NULL COMMENT 'nutritional rating from A to F',
-  `food_category_id` int(11) DEFAULT NULL COMMENT 'id of food category',
-  `picture` varchar(250) NOT NULL COMMENT 'picture of ingredient',
-  `created` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'creation timestamp',
-  PRIMARY KEY (`ingredient_id`),
-  UNIQUE KEY `UK_name` (`ingredient_name`)
+DROP TABLE IF EXISTS `comment`;
+CREATE TABLE IF NOT EXISTS `comment` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `Language_id` int(11) NOT NULL DEFAULT 2 COMMENT 'language of comment',
+  `post_id` bigint(20) UNSIGNED NOT NULL COMMENT 'post commented upon',
+  `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'user commenting',
+  `content` text NOT NULL COMMENT 'content of comment',
+  `commented` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'timestamp of comment',
+  `approved_user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `parent_comment_id` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'originating comment if any',
+  `approved` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'timestamp of approval',
+  PRIMARY KEY (`ID`) USING BTREE,
+  KEY `Language_id` (`Language_id`),
+  KEY `fk_user` (`user_id`) USING BTREE,
+  KEY `fk_post` (`post_id`) USING BTREE,
+  KEY `fk_approver` (`approved_user_id`) USING BTREE,
+  KEY `fk_comment` (`parent_comment_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `posts`
+-- Table structure for table `ingredient`
 --
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-  `post_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'unike post identifier',
+DROP TABLE IF EXISTS `ingredient`;
+CREATE TABLE IF NOT EXISTS `ingredient` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of ingredient',
+  `language_id` int(11) NOT NULL DEFAULT 2 COMMENT 'translation language',
+  `name` varchar(60) NOT NULL COMMENT 'description of ingredient',
+  `nutriscore` varchar(2) DEFAULT NULL COMMENT 'health score',
+  `food_category_id` int(11) DEFAULT NULL COMMENT 'id of food category',
+  `picture` varchar(250) NOT NULL COMMENT 'picture of ingredient',
+  `created` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'creation timestamp',
+  PRIMARY KEY (`ID`,`language_id`) USING BTREE,
+  UNIQUE KEY `UK_name_language` (`name`,`language_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `language`
+--
+
+DROP TABLE IF EXISTS `language`;
+CREATE TABLE IF NOT EXISTS `language` (
+  `ID` int(11) NOT NULL,
+  `iso` varchar(2) NOT NULL,
+  `flag` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `language`
+--
+
+INSERT INTO `language` (`ID`, `iso`, `flag`) VALUES
+(1, 'LU', ''),
+(2, 'EN', ''),
+(3, 'FR', ''),
+(4, 'DE', ''),
+(5, 'PO', ''),
+(6, 'IT', ''),
+(7, 'ES', ''),
+(8, 'NL', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post`
+--
+
+DROP TABLE IF EXISTS `post`;
+CREATE TABLE IF NOT EXISTS `post` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'unike post identifier',
+  `language_id` int(11) NOT NULL DEFAULT 2,
   `author_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'user id of the author',
   `posted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'posted date',
   `content` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'contents text',
@@ -66,104 +119,47 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `post_type` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'post' COMMENT 'type of post',
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'mime content type',
   `comment_count` bigint(20) NOT NULL DEFAULT 0 COMMENT 'number of comments',
-  `article` tinyint(1) DEFAULT 0 COMMENT 'is an article',
-  `reference` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'bibliographic reference reference',
-  PRIMARY KEY (`post_id`),
+  `reference` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'bibliographic or url reference reference',
+  PRIMARY KEY (`ID`,`language_id`) USING BTREE,
   KEY `post_name` (`post_name`(191)),
-  KEY `type_status_date` (`post_type`,`post_status`,`posted`,`post_id`),
+  KEY `type_status_date` (`post_type`,`post_status`,`posted`,`ID`),
   KEY `post_parent` (`parent_post_id`),
-  KEY `post_author` (`author_id`)
+  KEY `post_author` (`author_id`),
+  KEY `language_id` (`language_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post_recipe`
+-- Table structure for table `recipe`
 --
 
-DROP TABLE IF EXISTS `post_recipe`;
-CREATE TABLE IF NOT EXISTS `post_recipe` (
-  `post_id` bigint(20) UNSIGNED NOT NULL COMMENT 'post referred by',
-  `recipe_id` int(11) NOT NULL COMMENT 'recipe referred by',
-  `comment` varchar(2000) NOT NULL COMMENT 'comment on posted recipe',
-  PRIMARY KEY (`post_id`,`recipe_id`),
-  KEY `recipe_id` (`recipe_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recipes`
---
-
-DROP TABLE IF EXISTS `recipes`;
-CREATE TABLE IF NOT EXISTS `recipes` (
-  `recipe_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id of recipe',
-  `author_id` bigint(20) UNSIGNED NOT NULL COMMENT 'user posing recipe',
-  `recipe_name` varchar(200) NOT NULL COMMENT 'description of recipe',
-  `recipe_status` varchar(10) NOT NULL,
-  `recipe_description` varchar(5000) DEFAULT NULL,
-  `recipe_picture` varchar(250) DEFAULT NULL COMMENT 'main picture of recipe',
-  `nutritional_score` varchar(1) DEFAULT NULL COMMENT 'nutriscore A TO F',
-  `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last updated',
-  `difficulty` int(11) DEFAULT NULL COMMENT 'degree of difficulty',
-  PRIMARY KEY (`recipe_id`),
-  UNIQUE KEY `UK_name_user_id` (`recipe_id`,`recipe_name`),
-  KEY `idx_author` (`author_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `recipes_ingredients`
---
-
-DROP TABLE IF EXISTS `recipes_ingredients`;
-CREATE TABLE IF NOT EXISTS `recipes_ingredients` (
-  `recipe_id` int(11) NOT NULL COMMENT 'id of recipe',
-  `ingredient_id` bigint(20) NOT NULL COMMENT 'id of ingredient',
-  `qty` float NOT NULL COMMENT 'quantity of ingredient in recipe',
-  `unit` varchar(20) NOT NULL COMMENT 'measurement unit',
-  PRIMARY KEY (`recipe_id`,`ingredient_id`),
+DROP TABLE IF EXISTS `recipe`;
+CREATE TABLE IF NOT EXISTS `recipe` (
+  `post_ID` bigint(20) UNSIGNED NOT NULL COMMENT 'posted recipe',
+  `ingredient_id` bigint(20) UNSIGNED NOT NULL COMMENT 'recipe ingredient',
+  PRIMARY KEY (`post_ID`,`ingredient_id`),
   KEY `ingredient_id` (`ingredient_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of user',
-  `user_login` varchar(60) NOT NULL COMMENT 'login or email',
-  `user_pass` varchar(255) NOT NULL,
-  `registered` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'registration timestamp',
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of user',
+  `language_id` int(11) NOT NULL DEFAULT 2,
+  `email` varchar(60) NOT NULL COMMENT 'email',
+  `pass` varchar(255) DEFAULT NULL,
+  `registered` timestamp NULL DEFAULT current_timestamp() COMMENT 'registration timestamp',
   `role` varchar(10) NOT NULL DEFAULT 'poster' COMMENT 'admin, moderator or poster',
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last time updated',
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `UK_login` (`user_login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_recipe_rating`
---
-
-DROP TABLE IF EXISTS `user_recipe_rating`;
-CREATE TABLE IF NOT EXISTS `user_recipe_rating` (
-  `recipe_id` int(11) NOT NULL,
-  `user_id` bigint(20) UNSIGNED NOT NULL,
-  `user_score` varchar(1) DEFAULT NULL COMMENT 'score A to F',
-  `user_comment` varchar(2000) DEFAULT NULL,
-  `score_date` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'timestamp of comment',
-  `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last update timestamp',
-  `created` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`recipe_id`,`user_id`),
-  KEY `user_id` (`user_id`)
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UK_login` (`email`),
+  KEY `idx_language` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -171,36 +167,34 @@ CREATE TABLE IF NOT EXISTS `user_recipe_rating` (
 --
 
 --
--- Constraints for table `posts`
+-- Constraints for table `comment`
 --
-ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`Language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comment_ibfk_4` FOREIGN KEY (`parent_comment_id`) REFERENCES `comment` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `post_recipe`
+-- Constraints for table `post`
 --
-ALTER TABLE `post_recipe`
-  ADD CONSTRAINT `post_recipe_ibfk_1` FOREIGN KEY (`post_id`) REFERENCES `posts` (`post_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_recipe_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON UPDATE CASCADE;
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `user` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `post_ibfk_3` FOREIGN KEY (`parent_post_id`) REFERENCES `post` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `recipes`
+-- Constraints for table `recipe`
 --
-ALTER TABLE `recipes`
-  ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+ALTER TABLE `recipe`
+  ADD CONSTRAINT `recipe_ibfk_1` FOREIGN KEY (`post_ID`) REFERENCES `post` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipe_ibfk_2` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `recipes_ingredients`
+-- Constraints for table `user`
 --
-ALTER TABLE `recipes_ingredients`
-  ADD CONSTRAINT `recipes_ingredients_ibfk_1` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`ingredient_id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `recipes_ingredients_ibfk_2` FOREIGN KEY (`recipe_id`) REFERENCES `recipes` (`recipe_id`) ON UPDATE CASCADE;
-
---
--- Constraints for table `user_recipe_rating`
---
-ALTER TABLE `user_recipe_rating`
-  ADD CONSTRAINT `user_recipe_rating_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON UPDATE CASCADE;
+ALTER TABLE `user`
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
