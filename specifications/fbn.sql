@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 14, 2020 at 05:14 PM
+-- Generation Time: Aug 14, 2020 at 05:52 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -1119,9 +1119,10 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
   `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of user',
   `language_id` int(11) NOT NULL DEFAULT 2,
+  `name` varchar(50) DEFAULT NULL,
   `email` varchar(60) NOT NULL COMMENT 'email',
-  `pass` varchar(255) DEFAULT NULL,
-  `registered` timestamp NULL DEFAULT current_timestamp() COMMENT 'registration timestamp',
+  `password` varchar(255) DEFAULT NULL,
+  `email_verified_at` datetime DEFAULT current_timestamp() COMMENT 'registration timestamp',
   `role` varchar(10) NOT NULL DEFAULT 'poster' COMMENT 'admin, moderator or poster',
   `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last time updated',
   PRIMARY KEY (`ID`),
