@@ -75,7 +75,7 @@ Faballa Cissé, Potito Gradone, Guilherme Pereira, Jeff Cigrand
 These could be considered as entries in the menu/Navbar
 
 ## Users
-These are the possible types of users:
+Here are the possible types of users:
 1. Administrators
 	They have all the rights on all users, blog posts, recipes, ingredients etc..
 2. Collaborators
@@ -103,10 +103,11 @@ These are the possible types of users:
 		- Ads
 ## Recipes
 	Recipes are posted by a user (many to one).
-	Recipes are complex posts that can be linked to many ingredients and that can receive a nutrition score according to their ingredients composition (automatically) Moderator manage recipes approvals and give score according to the degree of processing and compliance to the rules of the WFPB guidelines.
+	Recipes are complex posts that can be linked to many ingredients and that can receive a nutrition score according to their ingredients composition (automatically).
+  Moderators manage recipes approvals and give score according to the degree of processing and compliance to the rules of the WFPB guidelines.
 ## Foods
-	Foods include ingredients that can be incorporated in recipes. Foods will be rated by collaborators
-	Ingredients (classified groups of foods) that can be used in recipes.
+	Foods include ingredients that can be incorporated in recipes. Foods can be be rated by collaborators
+	Ingredients (classified in food groups) can be used in recipes.
 	Ingredients have a score according to their degree of processing and their origin (Animal or Plant kingdom)
 
 # Web Structure
