@@ -23,25 +23,6 @@ Faballa Cissé, Potito Gradone, Guilherme Pereira, Jeff Cigrand
 # Minimum Viable Product
 - refer to mockup of site
 
-# Stories
-- User:
-	- Register (Profile)
-	- Login
-	- Update their info
-	- SEARCH
-	- Post (also by unknown)
-	- Create a post of recipes category
-		- Add compliant ingredients
-	- Rate
-	- Comment
-	- Book health consulting
-- Administrator tasks:
-	- CRUD on all data
-- Moderator tasks:
-	- Validate posts and recipes
-	- Score ingredients
-	- Add articles
-
 # Timeline
 - Inform Team of information sources 2 B inspired by (60min)
 - Learn 2 use Github as tool for backlog (40min)
@@ -109,5 +90,7 @@ Here are the possible types of users:
 	Foods include ingredients that can be incorporated in recipes. Foods can be be rated by collaborators
 	Ingredients (classified in food groups) can be used in recipes.
 	Ingredients have a score according to their degree of processing and their origin (Animal or Plant kingdom)
+## Search
+  Ability to perform queries on any field and any table
 
 # Web Structure
