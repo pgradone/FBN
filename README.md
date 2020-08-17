@@ -55,17 +55,17 @@ Faballa Cissé, Potito Gradone, Guilherme Pereira, Jeff Cigrand
 # STORIES
 These could be considered as entries in the menu/Navbar
 
-## Users
+## Stakeholders
 Here are the possible types of users:
 1. Administrators
 	They have all the rights on all users, blog posts, recipes, ingredients etc..
-2. Collaborators
+2. Collaborators - Developers
 	They can post all categories of the blog, like Articles, Recipes, Comments, Quotes, Opinions, Faqs + answers
 	They can define new categories, food ingredients, translations, they have all the rights of Moderators.
 3. Moderators
 	They approve (read/update/delete) any post of the blog (articles, recipes, comments, quotes, opinions, answer to faqs questions)
 	They can block or unregister Standard users.
-4. Standard
+4. Standard user
 	They can register, login, logout, unregister themselves.
 	They can read all approved posts, but only (create, update and delete) their own
 	They can create recipes from (rated) ingredients
@@ -81,7 +81,7 @@ Here are the possible types of users:
 		- Questions
 		- Comments
 		- Recipes
-		- Ads
+		- Ads (tbd)
 ## Recipes
 	Recipes are posted by a user (many to one).
 	Recipes are complex posts that can be linked to many ingredients and that can receive a nutrition score according to their ingredients composition (automatically).
