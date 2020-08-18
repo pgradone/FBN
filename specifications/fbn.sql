@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 14, 2020 at 05:52 PM
+-- Generation Time: Aug 17, 2020 at 01:27 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -27,12 +27,12 @@ USE `fbn`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comment`
+-- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE IF NOT EXISTS `comment` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE IF NOT EXISTS `comments` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `language_id` int(11) NOT NULL DEFAULT 2 COMMENT 'language of comment',
   `post_id` bigint(20) UNSIGNED NOT NULL COMMENT 'post commented upon',
   `user_id` bigint(20) UNSIGNED NOT NULL COMMENT 'user commenting',
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `comment` (
   `approved_user_id` bigint(20) UNSIGNED DEFAULT NULL,
   `parent_comment_id` bigint(20) UNSIGNED DEFAULT NULL COMMENT 'originating comment if any',
   `approved` timestamp NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'timestamp of approval',
-  PRIMARY KEY (`ID`) USING BTREE,
+  PRIMARY KEY (`id`) USING BTREE,
   KEY `Language_id` (`language_id`),
   KEY `fk_user` (`user_id`) USING BTREE,
   KEY `fk_post` (`post_id`) USING BTREE,
@@ -54,12 +54,29 @@ CREATE TABLE IF NOT EXISTS `comment` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `failed_jobs`
+--
+
+DROP TABLE IF EXISTS `failed_jobs`;
+CREATE TABLE IF NOT EXISTS `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `foods`
 --
 
 DROP TABLE IF EXISTS `foods`;
 CREATE TABLE IF NOT EXISTS `foods` (
-  `ID` int(11) NOT NULL COMMENT 'ID',
+  `id` int(11) NOT NULL COMMENT 'ID',
   `Food_Name_LA` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Food_Name_LA',
   `Food_Name_EN` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Food_Name_EN',
   `Food_Name_FR` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Food_Name_FR',
@@ -84,15 +101,15 @@ CREATE TABLE IF NOT EXISTS `foods` (
   `Sub_Group_IT` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Sub_Group_IT',
   `Sub_Group_ES` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Sub_Group_ES',
   `Sub_Group_NL` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL COMMENT 'Sub_Group_NL',
-  PRIMARY KEY (`ID`),
-  KEY `Foods_PrimaryKey` (`ID`)
+  PRIMARY KEY (`id`),
+  KEY `Foods_PrimaryKey` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin COMMENT='Foods';
 
 --
 -- Dumping data for table `foods`
 --
 
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (1, 'Angelica keiskei', 'Angelica', 'Ang?lique', 'Engelwurz', 'Ang?lica', 'Angelica', 'Ang?lica', 'Angelica', 'Herbs and Spices', 17, 'Herbes et ?pices', 'Kr?uter und Gew?rze', 'Ervas e especiarias', 'Erbe e spezie', 'Hierbas y especias', 'Kruiden en specerijen', 117, 'Herbs', 'Herbes', 'Kr?uter', 'Ervas', 'Erbe aromatiche', 'Hierbas', 'kruiden'),
 (2, 'Brassica oleracea var. sabauda', 'Savoy cabbage', 'chou de Savoie', 'Wirsing', 'repolho de Savoy', 'Verza', 'berza', 'savooiekool', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 126, 'Cabbages', 'Choux', 'Cabbages', 'repolhos', 'cavoli', 'coles', 'Kool'),
 (3, 'Tilia argentea', 'Silver linden', 'linden argent', 'Silber Linden', 'linden prata', 'Linden argento', 'tilo de plata', 'Silver linden', 'Herbs and Spices', 17, 'Herbes et ?pices', 'Kr?uter und Gew?rze', 'Ervas e especiarias', 'Erbe e spezie', 'Hierbas y especias', 'Kruiden en specerijen', 117, 'Herbs', 'Herbes', 'Kr?uter', 'Ervas', 'Erbe aromatiche', 'Hierbas', 'kruiden'),
@@ -243,7 +260,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (148, 'Prunus dulcis', 'Almond', 'Amande', 'Mandel', 'Am?ndoa', 'Mandorla', 'Almendra', 'Amandel', 'Nuts', 19, 'Noix', 'N?sse', 'nozes', 'Noccioline', 'Nueces', 'noten', 19, 'Nuts', 'Noix', 'N?sse', 'nozes', 'Noccioline', 'Nueces', 'noten'),
 (149, 'Prunus persica', 'Peach', 'P?che', 'Pfirsich', 'p?ssego', 'pesca', 'melocot?n', 'Perzik', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 328, 'Drupes', 'drupes', 'Steinfr?chte', 'drupas', 'drupe', 'drupas', 'steenvruchten'),
 (150, 'Psidium guajava', 'Guava', 'Goyave', 'Guava', 'Goiaba', 'Guaiava', 'Guayaba', 'guava', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 528, 'Tropical fruits', 'Fruits tropicaux', 'Tropische Fr?chte', 'Frutas tropicais', 'frutti tropicali', 'Frutas tropicales', 'Tropische vruchten');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (151, 'Punica granatum', 'Pomegranate', 'Grenade', 'Granatapfel', 'Rom?', 'Melograno', 'Granada', 'Granaatappel', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 528, 'Tropical fruits', 'Fruits tropicaux', 'Tropische Fr?chte', 'Frutas tropicais', 'frutti tropicali', 'Frutas tropicales', 'Tropische vruchten'),
 (152, 'Pyrus communis', 'Pear', 'Poire', 'Birne', 'Pera', 'Pera', 'Pera', 'Peer', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 428, 'Pomes', 'Pomes', 'Pomes', 'Pomes', 'Pomes', 'pomos', 'Pomes'),
 (153, 'Raphanus sativus', 'Radish', 'Un radis', 'Rettich', 'Rabanete', 'Ravanello', 'R?bano', 'Radijs', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 626, 'Root vegetables', 'Racines', 'Wurzelgem?se', 'vegetais de raiz', 'Tuberi', 'Las hortalizas de ra?z', 'wortelgroenten'),
@@ -386,7 +403,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (290, 'Maranta arundinacea', 'Arrowroot', 'Marante', 'Arrowroot', 'Araruta', 'arrowroot', 'Arrurruz', 'pijlwortel', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 926, 'Tubers', 'tubercules', 'Tubers', 'tub?rculos', 'tuberi', 'tub?rculos', 'knollen'),
 (291, 'Pyrus pyrifolia', 'Asian pear', 'poire asiatique', 'asiatische Birne', 'p?ra asi?tica', 'Pera asiatica', 'Pera asi?tica', 'Aziatische peer', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 428, 'Pomes', 'Pomes', 'Pomes', 'Pomes', 'Pomes', 'pomos', 'Pomes'),
 (292, 'Clupea harengus harengus', 'Atlantic herring', 'hareng de l\'Atlantique', 'Atlantischer Hering', 'arenque', 'aringa', 'arenque del Atl?ntico', 'haring', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 102, 'Fishes', 'poissons', 'Fische', 'Fishes', 'Pesci', 'peces', 'Vis');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (293, 'Scomber scombrus', 'Atlantic mackerel', 'maquereau de l\'Atlantique', 'Makrelen', 'cavala', 'sgombro', 'caballa del Atl?ntico', 'Atlantische makreel', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 102, 'Fishes', 'poissons', 'Fische', 'Fishes', 'Pesci', 'peces', 'Vis'),
 (294, 'Serranus scriba', 'Painted comber', 'Comber peint', 'gemalt comber', 'comber pintado', 'Serranus Scriba', 'peinador pintado', 'schriftbaars', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 102, 'Fishes', 'poissons', 'Fische', 'Fishes', 'Pesci', 'peces', 'Vis'),
 (295, 'Pollachius pollachius', 'Atlantic pollock', 'goberge', 'Atlantic Seelachs', 'Pollock Atl?ntico', 'pollock Atlantico', 'abadejo del Atl?ntico', 'Atlantic Pollock', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 102, 'Fishes', 'poissons', 'Fische', 'Fishes', 'Pesci', 'peces', 'Vis'),
@@ -523,7 +540,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (426, 'Abelmoschus esculentus', 'Okra', 'Gombo', 'Okra', 'Quiabo', 'Ocra', 'Okra', 'okra', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 2026, 'Other vegetables', 'autres l?gumes', 'Anderes Gem?se', 'outros produtos hort?colas', 'altri ortaggi e legumi', 'Las dem?s hortalizas', 'andere groenten'),
 (427, 'Tunicata', 'Tunicate', 'Tuniqu?', 'tunicate', 'Tunicado', 'tunicato', 'tunicado', 'omhuld', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 802, 'Other aquatic foods', 'autres aliments aquatiques', 'Andere Wasser Lebensmittel', 'Outros alimentos aqu?ticos', 'Altri alimenti acquatici', 'Otros alimentos acu?ticos', 'Andere ongewervelde voedingsmiddelen'),
 (428, 'Didelphis virginiana', 'Opossum', 'Opossum', 'Beutelratte', 'Gamb?', 'Opossum', 'Zarig?eya', 'buidelrat', 'Animal foods', 1, 'aliments animaux', 'tierischen Lebensmitteln', 'alimentos de origem animal', 'alimenti di origine animale', 'alimentos de origen animal', 'dierlijk voedsel', 501, 'Marsupials', 'marsupiaux', 'Marsupials', 'marsupiais', 'marsupiali', 'marsupiales', 'buideldieren');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (429, 'Struthio camelus', 'Ostrich', 'Autruche', 'Strau?', 'Avestruz', 'Struzzo', 'Avestruz', 'Struisvogel', 'Animal foods', 1, 'aliments animaux', 'tierischen Lebensmitteln', 'alimentos de origem animal', 'alimenti di origine animale', 'alimentos de origen animal', 'dierlijk voedsel', 801, 'Poultry', 'volaille', 'Gefl?gel', 'aves dom?sticas', 'Pollame', 'Aves de corral', 'Gevogelte'),
 (430, 'Phoca largha', 'Spotted seal', 'joint tachet?e', 'spotted Siegel', 'selo manchado', 'sigillo chiazzato', 'sello manchado', 'spotted seal', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 902, 'Pinnipeds', 'pinnip?des', 'pinnipeds', 'pin?pedes', 'Pinnipedi', 'pinn?pedos', 'pinnipeds'),
 (431, 'Clupea pallasii', 'Pacific herring', 'Le hareng du Pacifique', 'Pacific Hering', 'arenque do Pac?fico', 'aringa del Pacifico', 'arenque del Pac?fico', 'Vreedzame haringen', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 102, 'Fishes', 'poissons', 'Fische', 'Fishes', 'Pesci', 'peces', 'Vis'),
@@ -655,7 +672,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (557, 'Feijoa sellowiana', 'Feijoa', 'Feijoa', 'Feijoa', 'feijoa', 'Feijoa', 'feijoa', 'Feijoa', 'Fruits', 28, 'Fruits', 'Fr?chte', 'frutas', 'Frutta', 'frutas', 'fruit', 528, 'Tropical fruits', 'Fruits tropicaux', 'Tropische Fr?chte', 'Frutas tropicais', 'frutti tropicali', 'Frutas tropicales', 'Tropische vruchten'),
 (558, 'Pangium edule', 'Rowal', 'Rowal', 'Rowal', 'Rowal', 'Rowal', 'Rowal', 'Rowal', 'Herbs and Spices', 17, 'Herbes et ?pices', 'Kr?uter und Gew?rze', 'Ervas e especiarias', 'Erbe e spezie', 'Hierbas y especias', 'Kruiden en specerijen', 417, 'Other seeds', 'autres graines', 'andere Samen', 'outras sementes', 'altri semi', 'otras semillas', 'andere zaden'),
 (559, 'Auricularia auricula-judae', 'Jew\'s ear', 'oreille de Juif', 'Jude Ohr', 'orelha de judeu', 'orecchio di Ebreo', 'oreja de judio', 'Jood oor', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 1026, 'Mushrooms', 'Champignons', 'Pilze', 'cogumelos', 'Funghi', 'Hongos', 'champignons');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (560, 'Agaricus bisporus', 'Common mushroom', 'champignon commun', 'Gemeinsamer Pilz', 'cogumelo comum', 'prataioli', 'champi??n', 'gemeenschappelijke paddestoel', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 1026, 'Mushrooms', 'Champignons', 'Pilze', 'cogumelos', 'Funghi', 'Hongos', 'champignons'),
 (561, 'Lentinus edodes', 'Shiitake', 'shiitake', 'Shiitake', 'shiitake', 'shiitake', 'shiitake', 'shiitake', 'Vegetables', 26, 'L?gumes', 'Gem?se', 'Legumes', 'Verdure', 'Vegetales', 'Groenten', 1026, 'Mushrooms', 'Champignons', 'Pilze', 'cogumelos', 'Funghi', 'Hongos', 'champignons'),
 (562, 'Porphyra laciniata', 'Purple laver', 'violet porphyre', 'Purpurblattrotalgenpulver', 'Lavat?rio roxo', 'laver Viola', 'Algas moradas', 'paars laver', 'Aquatic foods', 2, 'aliments aquatiques', 'Aquatic Lebensmittel', 'alimentos aqu?ticos', 'alimenti acquatici', 'Los alimentos acu?ticos', 'Aquatic voedingsmiddelen', 1002, 'Seaweed', 'Algue', 'Seetang', 'Algas marinhas', 'Alga marina', 'Algas marinas', 'Zeewier'),
@@ -791,7 +808,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (692, NULL, 'Curry powder', 'poudre de curry', 'Curry Pulver', 'caril em p?', 'Curry in polvere', 'polvo de curry', 'kerrie poeder', 'Herbs and Spices', 17, 'Herbes et ?pices', 'Kr?uter und Gew?rze', 'Ervas e especiarias', 'Erbe e spezie', 'Hierbas y especias', 'Kruiden en specerijen', 317, 'Herb and spice mixtures', 'm?langes d\'herbes et d\'?pices', 'Kr?uter- und Gew?rzmischungen', 'misturas de ervas e especiarias', 'Erbe e spezie miscele', 'Hierbas y especias mezclas', 'Herb en kruidenmengsels'),
 (693, NULL, 'Other candy', 'autres bonbons', 'andere S??igkeiten', 'outros doces', 'Altro caramelle', 'otros dulces', 'andere candy', 'Confectioneries', 10, 'confiseries', 'Konfekt', 'confeitarias', 'pasticcerie', 'confiter?as', 'Zoetwaren', 110, 'Candies', 'sucreries', 'Candies', 'Doces', 'Caramelle', 'Golosinas', 'Candies'),
 (694, NULL, 'Meringue', 'Meringue', 'Baiser', 'Merengue', 'meringa', 'Merengue', 'schuimgebakje', 'Confectioneries', 10, 'confiseries', 'Konfekt', 'confeitarias', 'pasticcerie', 'confiter?as', 'Zoetwaren', 1010, 'Other confectioneries', 'autres produits de confiserie', 'Anderes Konfekt', 'outros confectioneries', 'altri pasticcerie', 'otros productos de confiter?a', 'andere banketbakkerijen');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (695, NULL, 'Lard', 'Saindoux', 'Schmalz', 'banha de porco', 'Lardo', 'Manteca de cerdo', 'Reuzel', 'Fats and oils', 14, 'Graisses et huiles', 'Fette und ?le', 'Gorduras e ?leos', 'Grassi e oli', 'Grasas y aceites', 'Vetten en oli?n', 114, 'Animal fats', 'Les graisses animales', 'Tierische Fette', '#VALUE!', 'grassi animali', 'Grasas animales', 'dierlijke vetten'),
 (696, NULL, 'Other animal fat', 'Autres graisses animales', 'Andere tierische Fette', 'Outra gordura animal', 'Altri grassi animali', 'Otras grasas animales', 'Andere dierlijke vetten', 'Fats and oils', 14, 'Graisses et huiles', 'Fette und ?le', 'Gorduras e ?leos', 'Grassi e oli', 'Grasas y aceites', 'Vetten en oli?n', 114, 'Animal fats', 'Les graisses animales', 'Tierische Fette', '#VALUE!', 'grassi animali', 'Grasas animales', 'dierlijke vetten'),
 (697, NULL, 'Other cocoa product', 'Autres produits de cacao', 'Anderes Kakaoprodukt', 'Outro produto de cacau', 'Altri prodotti di cacao', 'Otro producto de cacao', 'Andere Cacaoproduct', 'Cocoa and cocoa products', 7, 'Produits de cacao et de cacao', 'Kakao und Kakaoprodukte', 'produtos de cacau e cacau', 'Cacao e sue prodotti', 'Cacao y sus productos', 'Cacao en cacaoproducten', 207, 'Cocoa products', 'Produits de cacao', 'Kakaoprodukte', 'produtos de cacau', 'prodotti di cacao', 'productos de cacao', 'cacaoproducten'),
@@ -924,7 +941,7 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 (824, NULL, 'Oat bread', 'pain d\'avoine', 'Haferbrot', 'p?o de aveia', 'Pane di avena', 'pan de avena', 'haverbrood', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 506, 'Leavened breads', 'pains au levain', 'ges?uertem Brot', 'p?es fermentados', 'pani lievitati', 'panes con levadura', 'gezuurde broden'),
 (825, NULL, 'Potato bread', 'Pain de pommes de terre', 'Kartoffelbrot', 'p?o de batata', 'Pane di patate', 'Pan de patata', 'aardappelbrood', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 606, 'Other breads', 'autres pains', 'andere Brote', 'outros p?es', 'altri tipi di pane', 'otros panes', 'andere broden'),
 (826, NULL, 'Cornbread', 'pain au ma?s', 'K?rnerbrot', 'P?o de milho', 'cornbread', 'pan de ma?z', 'Ma?sbrood', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 406, 'Flat breads', 'pains plats', 'Fladenbrot', 'p?es lisos', 'pane piatto', 'panes planos', 'platte broden');
-INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
+INSERT INTO `foods` (`id`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food_Name_DE`, `Food_Name_PT`, `Food_Name_IT`, `Food_Name_ES`, `Food_Name_NL`, `GROUP`, `Group_ID`, `Group_FR`, `Group_DE`, `Group_PT`, `Group_IT`, `Group_ES`, `Group_NL`, `Sub_Group_ID`, `SUB_GROUP`, `Sub_Group_FR`, `Sub_Group_DE`, `Sub_Group_PT`, `Sub_Group_IT`, `Sub_Group_ES`, `Sub_Group_NL`) VALUES
 (827, NULL, 'Corn grits', 'Gruau de ma?s', 'Maisgrie?', 'Gr?os de milho', 'semola di grano', 's?mola de ma?z', 'Corn grutten', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 206, 'Cereal products', 'Produits c?r?aliers', 'Getreideprodukte', 'Produtos de cereal', 'Prodotti a base di cereali', 'Productos de cereales', 'Graan producten'),
 (828, NULL, 'Multigrain bread', 'Pain ? grains multiples', 'Mehrkornbrot', 'P?o multigr?o', 'pane multicereali', 'Pan multigrano', 'Meergranenbrood', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 506, 'Leavened breads', 'pains au levain', 'ges?uertem Brot', 'p?es fermentados', 'pani lievitati', 'panes con levadura', 'gezuurde broden'),
 (829, NULL, 'Rice bread', 'pain de riz', 'Reis Brot', 'p?o de arroz', 'pane di riso', 'pan de arroz', 'rijstbrood', 'Cereals', 6, 'C?r?ales', 'Getreide und Getreideerzeugnisse', 'Cereais e produtos de cereais', 'Cereali e prodotti a base di cereali', 'Cereales y productos de cereales', 'Granen en graanproducten', 506, 'Leavened breads', 'pains au levain', 'ges?uertem Brot', 'p?es fermentados', 'pani lievitati', 'panes con levadura', 'gezuurde broden'),
@@ -1017,41 +1034,42 @@ INSERT INTO `foods` (`ID`, `Food_Name_LA`, `Food_Name_EN`, `Food_Name_FR`, `Food
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ingredient`
+-- Table structure for table `ingredients`
 --
 
-DROP TABLE IF EXISTS `ingredient`;
-CREATE TABLE IF NOT EXISTS `ingredient` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of ingredient',
+DROP TABLE IF EXISTS `ingredients`;
+CREATE TABLE IF NOT EXISTS `ingredients` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of ingredient',
   `language_id` int(11) NOT NULL DEFAULT 2 COMMENT 'translation language',
   `name` varchar(60) NOT NULL COMMENT 'description of ingredient',
   `nutriscore` varchar(2) DEFAULT NULL COMMENT 'health score',
   `food_category_id` int(11) DEFAULT NULL COMMENT 'id of food category',
   `picture` varchar(250) NOT NULL COMMENT 'picture of ingredient',
   `created` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'creation timestamp',
-  PRIMARY KEY (`ID`,`language_id`) USING BTREE,
-  UNIQUE KEY `UK_name_language` (`name`,`language_id`)
+  PRIMARY KEY (`id`,`language_id`) USING BTREE,
+  UNIQUE KEY `UK_name_language` (`name`,`language_id`),
+  KEY `language_id` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `language`
+-- Table structure for table `languages`
 --
 
-DROP TABLE IF EXISTS `language`;
-CREATE TABLE IF NOT EXISTS `language` (
-  `ID` int(11) NOT NULL,
+DROP TABLE IF EXISTS `languages`;
+CREATE TABLE IF NOT EXISTS `languages` (
+  `id` int(11) NOT NULL,
   `iso` varchar(2) NOT NULL,
   `flag` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`ID`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `language`
+-- Dumping data for table `languages`
 --
 
-INSERT INTO `language` (`ID`, `iso`, `flag`) VALUES
+INSERT INTO `languages` (`id`, `iso`, `flag`) VALUES
 (1, 'LU', ''),
 (2, 'EN', ''),
 (3, 'FR', ''),
@@ -1064,12 +1082,49 @@ INSERT INTO `language` (`ID`, `iso`, `flag`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `post`
+-- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `post`;
-CREATE TABLE IF NOT EXISTS `post` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'unike post identifier',
+DROP TABLE IF EXISTS `migrations`;
+CREATE TABLE IF NOT EXISTS `migrations` (
+  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '2014_10_12_000000_create_users_table', 1),
+(2, '2014_10_12_100000_create_password_resets_table', 1),
+(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_resets`
+--
+
+DROP TABLE IF EXISTS `password_resets`;
+CREATE TABLE IF NOT EXISTS `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`(250))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+DROP TABLE IF EXISTS `posts`;
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'unike post identifier',
   `author_id` bigint(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT 'user id of the author',
   `language_id` int(11) NOT NULL DEFAULT 2,
   `posted` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT 'posted date',
@@ -1087,9 +1142,9 @@ CREATE TABLE IF NOT EXISTS `post` (
   `post_mime_type` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT 'mime content type',
   `comment_count` bigint(20) NOT NULL DEFAULT 0 COMMENT 'number of comments',
   `reference` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'bibliographic or url reference reference',
-  PRIMARY KEY (`ID`,`language_id`) USING BTREE,
+  PRIMARY KEY (`id`,`language_id`) USING BTREE,
   KEY `post_name` (`post_name`(191)),
-  KEY `type_status_date` (`post_type`,`post_status`,`posted`,`ID`),
+  KEY `type_status_date` (`post_type`,`post_status`,`posted`,`id`),
   KEY `post_parent` (`parent_post_id`),
   KEY `post_author` (`author_id`),
   KEY `language_id` (`language_id`)
@@ -1098,71 +1153,115 @@ CREATE TABLE IF NOT EXISTS `post` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `recipe`
+-- Table structure for table `recipes`
 --
 
-DROP TABLE IF EXISTS `recipe`;
-CREATE TABLE IF NOT EXISTS `recipe` (
-  `post_ID` bigint(20) UNSIGNED NOT NULL COMMENT 'posted recipe',
+DROP TABLE IF EXISTS `recipes`;
+CREATE TABLE IF NOT EXISTS `recipes` (
+  `post_id` bigint(20) UNSIGNED NOT NULL COMMENT 'posted recipe',
   `ingredient_id` bigint(20) UNSIGNED NOT NULL COMMENT 'recipe ingredient',
-  PRIMARY KEY (`post_ID`,`ingredient_id`),
+  PRIMARY KEY (`post_id`,`ingredient_id`),
   KEY `ingredient_id` (`ingredient_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `roles`
 --
 
-DROP TABLE IF EXISTS `user`;
-CREATE TABLE IF NOT EXISTS `user` (
-  `ID` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of user',
+DROP TABLE IF EXISTS `roles`;
+CREATE TABLE IF NOT EXISTS `roles` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uk_name` (`name`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`) VALUES
+(1, 'administrator'),
+(3, 'collaborator'),
+(4, 'moderator'),
+(5, 'sponsor'),
+(2, 'standard');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'id of user',
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'email',
+  `email_verified_at` timestamp NULL DEFAULT NULL COMMENT 'registration timestamp',
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL COMMENT 'last time updated',
+  `role_id` int(11) DEFAULT NULL COMMENT 'admin, moderator or poster',
   `language_id` int(11) NOT NULL DEFAULT 2,
-  `name` varchar(50) DEFAULT NULL,
-  `email` varchar(60) NOT NULL COMMENT 'email',
-  `password` varchar(255) DEFAULT NULL,
-  `email_verified_at` datetime DEFAULT current_timestamp() COMMENT 'registration timestamp',
-  `role` varchar(10) NOT NULL DEFAULT 'poster' COMMENT 'admin, moderator or poster',
-  `updated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp() COMMENT 'last time updated',
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`id`),
   UNIQUE KEY `UK_login` (`email`),
-  KEY `idx_language` (`language_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `idx_language` (`language_id`),
+  KEY `idx_role` (`role_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `role_id`, `language_id`) VALUES
+(1, 'pgradone', 'pgradone@gmail.com', NULL, '$2y$10$SkzzuVGKxxmhn1HFGRTUs.t6Ie2DJ6HeOe.oTJ5sSJL1aGCWkxhEO', NULL, '2020-08-17 11:16:08', '2020-08-17 11:16:08', NULL, 2),
+(2, 'avy', 'avy@gmail.com', NULL, '$2y$10$RLIFIV1.0jk7EE66KJbmIuG1GIwyO4efeHXgMnJPVHxnOG.zBXXEy', NULL, '2020-08-17 11:16:39', '2020-08-17 11:16:39', NULL, 2);
 
 --
 -- Constraints for dumped tables
 --
 
 --
--- Constraints for table `comment`
+-- Constraints for table `comments`
 --
-ALTER TABLE `comment`
-  ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`Language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `post` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `comment_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `user` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `comment_ibfk_4` FOREIGN KEY (`parent_comment_id`) REFERENCES `comment` (`ID`) ON UPDATE CASCADE;
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `languages` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`post_id`) REFERENCES `posts` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `comments_ibfk_4` FOREIGN KEY (`parent_comment_id`) REFERENCES `comments` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `post`
+-- Constraints for table `ingredients`
 --
-ALTER TABLE `post`
-  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `user` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_ibfk_2` FOREIGN KEY (`language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `post_ibfk_3` FOREIGN KEY (`parent_post_id`) REFERENCES `post` (`ID`) ON UPDATE CASCADE;
+ALTER TABLE `ingredients`
+  ADD CONSTRAINT `ingredients_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `languages` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `recipe`
+-- Constraints for table `posts`
 --
-ALTER TABLE `recipe`
-  ADD CONSTRAINT `recipe_ibfk_1` FOREIGN KEY (`post_ID`) REFERENCES `post` (`ID`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `recipe_ibfk_2` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`ID`) ON UPDATE CASCADE;
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_ibfk_2` FOREIGN KEY (`language_id`) REFERENCES `languages` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_ibfk_3` FOREIGN KEY (`parent_post_id`) REFERENCES `posts` (`ID`) ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Constraints for table `recipes`
 --
-ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `language` (`ID`) ON UPDATE CASCADE;
+ALTER TABLE `recipes`
+  ADD CONSTRAINT `recipes_ibfk_1` FOREIGN KEY (`post_ID`) REFERENCES `posts` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `recipes_ibfk_2` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredients` (`ID`) ON UPDATE CASCADE;
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`language_id`) REFERENCES `languages` (`ID`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
