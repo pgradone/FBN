@@ -14,8 +14,14 @@ class CreateLanguagesTable extends Migration
     public function up()
     {
         Schema::create('languages_', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedSmallInteger('id');
+            $table->string('iso',2);
+            $table->unique('iso');
+            $table->string('flag',100);
             $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 
