@@ -28,6 +28,9 @@ Route::get('/recipes', function () {
 Route::get('/blog', function () {
     return view('blog');
 });
+Route::get('/faq', function () {
+    return view('faq');
+});
 
 Auth::routes();
 
