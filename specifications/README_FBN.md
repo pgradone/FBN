@@ -18,7 +18,7 @@ Faballa Cissé, Potito Gradone, Guilherme Pereira, Jeff Cigrand
 (- Sponsors (Food markets, organic, local.....))
 
 # Product Backlog
-- Trello as tool (learn how 2 use, see below)
+- GitHub Project Management tool
 
 # Minimum Viable Product
 - refer to mockup of site
