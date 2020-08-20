@@ -13,17 +13,18 @@ class CreatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts_', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_post_id');
-            $table->foreignId('author_id');
+            $table->foreignId('parent_post_id')->references('id')->on('posts');
+            $table->foreignId('author_id')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
+            $table->foreignId('post_type_id')->references('id')->on('post_types')->onUpdate('cascade');
             $table->string('title',2);
             $table->longText('content');
             $table->text('summary');
             $table->string('reference',255);
             $table->string('status',20);
-            $table->unsignedSmallInteger('post_type_id');
-            $table->unsignedSmallInteger('language_id');
+            // $table->unsignedSmallInteger('post_type_id');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

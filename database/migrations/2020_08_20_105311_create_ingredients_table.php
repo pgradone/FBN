@@ -13,11 +13,11 @@ class CreateIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients_', function (Blueprint $table) {
+        Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
             $table->string('name',60);
             $table->string('nutriscore',2);
-            $table->foreignId('food_category_id');
+            $table->foreignId('food_category_id')->references('id')->on('food_categories');
             $table->string('picture',255);
             $table->timestamps();
             $table->engine = 'InnoDB';

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRecipesContentsTable extends Migration
+class CreatePostTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateRecipesContentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('recipes_contents', function (Blueprint $table) {
-            $table->foreignId('posts_id');
-            $table->foreignId('ingredients_id');
-            $table->primary(['posts_id', 'ingredients_id']);
+        Schema::create('post_types', function (Blueprint $table) {
+            // $table->unsignedSmallInteger('id');
+            // $table->primary('id');
+            $table->id();
+            $table->string('name',20);
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_general_ci';
-
         });
     }
 
@@ -32,6 +32,6 @@ class CreateRecipesContentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('recipes_contents');
+        Schema::dropIfExists('post_types');
     }
 }

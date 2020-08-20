@@ -13,12 +13,12 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles_', function (Blueprint $table) {
-            $table->unsignedSmallInteger('id');
-            $table->primary('id');
-            $table->string('name',20);
-            $table->unique('name');
-            $table->timestamps();
+        Schema::create('roles', function (Blueprint $table) {
+            // $table->unsignedSmallInteger('id');
+            // $table->primary('id');
+            $table->id();
+            $table->string('name',20)->unique();
+            // $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_general_ci';
