@@ -18,12 +18,12 @@ class CreatePostsTable extends Migration
             $table->foreignId('parent_post_id');
             $table->foreignId('author_id');
             $table->string('title',2);
-            $table->string('content',2);
-            $table->string('summary',2);
-            $table->string('reference',2);
+            $table->longText('content');
+            $table->text('summary');
+            $table->string('reference',255);
+            $table->string('status',20);
             $table->unsignedSmallInteger('post_type_id');
             $table->unsignedSmallInteger('language_id');
-
             $table->timestamps();
         });
     }
