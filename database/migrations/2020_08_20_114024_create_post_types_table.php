@@ -18,6 +18,9 @@ class CreatePostTypesTable extends Migration
             $table->primary('id');
             $table->string('name',20);
             $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 

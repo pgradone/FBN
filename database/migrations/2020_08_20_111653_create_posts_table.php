@@ -25,6 +25,9 @@ class CreatePostsTable extends Migration
             $table->unsignedSmallInteger('post_type_id');
             $table->unsignedSmallInteger('language_id');
             $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 
