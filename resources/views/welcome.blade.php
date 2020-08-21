@@ -36,33 +36,35 @@
     </div>
     <hr class="my-4 " style="width: 18rem; border: dashed ; ">
     <!-- <div class="d-flex justify-content-center"> -->
-    <div class="d-flex justify-content-center">
-        <div class="card" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
+    <div class="jumbotron">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
 
-                <a href="#" class="btn btn-primary">name of recipe</a>
+                    <a href="#" class="btn btn-primary">name of recipe</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card" style="width: 18rem;">
+                <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
 
-                <a href="#" class="btn btn-primary">name of recipe</a>
+                    <a href="#" class="btn btn-primary">name of recipe</a>
+                </div>
             </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
+            <div class="card" style="width: 18rem;">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                    class="card-img-top" alt="...">
+                <div class="card-body">
 
-                <a href="#" class="btn btn-primary">name of recipe</a>
+                    <a href="#" class="btn btn-primary">name of recipe</a>
+                </div>
             </div>
-        </div>
 
-    </div>
+        </div>
+    </div class="jumbotron">
     <!-- </div> -->
 </body>
 @endsection
