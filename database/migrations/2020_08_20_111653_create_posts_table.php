@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->id();
             $table->foreignId('parent_post_id')->references('id')->on('posts');
             $table->foreignId('author_id')->references('id')->on('users')->onUpdate('cascade');
-            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
+            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade')->default(2);
             $table->foreignId('post_type_id')->references('id')->on('post_types')->onUpdate('cascade');
             $table->string('title',2);
             $table->longText('content');
