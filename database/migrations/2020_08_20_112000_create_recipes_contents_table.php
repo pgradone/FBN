@@ -14,7 +14,6 @@ class CreateRecipesContentsTable extends Migration
     public function up()
     {
         Schema::create('recipes_contents', function (Blueprint $table) {
-            // $table->foreignId('posts_id');
             $table->foreignId('posts_id')->references('id')->on('posts')->onUpdate('cascade');
             $table->foreignId('ingredients_id')->references('id')->on('ingredients')->onUpdate('cascade');
             $table->primary(['posts_id', 'ingredients_id']);

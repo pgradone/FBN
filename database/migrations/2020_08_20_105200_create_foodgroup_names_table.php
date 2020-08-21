@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateIngredientsTable extends Migration
+class CreateFoodgroupNamesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateIngredientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ingredients', function (Blueprint $table) {
-            $table->id();
-            $table->string('nutriscore',2);
-            $table->foreignId('food_category_id')->references('id')->on('food_categories');
-            $table->foreignId('foodgroup_id')->references('id')->on('foodgroups');
-            $table->string('picture',255);
+        Schema::create('foodgroup_names', function (Blueprint $table) {
+            $table->foreignId('foodgroup_id')->references('id')->on('foodgroups')->onUpdate('cascade');
+            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
+            $table->primary(['foodgroup_id', 'language_id']);
+            $table->string('name',60)->comment('food group name in given languages');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
@@ -33,6 +32,6 @@ class CreateIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::dropIfExists('foodgroup_names');
     }
 }

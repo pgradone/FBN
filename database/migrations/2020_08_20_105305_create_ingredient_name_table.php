@@ -14,9 +14,9 @@ class CreateIngredientNameTable extends Migration
     public function up()
     {
         Schema::create('ingredients_names', function (Blueprint $table) {
-            $table->foreignId('ingredients_id')->references('id')->on('ingredients')->onUpdate('cascade');
-            $table->foreignId('languages_id')->references('id')->on('languages')->onUpdate('cascade');
-            $table->primary(['languages_id', 'ingredients_id']);
+            $table->foreignId('ingredient_id')->references('id')->on('ingredients')->onUpdate('cascade');
+            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
+            $table->primary(['language_id', 'ingredient_id']);
             $table->string('name',60)->comment('ingredients name in given languages');
             $table->timestamps();
             $table->engine = 'InnoDB';
