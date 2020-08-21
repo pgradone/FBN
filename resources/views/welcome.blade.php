@@ -10,7 +10,12 @@
                 <div>
                     <h1><strong>Facts-Based Nutrition</strong></h1>
                     <h5>A healthy Way </h5>
-                    <button type="button" class="btn btn-success">Join Now</>
+
+
+                    <button type="button" class="btn btn-warning">Learn more</>
+                        <button type="button" class="btn btn-success">Join Now</>
+
+
                 </div>
             </div>
             <div class="col-md ">
@@ -30,6 +35,7 @@
         <h1><strong>Recipes</strong></h1>
     </div>
     <hr class="my-4 " style="width: 18rem; border: dashed ; ">
+    <!-- <div class="d-flex justify-content-center"> -->
     <div class="d-flex justify-content-center">
         <div class="card" style="width: 18rem;">
             <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -57,5 +63,6 @@
         </div>
 
     </div>
+    <!-- </div> -->
 </body>
 @endsection
