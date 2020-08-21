@@ -15,6 +15,7 @@ class CreateFoodCategoriesTable extends Migration
     {
         Schema::create('food_categories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('parent_category_id')->references('id')->on('food_categories');
             $table->string('name',60);
             $table->timestamps();
             $table->engine = 'InnoDB';

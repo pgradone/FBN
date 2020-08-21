@@ -2,7 +2,6 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class LanguageSeeder extends Seeder
 {
@@ -13,7 +12,6 @@ class LanguageSeeder extends Seeder
      */
     public function run()
     {
-        //
         $languages = array(
             array('id' => 1,
                 'iso' => 'LU',
