@@ -18,7 +18,8 @@ class EmailVerification extends Mailable
      */
     public function __construct()
     {
-        //
+        $this->verifyUrl = $url;
+        $this->user = $user;
     }
 
     /**

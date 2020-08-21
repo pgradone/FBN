@@ -23,7 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // Override the email notification for verifying email
+        //needs testing
+        /*// Override the email notification for verifying email
         VerifyEmail::toMailUsing(function ($notifiable)
         {
             $verifyUrl = URL::temporarySignedRoute(
@@ -32,6 +33,6 @@ class AppServiceProvider extends ServiceProvider
                 ['id' => $notifiable->getKey()]
             );
             return new EmailVerification($verifyUrl, $notifiable);
-        });
+        });*/
     }
 }
