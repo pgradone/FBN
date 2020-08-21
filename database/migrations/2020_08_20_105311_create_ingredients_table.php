@@ -15,7 +15,7 @@ class CreateIngredientsTable extends Migration
     {
         Schema::create('ingredients', function (Blueprint $table) {
             $table->id();
-            $table->string('name',60);
+            $table->string('name',60)->unique()->comment('ingredient name in english');
             $table->string('nutriscore',2);
             $table->foreignId('food_category_id')->references('id')->on('food_categories');
             $table->string('picture',255);

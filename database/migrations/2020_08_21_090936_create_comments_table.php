@@ -22,8 +22,10 @@ class CreateCommentsTable extends Migration
             $table->string('rating', 2);
             $table->foreignId('approver_user_id')->references('id')->on('users')->onUpdate('cascade');
             $table->foreignId('parent_comment_id')->references('id')->on('comments');
-            $table->string('title',2);
             $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_general_ci';
         });
     }
 
