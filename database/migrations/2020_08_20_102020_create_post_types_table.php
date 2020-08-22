@@ -17,7 +17,7 @@ class CreatePostTypesTable extends Migration
             // $table->unsignedSmallInteger('id');
             // $table->primary('id');
             $table->id();
-            $table->foreignId('parent_type_id')->references('id')->on('post_types')->default(1);
+            $table->foreignId('parent_type_id')->nullable()->references('id')->on('post_types')->onUpdate('cascade')->default(1);
             $table->string('name',20);
             // $table->timestamps();
             $table->engine = 'InnoDB';

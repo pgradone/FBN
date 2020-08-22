@@ -15,7 +15,7 @@ class CreateFoodgroupNamesTable extends Migration
     {
         Schema::create('foodgroup_names', function (Blueprint $table) {
             $table->foreignId('foodgroup_id')->references('id')->on('foodgroups')->onUpdate('cascade');
-            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
+            $table->foreignId('language_id')->nullable()->references('id')->on('languages')->onUpdate('cascade');
             $table->primary(['foodgroup_id', 'language_id']);
             $table->string('name',60)->comment('food group name in given languages');
             $table->timestamps();

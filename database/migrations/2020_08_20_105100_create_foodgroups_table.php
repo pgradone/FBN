@@ -15,7 +15,7 @@ class CreateFoodgroupsTable extends Migration
     {
         Schema::create('foodgroups', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('parent_group_id')->references('id')->on('foodgroups');
+            $table->foreignId('parent_group_id')->nullable()->references('id')->on('foodgroups')->onUpdate('cascade');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
