@@ -59,7 +59,7 @@ class UserSeeder extends Seeder
 
     // fill the users from users array
     foreach ($users as $user) {
-      DB::table('user')->insert([
+      DB::table('users')->insert([
         'role_id' => $user['role_id'],
         'name' => $user['name'],
         'email' => $user['email'],
