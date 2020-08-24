@@ -17,7 +17,7 @@ class CreateIngredientNameTable extends Migration
             $table->foreignId('ingredient_id')->references('id')->on('ingredients')->onUpdate('cascade');
             $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
             $table->primary(['language_id', 'ingredient_id']);
-            $table->string('name',60)->comment('ingredients name in given languages');
+            $table->string('name',100)->comment('ingredients name in given languages');
             $table->timestamps();
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';

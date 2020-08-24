@@ -15,28 +15,28 @@ class PostTypesSeeder extends Seeder
     $types = array(
       array(
         'id' => 1,
-        'parent_type_id' => 1,
+        // 'parent_type_id' => 1,
         'name' => 'post',
       ),
       array(
         'id' => 2,
-        'parent_type_id' => 1,
+        // 'parent_type_id' => 1,
         'name' => 'quote',
       ),
       array(
         'id' => 3,
-        'parent_type_id' => 1,
+        // 'parent_type_id' => 1,
         'name' => 'opinion',
       ),
       array(
         'id' => 4,
-        'parent_type_id' => 1,
-        'name' => 'quote',
+        // 'parent_type_id' => 1,
+        'name' => 'question',
       ),
       array(
         'id' => 5,
-        'parent_type_id' => 1,
-        'name' => 'question',
+        'parent_type_id' => 4,
+        'name' => 'faq',
       ),
       array(
         'id' => 6,
@@ -45,12 +45,12 @@ class PostTypesSeeder extends Seeder
       ),
       array(
         'id' => 7,
-        'parent_type_id' => 1,
+        // 'parent_type_id' => 1,
         'name' => 'ad',
       ),
       array(
         'id' => 8,
-        'parent_type_id' => 1,
+        // 'parent_type_id' => 1,
         'name' => 'article',
       ),
       array(
@@ -66,11 +66,20 @@ class PostTypesSeeder extends Seeder
     );
 
     foreach ($types as $type) {
-      DB::table('post_types')->insert([
-        'id' => $type['id'],
-        'parent_type_id' => $type['parent_type_id'],
-        'name' => $type['name'],
-      ]);
+      if (!isset($type['parent_type_id'])) {
+        DB::table('post_types')->insert([
+          'id' => $type['id'],
+          // 'parent_type_id' => $type['parent_type_id'],
+          'name' => $type['name'],
+        ]);
+      } else {
+        DB::table('post_types')->insert([
+          'id' => $type['id'],
+          'parent_type_id' => $type['parent_type_id'],
+          'name' => $type['name'],
+        ]);
+      }
+      
     }
   }
 }
