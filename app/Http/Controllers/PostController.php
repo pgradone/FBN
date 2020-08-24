@@ -54,4 +54,14 @@ class PostController extends Controller
     $post->save();
     return redirect('edit/' . $post->slug)->withMessage($message);
   }
+
+  public function show($slug)
+  {
+    $post = Posts::where('slug', $slug)->first();
+    if (!$post) {
+      return redirect('/')->withErrors('requested page not found');
+    }
+    $comments = $post->comments;
+    return view('posts.show')->withPost($post)->withComments($comments);
+  }
 }
