@@ -8,6 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>{{ config('app.name', 'FBN') }}</title>
 
     <!-- Scripts -->
@@ -18,7 +19,6 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -94,5 +94,17 @@
         </main>
     </div>
 </body>
+
+
+<footer class="page-footer font-small blue">
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center ">© 2020 Powered by:
+        <a href="http://www.numericall.fr/">Numericall</a>
+    </div>
+    <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
 
 </html>
