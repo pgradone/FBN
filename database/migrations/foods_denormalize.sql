@@ -20,3 +20,6 @@ insert into foodgroup_names (foodgroup_id, language_id, name) SELECT distinct su
 insert into foodgroup_names (foodgroup_id, language_id, name) SELECT distinct sub_group_id, 6, `sub_group_IT` FROM `foods` where sub_group_id > 28 and id <> 679 order by sub_group_id;
 insert into foodgroup_names (foodgroup_id, language_id, name) SELECT distinct sub_group_id, 7, `sub_group_ES` FROM `foods` where sub_group_id > 28 and id <> 679 order by sub_group_id;
 insert into foodgroup_names (foodgroup_id, language_id, name) SELECT distinct sub_group_id, 8, `sub_group_NL` FROM `foods` where sub_group_id > 28 and id <> 679 order by sub_group_id;
+
+/* Insert Ingredients with their belonging foodgroups_id */
+INSERT INTO ingredients (id, foodgroup_id) SELECT ID, sub_group_id FROM foods order by ID;
