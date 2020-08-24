@@ -15,4 +15,14 @@ class PostController extends Controller
     //return home.blade.php template from resources/views folder
     return view('home')->withPosts($posts)->withTitle($title);
   }
+
+  public function create(Request $request)
+  {
+    //
+    if ($request->user()->can_post()) {
+      return view('posts.create');
+    } else {
+      return redirect('/')->withErrors('You have not sufficient permissions for writing post');
+    }
+  }
 }
