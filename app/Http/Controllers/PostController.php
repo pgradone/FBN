@@ -64,4 +64,12 @@ class PostController extends Controller
     $comments = $post->comments;
     return view('posts.show')->withPost($post)->withComments($comments);
   }
+
+  public function edit(Request $request, $slug)
+  {
+    $post = Posts::where('slug', $slug)->first();
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
+      return view('posts.edit')->with('post', $post);
+    return redirect('/')->withErrors('you have not sufficient permissions');
+  }
 }
