@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+
+use App\Posts;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PostFormRequest;
 
 class PostController extends Controller
 {
