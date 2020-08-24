@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 24, 2020 at 03:20 PM
+-- Generation Time: Aug 24, 2020 at 05:43 PM
 -- Server version: 5.7.31-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.6
 
@@ -74,34 +74,34 @@ CREATE TABLE `foodgroups` (
 --
 
 INSERT INTO `foodgroups` (`id`, `parent_group_id`, `created_at`, `updated_at`) VALUES
-(1, NULL, NULL, NULL),
-(2, NULL, NULL, NULL),
-(3, NULL, NULL, NULL),
-(4, NULL, NULL, NULL),
-(5, NULL, NULL, NULL),
-(6, NULL, NULL, NULL),
-(7, NULL, NULL, NULL),
-(8, NULL, NULL, NULL),
-(9, NULL, NULL, NULL),
-(10, NULL, NULL, NULL),
-(11, NULL, NULL, NULL),
-(12, NULL, NULL, NULL),
-(13, NULL, NULL, NULL),
-(14, NULL, NULL, NULL),
-(15, NULL, NULL, NULL),
-(16, NULL, NULL, NULL),
-(17, NULL, NULL, NULL),
-(18, NULL, NULL, NULL),
-(19, NULL, NULL, NULL),
-(20, NULL, NULL, NULL),
-(21, NULL, NULL, NULL),
-(22, NULL, NULL, NULL),
-(23, NULL, NULL, NULL),
-(24, NULL, NULL, NULL),
-(25, NULL, NULL, NULL),
-(26, NULL, NULL, NULL),
-(27, NULL, NULL, NULL),
-(28, NULL, NULL, NULL),
+(1, 1, NULL, NULL),
+(2, 2, NULL, NULL),
+(3, 3, NULL, NULL),
+(4, 4, NULL, NULL),
+(5, 5, NULL, NULL),
+(6, 6, NULL, NULL),
+(7, 7, NULL, NULL),
+(8, 8, NULL, NULL),
+(9, 9, NULL, NULL),
+(10, 10, NULL, NULL),
+(11, 11, NULL, NULL),
+(12, 12, NULL, NULL),
+(13, 13, NULL, NULL),
+(14, 14, NULL, NULL),
+(15, 15, NULL, NULL),
+(16, 16, NULL, NULL),
+(17, 17, NULL, NULL),
+(18, 18, NULL, NULL),
+(19, 19, NULL, NULL),
+(20, 20, NULL, NULL),
+(21, 21, NULL, NULL),
+(22, 22, NULL, NULL),
+(23, 23, NULL, NULL),
+(24, 24, NULL, NULL),
+(25, 25, NULL, NULL),
+(26, 26, NULL, NULL),
+(27, 27, NULL, NULL),
+(28, 28, NULL, NULL),
 (101, 1, NULL, NULL),
 (102, 2, NULL, NULL),
 (103, 1, NULL, NULL),
@@ -2158,6 +2158,38 @@ INSERT INTO `foods` (`Food_Name_LA`, `ID`, `Food_Name_EN`, `Food_Name_FR`, `Food
 ('', 912, 'Hemp milk', 'Lait de chanvre', 'Hanfmilch', 'Leite de cânhamo', 'il latte di canapa', 'Leche de cáñamo', 'hennep melk', 25, 'Vegetable milks', 'laits végétaux', 'Gemüse Milchen', 'leites vegetais', 'latti vegetali', 'leches vegetales', 'plantaardige melk', 25, 'Vegetable milks', 'laits végétaux', 'Gemüse Milchen', 'leites vegetais', 'latti vegetali', 'leches vegetales', 'plantaardige melk'),
 ('', 913, 'Nut milk', 'lait de noix', 'Mutter Milch', 'leite de castanha', 'latte dado', 'leche de nuez', 'moer melk', 25, 'Vegetable milks', 'laits végétaux', 'Gemüse Milchen', 'leites vegetais', 'latti vegetali', 'leches vegetales', 'plantaardige melk', 25, 'Vegetable milks', 'laits végétaux', 'Gemüse Milchen', 'leites vegetais', 'latti vegetali', 'leches vegetales', 'plantaardige melk'),
 ('', 914, 'marmite', 'marmite', 'marmite', 'marmite', 'marmite', 'marmite', 'marmite', 9, 'condiments', 'assaisonnement', 'Würzen', 'condimentos', 'condimenti', 'condimentos', 'specerijen', 25, 'Vegetable milks', 'condiments', 'Gemüse Milchen', 'leites vegetais', 'latti vegetali', 'leches vegetales', 'plantaardige melk');
+
+-- --------------------------------------------------------
+
+--
+-- Stand-in structure for view `food_v`
+-- (See below for the actual view)
+--
+CREATE TABLE `food_v` (
+`id` bigint(20) unsigned
+,`foodgroup_id` bigint(20) unsigned
+,`food_name_EN` varchar(100)
+,`food_name_FR` varchar(100)
+,`food_name_DE` varchar(100)
+,`food_name_PT` varchar(100)
+,`food_name_IT` varchar(100)
+,`food_name_ES` varchar(100)
+,`food_name_NL` varchar(100)
+,`group_EN` varchar(60)
+,`group_FR` varchar(60)
+,`group_DE` varchar(60)
+,`group_PT` varchar(60)
+,`group_IT` varchar(60)
+,`group_ES` varchar(60)
+,`group_NL` varchar(60)
+,`sub_group_EN` varchar(60)
+,`sub_group_FR` varchar(60)
+,`sub_group_DE` varchar(60)
+,`sub_group_PT` varchar(60)
+,`sub_group_IT` varchar(60)
+,`sub_group_ES` varchar(60)
+,`sub_group_NL` varchar(60)
+);
 
 -- --------------------------------------------------------
 
@@ -9698,6 +9730,15 @@ INSERT INTO `users` (`id`, `language_id`, `role_id`, `name`, `email`, `email_ver
 (2, 2, 2, 'gui', 'gui_pereira10@live.com.pt', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
 (3, 2, 2, 'fab', 'faballa.cisse@gmail.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
 (4, 2, 2, 'jef', 'JeffCigrand@me.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30');
+
+-- --------------------------------------------------------
+
+--
+-- Structure for view `food_v`
+--
+DROP TABLE IF EXISTS `food_v`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `food_v`  AS  select `i`.`id` AS `id`,`i`.`foodgroup_id` AS `foodgroup_id`,`in_en`.`name` AS `food_name_EN`,`in_fr`.`name` AS `food_name_FR`,`in_de`.`name` AS `food_name_DE`,`in_pt`.`name` AS `food_name_PT`,`in_it`.`name` AS `food_name_IT`,`in_es`.`name` AS `food_name_ES`,`in_nl`.`name` AS `food_name_NL`,`fgn_p_en`.`name` AS `group_EN`,`fgn_p_fr`.`name` AS `group_FR`,`fgn_p_de`.`name` AS `group_DE`,`fgn_p_pt`.`name` AS `group_PT`,`fgn_p_it`.`name` AS `group_IT`,`fgn_p_es`.`name` AS `group_ES`,`fgn_p_nl`.`name` AS `group_NL`,`fgn_en`.`name` AS `sub_group_EN`,`fgn_fr`.`name` AS `sub_group_FR`,`fgn_de`.`name` AS `sub_group_DE`,`fgn_pt`.`name` AS `sub_group_PT`,`fgn_it`.`name` AS `sub_group_IT`,`fgn_es`.`name` AS `sub_group_ES`,`fgn_nl`.`name` AS `sub_group_NL` from ((((((((((((((((((((((`ingredients` `i` left join `ingredients_names` `in_en` on(((`i`.`id` = `in_en`.`ingredient_id`) and (`in_en`.`language_id` = 2)))) left join `ingredients_names` `in_fr` on(((`i`.`id` = `in_fr`.`ingredient_id`) and (`in_fr`.`language_id` = 3)))) left join `ingredients_names` `in_de` on(((`i`.`id` = `in_de`.`ingredient_id`) and (`in_de`.`language_id` = 4)))) left join `ingredients_names` `in_pt` on(((`i`.`id` = `in_pt`.`ingredient_id`) and (`in_pt`.`language_id` = 5)))) left join `ingredients_names` `in_it` on(((`i`.`id` = `in_it`.`ingredient_id`) and (`in_it`.`language_id` = 6)))) left join `ingredients_names` `in_es` on(((`i`.`id` = `in_es`.`ingredient_id`) and (`in_es`.`language_id` = 7)))) left join `ingredients_names` `in_nl` on(((`i`.`id` = `in_nl`.`ingredient_id`) and (`in_nl`.`language_id` = 8)))) left join `foodgroups` `fg` on((`i`.`foodgroup_id` = `fg`.`id`))) left join `foodgroup_names` `fgn_en` on(((`fg`.`id` = `fgn_en`.`foodgroup_id`) and (`fgn_en`.`language_id` = 2)))) left join `foodgroup_names` `fgn_fr` on(((`fg`.`id` = `fgn_fr`.`foodgroup_id`) and (`fgn_fr`.`language_id` = 3)))) left join `foodgroup_names` `fgn_de` on(((`fg`.`id` = `fgn_de`.`foodgroup_id`) and (`fgn_de`.`language_id` = 4)))) left join `foodgroup_names` `fgn_pt` on(((`fg`.`id` = `fgn_pt`.`foodgroup_id`) and (`fgn_pt`.`language_id` = 5)))) left join `foodgroup_names` `fgn_it` on(((`fg`.`id` = `fgn_it`.`foodgroup_id`) and (`fgn_it`.`language_id` = 6)))) left join `foodgroup_names` `fgn_es` on(((`fg`.`id` = `fgn_es`.`foodgroup_id`) and (`fgn_es`.`language_id` = 7)))) left join `foodgroup_names` `fgn_nl` on(((`fg`.`id` = `fgn_nl`.`foodgroup_id`) and (`fgn_nl`.`language_id` = 8)))) left join `foodgroup_names` `fgn_p_en` on(((`fg`.`parent_group_id` = `fgn_p_en`.`foodgroup_id`) and (`fgn_p_en`.`language_id` = 2)))) left join `foodgroup_names` `fgn_p_fr` on(((`fg`.`parent_group_id` = `fgn_p_fr`.`foodgroup_id`) and (`fgn_p_fr`.`language_id` = 3)))) left join `foodgroup_names` `fgn_p_de` on(((`fg`.`parent_group_id` = `fgn_p_de`.`foodgroup_id`) and (`fgn_p_de`.`language_id` = 4)))) left join `foodgroup_names` `fgn_p_pt` on(((`fg`.`parent_group_id` = `fgn_p_pt`.`foodgroup_id`) and (`fgn_p_pt`.`language_id` = 5)))) left join `foodgroup_names` `fgn_p_it` on(((`fg`.`parent_group_id` = `fgn_p_it`.`foodgroup_id`) and (`fgn_p_it`.`language_id` = 6)))) left join `foodgroup_names` `fgn_p_es` on(((`fg`.`parent_group_id` = `fgn_p_es`.`foodgroup_id`) and (`fgn_p_es`.`language_id` = 7)))) left join `foodgroup_names` `fgn_p_nl` on(((`fg`.`parent_group_id` = `fgn_p_nl`.`foodgroup_id`) and (`fgn_p_nl`.`language_id` = 8)))) order by `i`.`id` ;
 
 --
 -- Indexes for dumped tables
