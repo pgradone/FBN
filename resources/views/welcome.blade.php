@@ -4,22 +4,17 @@
 
 
 <!-- Header Section -->
-<div class="headerContainer">
-    <div class="row">
-        <div class="col-lg-6 test">
-            <h1><strong>Facts-Based-Nutrition</strong></h1>
-            <h5>The healthy way of living! </h5>
-            <button type="button" class="btn btn-warning btn-lg learn-more-button"><i class="fas fa-caret-right"></i>
-                Learn more</button>
-            <button type="button" class="  btn btn-success btn-lg join-now-button">Join Now <i
-                    class="fas fa-leaf"></i></button>
-        </div>
-        <div class="col-lg-6">
-            <!-- <img src="https://images.unsplash.com/photo-1561043433-aaf687c4cf04?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="picture" style="width: auto;"> -->
-        </div>
+<div class="headerContainer  d-flex align-items-center ">
+    <div class="col-6 test">
+        <h1><strong>Facts-Based-Nutrition</strong></h1>
+        <h5>The healthy way of living! </h5>
+        <button type="button" class="btn btn-warning btn-lg learn-more-button"><i class="fas fa-caret-right"></i>
+            Learn more</button>
+        <button type="button" class="  btn btn-success btn-lg join-now-button">Join Now <i
+                class="fas fa-leaf"></i></button>
     </div>
 </div>
+
 
 
 <!-- Recipes title and HR  -->

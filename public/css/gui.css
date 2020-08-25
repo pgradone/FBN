@@ -1,9 +1,9 @@
 .headerContainer {
-    padding: 5% 25%;
+    /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
-    /* background-color: #cccccc; */
+    background-color: #cccccc;
     height: 850px;
-    background-position: top;
+    /* background-position: top; */
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -32,5 +32,5 @@
 }
 
 .test {
-    
+    margin-left: 25%;
 }
