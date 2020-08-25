@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <h1>this is the about us page</h1>
+    <h1 class="text-center">this is the about us page</h1>
 </body>
 
 </html>
