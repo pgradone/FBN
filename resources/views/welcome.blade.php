@@ -8,8 +8,8 @@
     <div class="row d-flex align-items-center">
         <div class="col-8">
             <div>
-                <h1><strong>Facts-Based Nutrition</strong></h1>
-                <h5>A healthy Way </h5>
+                <h1><strong>Facts-Based-Nutrition</strong></h1>
+                <h5>The healthy way of living! </h5>
 
 
                 <div class="d-flex ">
@@ -75,7 +75,7 @@
 <hr class="my-4 " style="width: 15rem;border-top: 5px dotted green;">
 
 
-<div class="container-fluid">
+<div class="container-fluid jumbotron">
     <div class="row">
         <div class="col-12">
             <div id="inam" class="carousel slide" data-ride="carousel">
