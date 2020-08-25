@@ -39,3 +39,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// ***========*** INGREDIENTS CRUD ***==============0
+Route::resource('ingredients', 'IngredientController');
