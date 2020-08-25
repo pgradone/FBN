@@ -23,8 +23,8 @@ class IngredientSeeder extends Seeder
     foreach ($ingredients as $ingredient) {
       DB::table('ingredients')->insert([
         'id' => $ingredient['id'],
-        'nutriscore' => $ingredient['nutriscore'],
         'origin' => $ingredient['origin'],
+        'nutriscore' => $ingredient['nutriscore'],
         'picture' => $ingredient['picture'],
         'foodgroup_id' => $ingredient['foodgroup_id'],
       ]);
