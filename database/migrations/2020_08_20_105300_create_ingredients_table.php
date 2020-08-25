@@ -15,8 +15,8 @@ class CreateIngredientsTable extends Migration
   {
     Schema::create('ingredients', function (Blueprint $table) {
       $table->id();
-      $table->string('nutriscore', 2)->nullable();
       $table->string('origin', 2)->nullable()->comment('Plant or Animal based');
+      $table->string('nutriscore', 2)->nullable()->comment('A-F nutritional compliance');
       $table->string('picture', 255)->nullable();
       $table->foreignId('foodgroup_id')->nullable()->references('id')->on('foodgroups');
       $table->timestamps();

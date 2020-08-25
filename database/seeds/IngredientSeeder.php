@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class IngredientSeeder extends Seeder
 {
@@ -11,10 +12,9 @@ class IngredientSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-
+    {   
     // get data fron json file
-    $data = ;
+    $data = File::get("database/seeds/json/ingredients.json");
 
     // ingredients array from json
     $ingredients = json_decode($data, true);
@@ -23,8 +23,8 @@ class IngredientSeeder extends Seeder
     foreach ($ingredients as $ingredient) {
       DB::table('ingredients')->insert([
         'id' => $ingredient['id'],
-        'nutriscore' => $ingredient['nutriscore'],
         'origin' => $ingredient['origin'],
+        'nutriscore' => $ingredient['nutriscore'],
         'picture' => $ingredient['picture'],
         'foodgroup_id' => $ingredient['foodgroup_id'],
       ]);

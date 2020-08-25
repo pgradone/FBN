@@ -4,36 +4,34 @@
 
 
 
-<div class="container d-flex justify-content-between">
-    <div class="row d-flex align-items-center">
-        <div class="col-8">
-            <div>
-                <h1><strong>Facts-Based-Nutrition</strong></h1>
-                <h5>The healthy way of living! </h5>
 
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1><strong>Facts-Based-Nutrition</strong></h1>
+            <h5>The healthy way of living! </h5>
+            <button type="button" class="btn btn-warning btn-lg learn-more-button"><i class="fas fa-caret-right"></i>
+                Learn more</button>
+            <button type="button" class="  btn btn-success btn-lg join-now-button">Join Now <i
+                    class="fas fa-leaf"></i></button>
 
-                <div class="d-flex ">
-                    <button type="button" class="btn btn-warning">Learn more</>
-                        <button type="button" class="btn btn-success">Join Now</>
-                </div>
-
-
-            </div>
-        </div>
-        <div class="col-4 ">
-            <img class="img-thumbnail"
-                src="https://images.unsplash.com/photo-1503146234394-631200675614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="picture" srcset="" style="transform:rotate(90deg);">
         </div>
 
+        <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1503146234394-631200675614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="picture">
+        </div>
     </div>
+
 </div>
 
 
 
 
 
-<div class="d-flex justify-content-center">
+
+
+<div class=" d-flex justify-content-center">
     <h1><strong>Recipes</strong></h1>
 </div>
 <hr class="my-4 " style="width: 15rem;border-top: 5px dotted green;">
@@ -41,29 +39,31 @@
 
 
 
-<div class="d-flex justify-content-center">
-    <div class="card" style="width: 18rem;">
-        <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            class="card-img-top" alt="...">
-        <div class="card-body">
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <div class="col-lg-2 col-md-4 col-sm-12 card" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
 
-            <a href="#" class="btn btn-primary">name of recipe</a>
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
 
-            <a href="#" class="btn btn-primary">name of recipe</a>
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
         </div>
-    </div>
-    <div class="card" style="width: 18rem;">
-        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            class="card-img-top" alt="...">
-        <div class="card-body">
+        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
 
-            <a href="#" class="btn btn-primary">name of recipe</a>
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
         </div>
     </div>
 </div>
@@ -89,7 +89,8 @@
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
-                                            <p class="card-text">Skin masks help us to make are skin fresh and also they
+                                            <p class="card-text">Skin masks help us to make are skin fresh and also
+                                                they
                                                 protect our skin from the harm rays of sun</p>
                                             <button type="button" class="btn btn-warning">Read More</button>
 
@@ -104,7 +105,8 @@
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
-                                            <p class="card-text">Skin masks help us to make are skin fresh and also they
+                                            <p class="card-text">Skin masks help us to make are skin fresh and also
+                                                they
                                                 protect our skin from the harm rays of sun</p>
                                             <button type="button" class="btn btn-warning">Read More</button>
 
@@ -130,7 +132,8 @@
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
-                                            <p class="card-text">Skin masks help us to make are skin fresh and also they
+                                            <p class="card-text">Skin masks help us to make are skin fresh and also
+                                                they
                                                 protect our skin from the harm rays of sun</p>
                                             <button type="button" class="btn btn-warning">Read More</button>
 
@@ -145,7 +148,8 @@
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
-                                            <p class="card-text">Skin masks help us to make are skin fresh and also they
+                                            <p class="card-text">Skin masks help us to make are skin fresh and also
+                                                they
                                                 protect our skin from the harm rays of sun</p>
                                             <button type="button" class="btn btn-warning">Read More</button>
 
@@ -186,7 +190,8 @@
                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
@@ -204,7 +209,8 @@
                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
@@ -222,7 +228,8 @@
                             data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
                             alt="Card image cap">
                         <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
                                 additional content. This content is a little bit longer.</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
