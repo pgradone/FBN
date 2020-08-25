@@ -36,7 +36,7 @@ insert into ingredients_names (ingredient_id, language_id, name) SELECT id, 8, f
 /* View original foods table with a query */
 CREATE OR REPLACE VIEW food_v
 AS
-SELECT i.id, i.foodgroup_id, i.origin, i.nutriscore, i.picture, 
+SELECT i.id, i.foodgroup_id, i.origin, i.nutriscore, 
   in_en.name food_name_EN, in_fr.name food_name_FR, in_de.name food_name_DE, in_pt.name food_name_PT, in_it.name food_name_IT, in_es.name food_name_ES, in_nl.name food_name_NL,
   fgn_p_en.name group_EN, fgn_p_fr.name group_FR, fgn_p_de.name group_DE,  fgn_p_pt.name group_PT, fgn_p_it.name group_IT, fgn_p_es.name group_ES, fgn_p_nl.name group_NL,
 	fgn_en.name sub_group_EN, fgn_fr.name sub_group_FR, fgn_de.name sub_group_DE, fgn_pt.name sub_group_PT, fgn_it.name sub_group_IT, fgn_es.name sub_group_ES, fgn_nl.name sub_group_NL

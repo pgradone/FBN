@@ -18,9 +18,9 @@ class CreateUsersTable extends Migration
             // $table->unsignedSmallInteger('language_id')->constrained('languages')->onUpdate('cascade');
             // $table->foreignId('language_id')->constrained('languages')->onUpdate('cascade');
             // $table->unsignedSmallInteger('language_id')->foreign()->constrained();
-            $table->foreignId('language_id')->references('id')->on('languages')->onUpdate('cascade');
-            $table->foreignId('role_id')->references('id')->on('roles')->onUpdate('cascade');
-            $table->string('name');
+            $table->foreignId('language_id')->nullable()->default(2)->references('id')->on('languages')->onUpdate('cascade');
+            $table->foreignId('role_id')->nullable()->default(2)->references('id')->on('roles')->onUpdate('cascade');
+            $table->string('name')->unique();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

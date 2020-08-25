@@ -1,0 +1,17 @@
+.container {
+    padding: 5%;
+}
+
+/* home page buttons */
+
+.join-now-button,
+.learn-more-button {
+    margin-top: 2rem;
+}
+
+.join-now-button {
+    margin-left:0.25rem;
+}
+.learn-more-button {
+    margin-right:0.25rem;
+}

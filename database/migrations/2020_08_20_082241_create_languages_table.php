@@ -17,9 +17,8 @@ class CreateLanguagesTable extends Migration
             // $table->unsignedSmallInteger('id');
             $table->id();
             $table->string('iso',2)->unique();
-            // $table->unique('iso');
-            $table->string('flag',100);
-            // $table->timestamps();
+            $table->string('name',20)->unique();
+            // The flag location can be built like so : https://www.countryflags.com/en/united-kingdom-flag-icon.html
             $table->engine = 'InnoDB';
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_general_ci';
