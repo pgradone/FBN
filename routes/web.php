@@ -37,8 +37,10 @@ Route::get('/faq', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ***========*** INGREDIENTS CRUD ***==============0
-Route::get('ingredients/edit', 'IngredientController@edit')->name('ingredients.edit');
+Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredients.edit');
+// Route::get('ingredients/edit', 'IngredientController@edit');
 Route::get('ingredients', 'IngredientController@index');
+// Route::resource('ingredients', 'IngredientController');
 
 // ***========*** General Posts CRUD ***==============0
 Route::resource('posts', 'PostController');

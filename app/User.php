@@ -48,6 +48,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         // can manage if it is admin, collaborator or moderator
         $role_id = $this->role_id;
-        return ($role_id == 1 || $role_id == 3 || $role_id == 4);
+        if ($role_id == 1 || $role_id == 3 || $role_id == 4) {
+            return true;
+        }
+        return false;
     }
 }
