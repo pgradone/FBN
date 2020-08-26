@@ -29,7 +29,9 @@ class IngredientController extends Controller
      */
     public function create()
     {
-        //
+        // get to the screen to add a 'new ingredient'
+        return view('create-ingredient');
+
     }
 
     /**
@@ -40,7 +42,10 @@ class IngredientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      // insert the new book into the DB
+      DB::insert('INSERT INTO ingredients(origin, nutriscore, picture) VALUES(?, ?, ?, ?)', [$request->origin, $request->nutriscore, $request->picture, $request->foodgroup_id]);
+      // then show the (updated) list right after that
+      return redirect('/ingredients');
     }
 
     /**
@@ -62,7 +67,13 @@ class IngredientController extends Controller
      */
     public function edit($id)
     {
-        //
+        // EDIT the ingredient
+        // edit one book with eloquent
+        $ingredients =  Ingredient::where('id', $id)->get();
+        $currentIngredient = $ingredients[0];
+        // fill the form with data to edit
+        return view('update-ingredient', ['ingredeint' => $currentBook]);
+        
     }
 
     /**
