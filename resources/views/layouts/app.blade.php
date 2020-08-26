@@ -57,9 +57,11 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/faq">FAQ</a>
                         </li>
+                        @if(Auth::user()->can_manage())
                         <li class="nav-item">
                             <a class="nav-link" href="/ingredients">Ingredients</a>
                         </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

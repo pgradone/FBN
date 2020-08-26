@@ -1,13 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-// add this to access the DB methods!
-use Illuminate\Support\Facades\DB;
-// add model Ingredient created with eloquent
-use App\Ingredient;
+
 use Illuminate\Http\Request;
 
-class IngredientController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +13,7 @@ class IngredientController extends Controller
      */
     public function index()
     {
-      $ingredients = Ingredient::all();
-      // var_dump($ingredients);
-      return view('ingredients', ['ingredients' => $ingredients]);
-
+        //
     }
 
     /**
