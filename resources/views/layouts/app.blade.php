@@ -40,7 +40,7 @@
     <div id="app">
 
         <!-- NAVIGATION BAR -->
-        <nav class="navbar navbar-expand-md bg-white shadow-sm">
+        <nav class="navbar custom-navbar navbar-expand-md shadow-sm">
             <div class="container-fluid ">
                 <a class="navbar-brand custom-navbar-brand " href="{{ url('/') }}">
                     {{ config('app.name', 'FBN') }}

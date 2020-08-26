@@ -1,12 +1,15 @@
+.custom-navbar{
+    background-color: #e0ebe8;
+}
 .custom-navbar-brand{
     font-size:3rem;
-    color: #519872;
+    color: #1e836c;
     font-style: bold;
 }
 
 .custom-nav-item{
     font-size: 1.25rem;
-    color:#81b214
+    color:#45b29a
 }
 .headerContainer {
     /* padding: 5% 25%; */
