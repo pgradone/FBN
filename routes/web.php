@@ -41,3 +41,5 @@ Route::resource('ingredients', 'IngredientController');
 
 // ***========*** General Posts CRUD ***==============0
 Route::resource('posts', 'PostController');
+
+Route::get('/home', 'HomeController@index')->name('home');
