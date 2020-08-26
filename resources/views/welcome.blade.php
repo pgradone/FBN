@@ -18,7 +18,7 @@
 
 
 <!-- Recipes title and HR  -->
-<div class=" d-flex justify-content-center">
+<div class=" d-flex justify-content-center" style="margin-top:3rem;">
     <h1><strong>Recipes</strong></h1>
 </div>
 <hr class="my-4 " style="width: 15rem;border-top: 5px dotted green;">
