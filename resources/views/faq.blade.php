@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <H1>these are the most frequent asked questions</H1>
+    <H1 class="text-center">these are the most frequent asked questions</H1>
 </body>
 
 </html>
