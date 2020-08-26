@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes(['verify' => true]);
+
 Route::get('/about', function () {
     return view('about');
 });
@@ -32,10 +34,10 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// ***========*** INGREDIENTS CRUD ***==============0
+Route::resource('ingredients', 'IngredientController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// ***========*** General Posts CRUD ***==============0
+Route::resource('posts', 'PostController');
