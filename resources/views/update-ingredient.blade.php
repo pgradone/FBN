@@ -2,11 +2,13 @@
 @section('title', 'UPDATE an ingredient')
 
 @section('content')
-<form method="post">
+<form method="POST">
   @csrf
-  @method('put')
+  @method('PUT')
   <label for="picture">Picture</label>
   <input type="text" name="picture" id="picture" value="{{$ingredient->picture}}">
+  <label for="foodgroup_id">Foodgroup_id</label>
+  <input type="text" name="foodgroup_id" id="foodgroup_id" value="{{$ingredient->foodgroup_id}}">
   <label for="origin">Origin</label>
   <select id="origin">
     <option value="P" selected=true>P - Plant based</option>

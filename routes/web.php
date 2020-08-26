@@ -14,32 +14,38 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
 });
 
 Auth::routes(['verify' => true]);
 
 Route::get('/about', function () {
-    return view('about');
+  return view('about');
 });
 
 Route::get('/recipes', function () {
-    return view('recipes');
+  return view('recipes');
 });
 
 Route::get('/blog', function () {
-    return view('blog');
+  return view('blog');
 });
 Route::get('/faq', function () {
-    return view('faq');
+  return view('faq');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ***========*** INGREDIENTS CRUD ***==============0
-Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredients.edit');
-// Route::get('ingredients/edit', 'IngredientController@edit');
+// read
 Route::get('ingredients', 'IngredientController@index');
+// edit record for update
+Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredients.edit');
+// actually update the edited record
+Route::put('ingredients/edit/{id}', 'IngredientController@update');
+// Delete one specific record :
+Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy');
+
 // Route::resource('ingredients', 'IngredientController');
 
 // ***========*** General Posts CRUD ***==============0
