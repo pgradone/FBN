@@ -5,6 +5,10 @@
 <form method="POST">
   @csrf
   @method('PUT')
+  <figure>
+    <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:10%">
+    <figcaption>{{$ingredient->picture}}</figcaption>
+  </figure>
   <label for="picture">Picture</label>
   <input type="text" name="picture" id="picture" value="{{$ingredient->picture}}">
   <label for="foodgroup_id">Foodgroup_id</label>

@@ -82,8 +82,9 @@ class IngredientController extends Controller
    */
   public function update(Request $request, $id)
   {
-    /* $ingredient = Ingredient::find($id);
-    dd($ingredient); */
+    // $ingredient = Ingredient::find($id);
+    // dd($ingredient);
+
     Ingredient::where('id', $id)
           ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
         // show the list again
