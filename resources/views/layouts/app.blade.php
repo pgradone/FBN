@@ -40,9 +40,9 @@
     <div id="app">
 
         <!-- NAVIGATION BAR -->
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md bg-white shadow-sm">
             <div class="container-fluid ">
-                <a class="navbar-brand " href="{{ url('/') }}">
+                <a class="navbar-brand custom-navbar-brand " href="{{ url('/') }}">
                     {{ config('app.name', 'FBN') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
@@ -55,20 +55,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav justify-content-center ">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item" href="/about">About</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/recipes">Recipes</a>
+                        <a class="nav-link custom-nav-item" href="/recipes">Recipes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item " href="/blog">Blog</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/faq">FAQ</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item " href="/faq">FAQ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/ingredients">FAQ</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
                         </li>
                     </ul>
 
@@ -77,11 +76,11 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link custom-nav-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
@@ -118,8 +117,8 @@
 
 
 <!-- FOOTER -->
-<footer class="page-footer font-small blue jumbotron">
-    <div class="footer-copyright text-center ">© 2020 Powered by:
+<footer class=" page-footer font-small blue">
+    <div class="footer-copyright text-center align-center">© 2020 Powered by:
         <a href="http://www.numericall.fr/">Numericall</a>
     </div>
 </footer>

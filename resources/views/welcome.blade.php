@@ -16,7 +16,6 @@
 </div>
 
 
-
 <!-- Recipes title and HR  -->
 <div class=" d-flex justify-content-center" style="margin-top:3rem;">
     <h1><strong>Recipes :</strong></h1>
@@ -27,10 +26,10 @@
 <!-- Recipes Section -->
 <div class="bg-light">
     <div class="recipesContainer">
-        <div class="row">
+        <div class="row center">
             <div class="col-md-4 col-sm-12">
                 <!-- Recipe Card 1 -->
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow" style="width: auto;">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                         alt="Card image cap">
@@ -51,7 +50,7 @@
             </div>
             <div class=" col-md-4 col-sm-12">
                 <!-- Recipe Card 2 -->
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow" style="width: auto;">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                         alt="Card image cap">
@@ -72,7 +71,7 @@
             </div>
             <div class="col-md-4 col-sm-12">
                 <!-- Recipe Card 3 -->
-                <div class="card mb-4 box-shadow">
+                <div class="card mb-4 box-shadow" style="width: auto;">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1509249270761-2f410c3c47dc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                         alt="Card image cap">
@@ -113,8 +112,9 @@
                         <div class="container">
                             <div class="row ">
                                 <div class=" col-md-6 col-sm-12">
-                                    <div class="card mb-4" style="width: auto;">
-                                        <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                    <div class="card mb-4">
+                                        <img src="
+                                        https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
@@ -129,7 +129,7 @@
 
                                 </div>
                                 <div class=" col-md-6 col-sm-12">
-                                    <div class="card  mb-4" style="width: auto;">
+                                    <div class="card  mb-4">
                                         <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
@@ -149,8 +149,9 @@
                         <div class="container">
                             <div class="row ">
                                 <div class=" col-md-6 col-sm-12">
-                                    <div class="card  mb-4" style="width: auto;margin: auto;">
-                                        <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                    <div class="card  mb-4">
+                                        <img src="
+                                        https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h4 class="card-title">Why you should use skin masks ?</h4>
@@ -192,9 +193,10 @@
             </div>
         </div>
     </div>
+</div>
 
 
 
 
 
-    @endsection
+@endsection

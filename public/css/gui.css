@@ -1,3 +1,13 @@
+.custom-navbar-brand{
+    font-size:3rem;
+    color: #519872;
+    font-style: bold;
+}
+
+.custom-nav-item{
+    font-size: 1.25rem;
+    color:#81b214
+}
 .headerContainer {
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
@@ -10,7 +20,7 @@
 }
 
 .recipesContainer {
-   
+   padding: 0% 5%;
 }
 
 
