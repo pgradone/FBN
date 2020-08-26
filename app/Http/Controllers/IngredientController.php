@@ -72,7 +72,7 @@ class IngredientController extends Controller
         $ingredients =  Ingredient::where('id', $id)->get();
         $currentIngredient = $ingredients[0];
         // fill the form with data to edit
-        return view('update-ingredient', ['ingredeint' => $currentBook]);
+        return view('update-ingredient', ['ingredeint' => $currentIngredient]);
         
     }
 
