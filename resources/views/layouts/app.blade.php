@@ -66,9 +66,11 @@
                         <li class="nav-item ">
                             <a class="nav-link custom-nav-item " href="/faq">FAQ</a>
                         </li>
-                        <li class="nav-item ">
-                            <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
+                        @if(Auth::user()->can_manage())
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ingredients">Ingredients</a>
                         </li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
