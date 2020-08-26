@@ -1,12 +1,27 @@
-.container {
-    padding: 5%;
+.headerContainer {
+    /* padding: 5% 25%; */
+    background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
+    background-color: #cccccc;
+    height: 850px;
+    /* background-position: top; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
+
+.recipesContainer {
+    margin-bottom: 2rem;
+    padding: 0 20%;
+}
+
+
 
 /* home page buttons */
 
 .join-now-button,
 .learn-more-button {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    margin-bottom:1rem;
 }
 
 .join-now-button {
@@ -14,4 +29,8 @@
 }
 .learn-more-button {
     margin-right:0.25rem;
+}
+
+.test {
+    margin-left: 25%;
 }

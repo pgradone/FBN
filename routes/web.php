@@ -34,5 +34,10 @@ Route::get('/faq', function () {
     return view('faq');
 });
 
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+// ***========*** INGREDIENTS CRUD ***==============0
+Route::resource('ingredients', 'IngredientController');
+
+// ***========*** General Posts CRUD ***==============0
+Route::resource('posts', 'PostController');
