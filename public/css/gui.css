@@ -2,7 +2,7 @@
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
     background-color: #cccccc;
-    height: 850px;
+    height: 1000px;
     /* background-position: top; */
     background-repeat: no-repeat;
     background-size: cover;
@@ -10,8 +10,7 @@
 }
 
 .recipesContainer {
-    margin-bottom: 2rem;
-    padding: 0 20%;
+   
 }
 
 

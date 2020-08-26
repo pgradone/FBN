@@ -28,7 +28,7 @@
 <div class="bg-light">
     <div class="recipesContainer">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <div class="card mb-4 box-shadow">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class=" col-md-4 col-sm-12">
                 <div class="card mb-4 box-shadow">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 col-sm-12">
                 <div class="card mb-4 box-shadow">
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
@@ -88,35 +88,6 @@
         </div>
     </div>
 </div>
-<!-- Recipes Section -->
-<!-- <div class="row">
-    <div class="col d-flex justify-content-center">
-        <div class="col-lg-2 col-md-4 col-sm-12 card" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-
-                <a href="#" class="btn btn-primary">name of recipe</a>
-            </div>
-        </div>
-        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-
-                <a href="#" class="btn btn-primary">name of recipe</a>
-            </div>
-        </div>
-        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
-            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                class="card-img-top" alt="...">
-            <div class="card-body">
-
-                <a href="#" class="btn btn-primary">name of recipe</a>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 
 <!-- Blog title and HR  -->
@@ -129,14 +100,14 @@
 <!-- Blog posts Carroussel -->
 <div class="container-fluid jumbotron">
     <div class="row">
-        <div class="col-12">
+        <div class="col-sm-12">
             <div id="inam" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
                         <div class="container">
-                            <div class="row d-flex justify-content-between">
-                                <div class=" col-lg-4">
-                                    <div class="card" style="width: 500px;margin: auto;">
+                            <div class="row ">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card mb-4" style="width: auto;">
                                         <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
@@ -151,8 +122,8 @@
                                     </div>
 
                                 </div>
-                                <div class=" col-lg-4">
-                                    <div class="card" style="width: 500px;">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4" style="width: auto;">
                                         <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
@@ -170,9 +141,9 @@
                     </div>
                     <div class="carousel-item">
                         <div class="container">
-                            <div class="row d-flex justify-content-between">
-                                <div class=" col-lg-4">
-                                    <div class="card" style="width: 500px;margin: auto;">
+                            <div class="row ">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4" style="width: auto;margin: auto;">
                                         <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">
@@ -187,8 +158,8 @@
                                     </div>
 
                                 </div>
-                                <div class=" col-lg-4">
-                                    <div class="card" style="width: 500px;">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4" style="width: auto;">
                                         <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                                             class="card-img-top">
                                         <div class="card-body">

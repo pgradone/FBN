@@ -7,14 +7,23 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- Font-Awsome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+    <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Styles from APP.CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- GUI STYLES CSS -->
     <link rel="stylesheet" href="{{ asset('css/gui.css') }}">
     <title>{{ config('app.name', 'FBN') }}</title>
 
@@ -25,11 +34,12 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
 </head>
 
 <body>
     <div id="app">
+
+        <!-- NAVIGATION BAR -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid ">
                 <a class="navbar-brand " href="{{ url('/') }}">
@@ -96,6 +106,7 @@
             </div>
         </nav>
 
+        <!-- CONTENT OF EACH PAGE -->
         <main>
             @yield('content')
         </main>
@@ -103,14 +114,11 @@
 </body>
 
 
+<!-- FOOTER -->
 <footer class="page-footer font-small blue jumbotron">
-    <!-- Copyright -->
     <div class="footer-copyright text-center ">© 2020 Powered by:
         <a href="http://www.numericall.fr/">Numericall</a>
     </div>
-    <!-- Copyright -->
-
 </footer>
-<!-- Footer -->
 
 </html>
