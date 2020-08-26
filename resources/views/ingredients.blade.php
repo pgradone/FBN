@@ -29,6 +29,7 @@
         <input type="submit" value="Delete">
       </form>
       @endforeach
+      <?php echo $ingredients->links(); ?>
     @else
       <p>I don't have any records!</p>
     @endif
