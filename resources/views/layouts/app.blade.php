@@ -7,8 +7,15 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/gui.css') }}">
     <title>{{ config('app.name', 'FBN') }}</title>
 
     <!-- Scripts -->
@@ -24,7 +31,7 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container ">
+            <div class="container-fluid ">
                 <a class="navbar-brand " href="{{ url('/') }}">
                     {{ config('app.name', 'FBN') }}
                 </a>
@@ -92,15 +99,14 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
 </body>
 
 
-<footer class="page-footer font-small blue">
-
+<footer class="page-footer font-small blue jumbotron">
     <!-- Copyright -->
     <div class="footer-copyright text-center ">© 2020 Powered by:
         <a href="http://www.numericall.fr/">Numericall</a>
