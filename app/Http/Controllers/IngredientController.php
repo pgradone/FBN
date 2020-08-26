@@ -16,7 +16,7 @@ class IngredientController extends Controller
      */
     public function index()
     {
-      $ingredients = Ingredient::all()->paginate(50);
+      $ingredients = Ingredient::paginate(50);
       // var_dump($ingredients);
       return view('ingredients', ['ingredients' => $ingredients]);
 
@@ -96,6 +96,11 @@ class IngredientController extends Controller
      */
     public function destroy($id)
     {
-        //
+      // delete a specific book, classic way
+      // DB::delete('DELETE FROM books WHERE id = ? ', [$id]);
+      // delete using eloquent:
+      $deletedRows = Ingredient::where('id', $id)->delete();
+      // and back to the ingredients list
+      return redirect('/ingredients');
     }
 }

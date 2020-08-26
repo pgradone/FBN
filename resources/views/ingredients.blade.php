@@ -18,12 +18,12 @@
     @elseif (count($ingredients) > 1)
       I have multiple records!
       @foreach ($ingredients as $ingredient)
-      {{ingredient->id}}
-      Origin:{{ingredient->origin}}
-      Nutriscore:{{ingredient->nutriscore}}
-      Picture:{{ingredient->picture}}
-      <a href="{{ route('ingredient.edit', ['id' => $ingredient->id]) }}">Edit</a>
-      <form action="/ingredients/delete/{{$book->id}}" method="post">
+      {{ $ingredient->id }}
+      Origin:{{$ingredient->origin}}
+      Nutriscore:{{$ingredient->nutriscore}}
+      Picture:{{$ingredient->picture}}
+      <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}">Edit</a>
+      <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
         @csrf
         @method('DELETE')
         <input type="submit" value="Delete">
