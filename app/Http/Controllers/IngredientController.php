@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 // add this to access the DB methods!
+
+use App\Foodgroup;
+use App\FoodgroupName;
 use Illuminate\Support\Facades\DB;
 // add model Ingredient created with eloquent
 use App\Ingredient;
@@ -68,7 +71,11 @@ class IngredientController extends Controller
     // EDIT the ingredient
     // edit one book with eloquent
     $ingredients =  Ingredient::where('id', $id)->get();
+    // $foodgroups = Foodgroup::get();
+    $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
+    // $currentIngredient = Ingredient::where('id', $id)->get();
+    dd($foodgroups);
     // fill the form with data to edit
     return view('update-ingredient', ['ingredient' => $currentIngredient]);
   }
