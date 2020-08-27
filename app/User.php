@@ -53,4 +53,44 @@ class User extends Authenticatable implements MustVerifyEmail
         }
         return false;
     }
+
+    // user has many posts
+  public function posts()
+  {
+    return $this->hasMany('App\Posts', 'author_id');
+  }
+
+  // user has many comments
+  public function comments()
+  {
+    return $this->hasMany('App\Comments');
+  }
+
+  public function language() {
+      return $this->hasOne('App\Language');
+  }
+
+  public function role() {
+      return $this->hasOne('App\Role');
+  }
+
+  // any user role should be able to post
+  public function can_post()
+  {
+    // $role = $this->role;
+    // if ($role == 'author' || $role == 'admin') {
+      return true;
+    // }
+    // return false;
+  }
+
+  public function is_admin()
+  {
+    $role = $this->role;
+    if ($role === 1) {
+      return true;
+    }
+    return false;
+  }
+
 }

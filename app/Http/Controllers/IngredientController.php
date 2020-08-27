@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 // add this to access the DB methods!
+
+use App\Foodgroup;
+use App\FoodgroupName;
 use Illuminate\Support\Facades\DB;
 
 // add model Book created with eloquent
@@ -100,7 +103,7 @@ class IngredientController extends Controller
    */
   public function index()
   {
-    $ingredients = Ingredient::paginate(50);
+    $ingredients = Ingredient::paginate(10);
     // var_dump($ingredients);
     return view('ingredients', ['ingredients' => $ingredients]);
   }
@@ -152,7 +155,11 @@ class IngredientController extends Controller
     // EDIT the ingredient
     // edit one book with eloquent
     $ingredients =  Ingredient::where('id', $id)->get();
+    // $foodgroups = Foodgroup::get();
+    $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
+    // $currentIngredient = Ingredient::where('id', $id)->get();
+    dd($foodgroups);
     // fill the form with data to edit
     return view('update-ingredient', ['ingredient' => $currentIngredient]);
   }
@@ -167,7 +174,7 @@ class IngredientController extends Controller
   public function update(Request $request, $id)
   {
     // $ingredient = Ingredient::find($id);
-    dd($request);
+    //dd($request);
 
     Ingredient::where('id', $id)
           ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
