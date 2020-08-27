@@ -7,14 +7,23 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+
+    <!-- Font-Awsome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 
+    <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Styles from APP.CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- GUI STYLES CSS -->
     <link rel="stylesheet" href="{{ asset('css/gui.css') }}">
     <title>{{ config('app.name', 'FBN') }}</title>
 
@@ -25,17 +34,18 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-    <!-- Styles -->
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+
+        <!-- NAVIGATION BAR -->
+        <nav class="navbar custom-navbar navbar-expand-md shadow-sm">
             <div class="container-fluid ">
-                <a class="navbar-brand " href="{{ url('/') }}">
+                <a class="navbar-brand custom-navbar-brand " href="{{ url('/') }}">
                     {{ config('app.name', 'FBN') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -45,17 +55,19 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="nav justify-content-center ">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item" href="/about">About</a>
+                        </li>
+                        <a class="nav-link custom-nav-item" href="/recipes">Recipes</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item " href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item " href="/faq">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/recipes">Recipes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/faq">FAQ</a>
+                            <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/ingredients">FAQ</a>
@@ -67,11 +79,11 @@
                         <!-- Authentication Links -->
                         @guest
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link custom-nav-item" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                        <li class="nav-item ">
+                            <a class="nav-link custom-nav-item" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else
@@ -99,6 +111,7 @@
             </div>
         </nav>
 
+        <!-- CONTENT OF EACH PAGE -->
         <main>
             @yield('content')
         </main>
@@ -106,14 +119,11 @@
 </body>
 
 
-<footer class="page-footer font-small blue jumbotron">
-    <!-- Copyright -->
-    <div class="footer-copyright text-center ">© 2020 Powered by:
+<!-- FOOTER -->
+<footer class=" page-footer font-small blue">
+    <div class="footer-copyright text-center align-center">© 2020 Powered by:
         <a href="http://www.numericall.fr/">Numericall</a>
     </div>
-    <!-- Copyright -->
-
 </footer>
-<!-- Footer -->
 
 </html>
