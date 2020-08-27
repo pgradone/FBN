@@ -69,6 +69,9 @@
                         <li class="nav-item">
                             <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/ingredients">FAQ</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
