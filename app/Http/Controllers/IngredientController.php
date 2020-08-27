@@ -16,7 +16,7 @@ class IngredientController extends Controller
    */
   public function index()
   {
-    $ingredients = Ingredient::paginate(50);
+    $ingredients = Ingredient::paginate(20);
     // var_dump($ingredients);
     return view('ingredients', ['ingredients' => $ingredients]);
   }

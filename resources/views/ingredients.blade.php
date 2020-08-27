@@ -22,6 +22,7 @@
       Origin:{{$ingredient->origin}}
       Nutriscore:{{$ingredient->nutriscore}}
       Picture:{{$ingredient->picture}}
+      <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:5%">
       <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}">Edit</a>
       <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
         @csrf
