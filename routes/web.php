@@ -37,6 +37,9 @@ Route::get('/faq', function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 // ***========*** INGREDIENTS CRUD ***==============0
+
+Route::resource('ingredients', 'IngredientController');
+
 // read
 Route::get('ingredients', 'IngredientController@index');
 // edit record for update
@@ -47,6 +50,7 @@ Route::put('ingredients/edit/{id}', 'IngredientController@update');
 Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy');
 
 // Route::resource('ingredients', 'IngredientController');
+
 
 // ***========*** General Posts CRUD ***==============0
 Route::resource('posts', 'PostController');

@@ -1,3 +1,4 @@
+
 .custom-navbar{
     background-color: #e0ebe8;
 }
@@ -20,6 +21,7 @@
     border-color: rgb(30, 131, 108);
     border: 2px solid rgb(30, 131, 108);
   } 
+
 .headerContainer {
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
@@ -32,7 +34,11 @@
 }
 
 .recipesContainer {
+
+    margin-bottom: 2rem;
+
    padding: 0% 5%;
+
 }
 
 

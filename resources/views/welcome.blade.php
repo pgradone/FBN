@@ -35,7 +35,9 @@
 </div>
 
 
+
 <!-- Recipes title and HR  -->
+
 
 
 <div class=" d-flex justify-content-center">
@@ -47,14 +49,17 @@
 <!-- Recipes Section -->
 <div class="bg-light">
     <div class="recipesContainer">
+
         <div class="row center">
             <div class="col-md-4 col-sm-12">
                 <!-- Recipe Card 1 -->
                 <div class="card mb-4 box-shadow" style="width: auto;">
+
                     <img class="card-img-top"
                         src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
                         alt="Card image cap">
                     <div class="card-body">
+
                         <p class="card-text">This is the description of the recipe</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- buttons on the bottom on the right  -->
@@ -64,11 +69,13 @@
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </div>
                             <!-- time to make the recipe -->
+
                             <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class=" col-md-4 col-sm-12">
                 <!-- Recipe Card 2 -->
                 <div class="card mb-4 box-shadow" style="width: auto;">
@@ -85,11 +92,13 @@
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </div>
                             <!-- time to make the recipe -->
+
                             <small class="text-muted">9 mins</small>
                         </div>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-4 col-sm-12">
                 <!-- Recipe Card 3 -->
                 <div class="card mb-4 box-shadow" style="width: auto;">
@@ -106,6 +115,7 @@
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </div>
                             <!-- time to make the recipe -->
+
                             <small class="text-muted">9 mins</small>
                         </div>
                     </div>
@@ -323,3 +333,4 @@
 
 
 @endsection
+
