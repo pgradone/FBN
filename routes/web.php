@@ -61,9 +61,8 @@ Route::put('ingredients/edit/{id}', 'IngredientController@update');
   
   Route::get('/home', 'HomeController@index')->name('home');
   
-  
   // *********** route all CRUD THROUGH Middleware ??? ********************
-  // check for logged in user *** FAB - maybe was missing for login!!
+  // check for logged in user *** FAB - **********************
   Route::middleware(['auth'])->group(function () {
     // ========== POST CRUD by FABALLA =================
     // show new post form
@@ -71,7 +70,7 @@ Route::put('ingredients/edit/{id}', 'IngredientController@update');
     // save new post
     Route::post('new-post', 'PostController@store');
     // edit post form
-    Route::get('edit/{slug}', 'PostController@edit');
+    Route::get('edit/{id}', 'PostController@edit');
     // update post
     Route::post('update', 'PostController@update');
     // delete post
@@ -83,5 +82,5 @@ Route::put('ingredients/edit/{id}', 'IngredientController@update');
     // add comment
     Route::post('comment/add', 'CommentController@store');
     // delete comment
-    Route::post('comment/delete/{id}', 'CommentController@distroy');
-}
+    Route::post('comment/delete/{id}', 'CommentController@destroy');
+});

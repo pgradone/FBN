@@ -9,6 +9,8 @@ use App\Post;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
 
+use App\Http\Controllers\User;
+
 class PostController extends Controller
 {
   /**
@@ -31,7 +33,7 @@ class PostController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create(Request, $request)
+  public function create(Request $request)
   {
     if ($request->user()->can_post()) {
       return view('posts.create');
@@ -51,7 +53,7 @@ class PostController extends Controller
     $post = new Post();
     $post->title = $request->get('title');
     $post->body = $request->get('content');
-    $post->slug = Str::slug($post->title);
+    // $post->slug = Str::slug($post->title);
 
     $duplicate = Post::where('slug', $post->slug)->first();
     if ($duplicate) {
@@ -79,7 +81,7 @@ class PostController extends Controller
    */
   public function show($id)
   {
-    $post = Post::where('title', $slug)->first();
+    $post = Post::where('id', $id)->getfirst();
     if (!$post) {
       return redirect('/')->withErrors('requested page not found');
     }
@@ -93,16 +95,16 @@ class PostController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
-  public function edit($id)
+  public function edit($id, $request)
   {
-    $post = Post::where('title', $slug)->first();
+    $post = Post::where('id', $id)->get();
     if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit')->with('post', $post);
     return redirect('/')->withErrors('you have not sufficient permissions');
 
     // edit one post with eloquent
     $post = Post::where('id', $id)->get();
-    if ($post && ($request-user()->id == $post->author_id || $request-user()->is_admin())) 
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
       return view('posts.edit')->with('post', $post);
       return redirect('/')->withErrors('you have not sufficient permissions');
   }
