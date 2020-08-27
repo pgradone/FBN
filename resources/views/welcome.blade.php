@@ -12,13 +12,34 @@
             Learn more</button>
         <button type="button" class="  btn btn-success btn-lg join-now-button">Join Now <i
                 class="fas fa-leaf"></i></button>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <h1><strong>Facts-Based-Nutrition</strong></h1>
+            <h5>The healthy way of living! </h5>
+            <button type="button" class="btn btn-warning btn-lg learn-more-button"><i class="fas fa-caret-right"></i>
+                Learn more</button>
+            <button type="button" class="  btn btn-success btn-lg join-now-button">Join Now <i
+                    class="fas fa-leaf"></i></button>
+
+        </div>
+
+        <div class="col-lg-6">
+            <img src="https://images.unsplash.com/photo-1503146234394-631200675614?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                alt="picture">
+        </div>
     </div>
+
 </div>
 
 
 <!-- Recipes title and HR  -->
-<div class=" d-flex justify-content-center" style="margin-top:3rem;">
-    <h1><strong>Recipes :</strong></h1>
+
+
+<div class=" d-flex justify-content-center">
+    <h1><strong>Recipes</strong></h1>
 </div>
 <hr class="my-4 " style="width: 15rem;border-top: 5px dotted green;">
 
@@ -93,6 +114,47 @@
         </div>
     </div>
 </div>
+<!-- Recipes Section -->
+<!-- <div class="row">
+    <div class="col d-flex justify-content-center">
+        <div class="col-lg-2 col-md-4 col-sm-12 card" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
+        </div>
+
+
+<div class="row">
+    <div class="col d-flex justify-content-center">
+        <div class="col-lg-2 col-md-4 col-sm-12 card" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
+        </div>
+        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1593967858208-67ddb5b4c406?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
+        </div>
+        <div class="card col-lg-2 col-md-4 col-sm-12" style="width: 18rem;">
+            <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                class="card-img-top" alt="...">
+            <div class="card-body">
+
+                <a href="#" class="btn btn-primary">name of recipe</a>
+            </div>
+        </div>
+    </div>
+</div> -->
 
 
 <!-- Blog title and HR  -->
@@ -193,7 +255,68 @@
             </div>
         </div>
     </div>
-</div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top"
+                            data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                            alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text">This is a wider card with supporting text below as a natural
+                                lead-in to
+                                additional content. This content is a little bit longer.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
 

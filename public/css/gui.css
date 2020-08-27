@@ -37,12 +37,18 @@
 
 
 
+.container {
+    padding: 5%;
+}
+
 /* home page buttons */
 
 .join-now-button,
 .learn-more-button {
     margin-top: 1rem;
     margin-bottom:1rem;
+=======
+    margin-top: 2rem;
 }
 
 .join-now-button {
@@ -54,4 +60,5 @@
 
 .test {
     margin-left: 25%;
+=======
 }

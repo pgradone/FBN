@@ -50,3 +50,5 @@ Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy');
 
 // ***========*** General Posts CRUD ***==============0
 Route::resource('posts', 'PostController');
+
+Route::get('/home', 'HomeController@index')->name('home');
