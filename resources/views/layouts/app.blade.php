@@ -67,7 +67,7 @@
                             <a class="nav-link custom-nav-item " href="/faq">FAQ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/ingredients">Ingredients</a>
+                            <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
                         </li>
                     </ul>
 
