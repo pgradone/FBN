@@ -25,7 +25,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="https://www.flowkl.com">FBN</a>
+          <a class="navbar-brand" href="">FBN</a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
@@ -100,7 +100,7 @@
       </div>
       <div class="row">
         <div class="col-md-10 col-md-offset-1">
-          <p>Copyright © 2020 | <a href="https://www.flowkl.com">FBN</a></p>
+          <p>Copyright © 2020 | <a href="">FBN</a></p>
         </div>
       </div>
     </div>
