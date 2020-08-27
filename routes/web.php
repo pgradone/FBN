@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,8 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Auth::logout();
+
 Route::get('/about', function () {
   return view('about');
 });
@@ -32,6 +35,10 @@ Route::get('/blog', function () {
 });
 Route::get('/faq', function () {
   return view('faq');
+});
+
+Route::get('/ingredients', function () {
+  return view('ingredients');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
