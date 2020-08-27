@@ -11,6 +11,6 @@ class FoodgroupName extends Model
     }
 
     public function food_group () {
-        $this->belongsTo('App\Foodgroup')
+        $this->belongsTo('App\Foodgroup');
     }
 }

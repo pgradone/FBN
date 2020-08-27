@@ -11,6 +11,10 @@ class Language extends Model
     }
 
     public function foodgroup_names() {
-        $this->hasMany('App\FoodgroupName')
+        $this->hasMany('App\FoodgroupName');
+    }
+
+    public function users() {
+        $this->hasMany('App\User');
     }
 }
