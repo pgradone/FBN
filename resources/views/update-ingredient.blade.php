@@ -14,7 +14,7 @@
   <label for="foodgroup_id">Foodgroup_id</label>
   <input type="text" name="foodgroup_id" id="foodgroup_id" value="{{$ingredient->foodgroup_id}}">
   <label for="origin">Origin</label>
-  <select id="origin">
+  <select id="origin" name="origin">
     <option value="P" selected=true>P - Plant based</option>
     <option value="A">A - Animal based</option>
     <option value="C">C - Composed</option>
@@ -22,7 +22,7 @@
     <option value="X">X - Chemical</option>
   </select>
   <label for="nutriscore">Nutriscore</label>
-  <select id="nutriscore">
+  <select id="nutriscore" name="nutriscore">
     <option value="A">A</option>
     <option value="B">B</option>
     <option value="C">C</option>
