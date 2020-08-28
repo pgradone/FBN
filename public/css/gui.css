@@ -1,17 +1,32 @@
-.custom-navbar{
+/* navbar */
+.page-footer, .custom-navbar{
     background-color: #e0ebe8;
 }
+
+/* navbar-brand */
 .custom-navbar-brand{
     font-size:3rem;
     color: #1e836c;
     font-style: bold;
 }
 
-.custom-nav-item{
+/* navbar-item */
+.custom-nav-item {
     font-size: 1.25rem;
     color:#45b29a
 }
 
+ /* hover for the navbrand */
+a:hover {
+    color: #306844 !important; 
+}
+
+/* hover color nav-items */
+ul.nav a:hover {
+    color: #1e836c !important; 
+}
+   
+/* Change color of the nav-icon of mobile */
 .custom-toggler .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(30, 131, 108)' stroke-width='3' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
   }
@@ -20,6 +35,8 @@
     border-color: rgb(30, 131, 108);
     border: 2px solid rgb(30, 131, 108);
   } 
+
+  /* header part  */
 .headerContainer {
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
@@ -35,10 +52,7 @@
    padding: 0% 5%;
 }
 
-
-
 /* home page buttons */
-
 .join-now-button,
 .learn-more-button {
     margin-top: 1rem;
@@ -48,10 +62,12 @@
 .join-now-button {
     margin-left:0.25rem;
 }
+
 .learn-more-button {
     margin-right:0.25rem;
 }
 
+/* recipes custom */
 .test {
     margin-left: 25%;
 }
