@@ -119,11 +119,11 @@ class PostController extends Controller
   {
     //
     $post_id = $request->input('post_id');
-    $post = Posts::find($post_id);
+    $post = Post::find($post_id);
     if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
       $title = $request->input('title');
       $slug = Str::slug($title);
-      $duplicate = Posts::where('slug', $slug)->first();
+      $duplicate = Post::where('slug', $slug)->first();
       if ($duplicate) {
         if ($duplicate->id != $post_id) {
           return redirect('edit/' . $post->slug)->withErrors('Title already exists.')->withInput();
@@ -160,7 +160,7 @@ class PostController extends Controller
   public function destroy($id)
   {
     //
-    $post = Posts::find($id);
+    $post = Post::find($id);
     if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
       $post->delete();
       $data['message'] = 'Post deleted Successfully';

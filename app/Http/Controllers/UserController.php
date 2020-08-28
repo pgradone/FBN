@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\Posts;
+use App\Post;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -19,7 +19,7 @@ class UserController extends Controller
   public function user_posts($id)
   {
     //
-    $posts = Posts::where('author_id', $id)->where('active', 1)->orderBy('created_at', 'desc')->paginate(5);
+    $posts = Post::where('author_id', $id)->where('active', 1)->orderBy('created_at', 'desc')->paginate(5);
     $title = User::find($id)->name;
     return view('home')->withPosts($posts)->withTitle($title);
   }
@@ -33,7 +33,7 @@ class UserController extends Controller
   {
     //
     $user = $request->user();
-    $posts = Posts::where('author_id', $user->id)->orderBy('created_at', 'desc')->paginate(5);
+    $posts = Post::where('author_id', $user->id)->orderBy('created_at', 'desc')->paginate(5);
     $title = $user->name;
     return view('home')->withPosts($posts)->withTitle($title);
   }
@@ -47,7 +47,7 @@ class UserController extends Controller
   {
     //
     $user = $request->user();
-    $posts = Posts::where('author_id', $user->id)->where('active', 0)->orderBy('created_at', 'desc')->paginate(5);
+    $posts = Post::where('author_id', $user->id)->where('active', 0)->orderBy('created_at', 'desc')->paginate(5);
     $title = $user->name;
     return view('home')->withPosts($posts)->withTitle($title);
   }
