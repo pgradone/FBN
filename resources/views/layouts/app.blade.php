@@ -65,7 +65,8 @@
                         </li>
                         <li class="nav-item ">
                             <a class="nav-link custom-nav-item " href="/faq">FAQ</a>
-                        </li>
+
+
                         <li class="nav-item">
                             <a class="nav-link custom-nav-item" href="/ingredients">Ingredients</a>
                         </li>
@@ -120,7 +121,7 @@
 
 
 <!-- FOOTER -->
-<footer class=" page-footer font-small blue">
+<footer class=" page-footer font-lg blue">
     <div class="footer-copyright text-center align-center">© 2020 Powered by:
         <a href="http://www.numericall.fr/">Numericall</a>
     </div>

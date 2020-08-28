@@ -6,15 +6,14 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
-{
+class User extends Authenticatable implements MustVerifyEmail {
     use Notifiable;
 
-      /**
-   * The database table used by the model.
-   *
-   * @var string
-   */
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
     protected $table = 'users';
 
     /**
@@ -94,3 +93,4 @@ class User extends Authenticatable implements MustVerifyEmail
   }
 
 }
+
