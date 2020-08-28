@@ -52,7 +52,7 @@ class PostController extends Controller
   {
     $post = new Post();
     $post->title = $request->get('title');
-    $post->body = $request->get('content');
+    $post->body = $request->get('body');
     // $post->slug = Str::slug($post->title);
 
     $duplicate = Post::where('slug', $post->slug)->first();
@@ -70,7 +70,6 @@ class PostController extends Controller
     }
     $post->save();
     return redirect('edit/' . $post->slug)->withMessage($message);
-
   }
 
   /**
@@ -104,9 +103,9 @@ class PostController extends Controller
 
     // edit one post with eloquent
     $post = Post::where('id', $id)->get();
-    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit')->with('post', $post);
-      return redirect('/')->withErrors('you have not sufficient permissions');
+    return redirect('/')->withErrors('you have not sufficient permissions');
   }
 
   /**
@@ -119,6 +118,37 @@ class PostController extends Controller
   public function update(Request $request, $id)
   {
     //
+    $post_id = $request->input('post_id');
+    $post = Posts::find($post_id);
+    if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
+      $title = $request->input('title');
+      $slug = Str::slug($title);
+      $duplicate = Posts::where('slug', $slug)->first();
+      if ($duplicate) {
+        if ($duplicate->id != $post_id) {
+          return redirect('edit/' . $post->slug)->withErrors('Title already exists.')->withInput();
+        } else {
+          $post->slug = $slug;
+        }
+      }
+
+      $post->title = $title;
+      $post->body = $request->input('body');
+
+      if ($request->has('save')) {
+        $post->active = 0;
+        $message = 'Post saved successfully';
+        $landing = 'edit/' . $post->slug;
+      } else {
+        $post->active = 1;
+        $message = 'Post updated successfully';
+        $landing = $post->slug;
+      }
+      $post->save();
+      return redirect($landing)->withMessage($message);
+    } else {
+      return redirect('/')->withErrors('you have not sufficient permissions');
+    }
   }
 
   /**
@@ -130,5 +160,13 @@ class PostController extends Controller
   public function destroy($id)
   {
     //
+    $post = Posts::find($id);
+    if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
+      $post->delete();
+      $data['message'] = 'Post deleted Successfully';
+    } else {
+      $data['errors'] = 'Invalid Operation. You have not sufficient permissions';
+    }
+    return redirect('/')->with($data);
   }
 }
