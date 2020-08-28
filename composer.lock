@@ -1214,7 +1214,7 @@
                     "url": "https://offset.earth/frankdejonge",
                     "type": "other"
                 }
-            ],
+            ]
         },
         {
             "name": "league/mime-type-detection",

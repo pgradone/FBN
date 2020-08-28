@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,11 +17,13 @@
       <h2>I have one record</h2>
     @elseif (count($ingredients) > 1)
       <h2>I have multiple records</h2>
+      <?php echo $ingredients->links(); ?>
       @foreach ($ingredients as $ingredient)
       {{ $ingredient->id }}
       Origin:{{$ingredient->origin}}
       Nutriscore:{{$ingredient->nutriscore}}
       Picture:{{$ingredient->picture}}
+      <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%">
       <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}">Edit</a>
       <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
         @csrf
