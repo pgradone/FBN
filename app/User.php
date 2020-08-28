@@ -69,10 +69,6 @@ class User extends Authenticatable implements MustVerifyEmail {
       return $this->hasOne('App\Language');
   }
 
-  public function role() {
-      return $this->hasOne('App\Role');
-  }
-
   // any user role should be able to post
   public function can_post()
   {

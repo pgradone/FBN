@@ -16,7 +16,6 @@ class DatabaseSeeder extends Seeder
     // $this->call(UserSeeder::class);
     $this->call(LanguageSeeder::class);
     $this->call(PostTypesSeeder::class);
-    $this->call(UserRoleSeeder::class);
     $this->call(UserSeeder::class);
     $this->call(FoodgroupsSeeder::class);
     $this->call(Foodgroup_nameSeeder::class);
