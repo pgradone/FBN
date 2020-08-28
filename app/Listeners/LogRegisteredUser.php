@@ -2,11 +2,11 @@
 
 namespace App\Listeners;
 
-use Illuminate\Auth\Events\Attempting;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class LogAuthenticationAttempt
+class LogRegisteredUser
 {
     /**
      * Create the event listener.
@@ -21,10 +21,10 @@ class LogAuthenticationAttempt
     /**
      * Handle the event.
      *
-     * @param  Attempting  $event
+     * @param  Registered  $event
      * @return void
      */
-    public function handle(Attempting $event)
+    public function handle(Registered $event)
     {
         //
     }
