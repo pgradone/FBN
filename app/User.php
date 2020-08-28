@@ -16,7 +16,10 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
    * @var string
    */
   protected $table = 'users';
-
+// =======
+// class User extends Authenticatable implements MustVerifyEmail {
+//     use Notifiable;
+// 
   /**
    * The attributes that are mass assignable.
    *
@@ -66,3 +69,4 @@ class User extends Authenticatable implements AuthenticatableContract, CanResetP
     return false;
   }
 }
+
