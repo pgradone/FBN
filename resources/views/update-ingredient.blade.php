@@ -18,9 +18,12 @@
             <label for="foodgroup_id">Foodgroup_id</label>
             <!-- <input class="form-control" type="text" name="foodgroup_id" id="foodgroup_id" value="{{$ingredient->foodgroup_id}}"> -->
             <select class="form-control" id="foodgroup_id" name="foodgroup_id">
+            <!-- https://stackoverflow.com/questions/35976321/find-last-iteration-of-foreach-loop-in-laravel-blade -->
+              @foreach($ingredientNames as $ingredient)
               <option value="P" @if($ingredient->origin == 'P') selected @endif>P - Plant based</option>
               <option value="A" @if($ingredient->origin == 'A') selected @endif>A - Animal based</option>
               <option value="C" @if($ingredient->origin == 'C') selected @endif>C - Composed</option>
+              @endforeach
             </select>
             <br>
             <label for="origin">Origin</label>
