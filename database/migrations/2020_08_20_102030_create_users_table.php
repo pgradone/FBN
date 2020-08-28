@@ -16,12 +16,12 @@ class CreateUsersTable extends Migration
     Schema::create('users', function (Blueprint $table) {
       $table->id();
       $table->foreignId('language_id')->nullable()->default(2)->references('id')->on('languages')->onUpdate('cascade');
-      $table->foreignId('role_id')->nullable()->default(2)->references('id')->on('roles')->onUpdate('cascade');
+      // $table->foreignId('role_id')->nullable()->default(2)->references('id')->on('roles')->onUpdate('cascade');
       $table->string('name')->unique();
       $table->string('email')->unique();
       $table->timestamp('email_verified_at')->nullable();
       $table->string('password');
-      //adding roles to the user
+      //adding roles to the user *** redundant with role_id which will be deleted
       $table->enum('role', ['admin', 'author', 'subscriber'])->default('author');
       $table->rememberToken();
       $table->timestamps();

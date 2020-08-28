@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
     // );
     $users = array(
       array(
-        'role_id' => 2,
+        'role' => 'admin',
         'name' => 'pot',
         'email' => 'pgradone@gmail.com',
         'password' => '$2y$10$OVnbWsGCPPrKPfU092UxnO6HydTFS55KAilg2jCklHWQDaS0DrhIO',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
         'updated_at' => '2020-08-24 07:59:30',
       ),
       array(
-        'role_id' => 2,
+        'role' => 'author',
         'name' => 'gui',
         'email' => 'gui_pereira10@live.com.pt',
         'password' => '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2',
@@ -40,7 +40,7 @@ class UserSeeder extends Seeder
         'updated_at' => '2020-08-24 07:59:30',
       ),
       array(
-        'role_id' => 2,
+        'role' => 'admin',
         'name' => 'fab',
         'email' => 'faballa.cisse@gmail.com',
         'password' => '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2',
@@ -48,7 +48,7 @@ class UserSeeder extends Seeder
         'updated_at' => '2020-08-24 07:59:30',
       ),
       array(
-        'role_id' => 2,
+        'role' => 'admin',
         'name' => 'jef',
         'email' => 'JeffCigrand@me.com',
         'password' => '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2',
