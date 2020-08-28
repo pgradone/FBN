@@ -74,11 +74,15 @@ class IngredientController extends Controller
     // EDIT the ingredient
     // edit one book with eloquent
     $ingredients =  Ingredient::where('id', $id)->get();
-    // $foodgroups = Foodgroup::get();
-    $foodgroups = DB::table('foodgroups')->get(); 
+    $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
+    $foodgroups = Foodgroup::get();
+    // $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
     // $currentIngredient = Ingredient::where('id', $id)->get();
-    dd($foodgroups);
+    // dd($foodgroupnames);
+    // dd($foodgroups);
+    // dd($ingredients);
+    dd($currentIngredient);
     // fill the form with data to edit
     return view('update-ingredient', ['ingredient' => $currentIngredient]);
   }
