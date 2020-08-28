@@ -49878,8 +49878,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\pgradone\Documents\CodingJobs\Pitch\FBN\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\Users\pgradone\Documents\CodingJobs\Pitch\FBN\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Acer\Desktop\FBN-Final-Project\FBN\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Acer\Desktop\FBN-Final-Project\FBN\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
