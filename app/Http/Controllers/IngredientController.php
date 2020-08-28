@@ -76,15 +76,16 @@ class IngredientController extends Controller
     // edit one book with eloquent
     $ingredients =  Ingredient::where('id', $id)->get();
     $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
-    // $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
-    $foodgroupnames =  DB::table('foodgroup_names')->where('language_id', 2)->get();
+    $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
+    // $foodgroupnames =  DB::table('foodgroup_names')->where('language_id', 2)->get();
     // $foodgroupnames = Foodgroupname::paginate(10);
     $foodgroups = Foodgroup::paginate(200);
     // $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
     // $currentIngredient = Ingredient::where('id', $id)->get();
     $foodgroupnames = FoodgroupName::all();
-    // dd($foodgroupnames);
+    dd($foodgroupnames);
+    // dd($currentIngredientNames);
     // dd($foodgroups);
     // dd($ingredients);
     // dd($currentIngredient);
