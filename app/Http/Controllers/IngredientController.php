@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 // add this to access the DB methods!
 
+use App\IngredientsName;
 use App\Foodgroup;
 use App\FoodgroupName;
 use Illuminate\Support\Facades\DB;
-
-// add model Book created with eloquent
 
 // add model Ingredient created with eloquent
 
@@ -17,85 +16,6 @@ use Illuminate\Http\Request;
 class IngredientController extends Controller
 {
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-      $ingredients = Ingredient::all();
-      // var_dump($ingredients);
-      return view('ingredients', ['ingredients' => $ingredients]);
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
-
   /**
    * Display a listing of the resource.
    *
@@ -104,7 +24,7 @@ class IngredientController extends Controller
   public function index()
   {
     $ingredients = Ingredient::paginate(10);
-    // var_dump($ingredients);
+    // dd($ingredients);
     return view('ingredients', ['ingredients' => $ingredients]);
   }
 
@@ -152,16 +72,23 @@ class IngredientController extends Controller
    */
   public function edit($id)
   {
-    // EDIT the ingredient
-    // edit one book with eloquent
+    // EDIT one ingredient with eloquent
+    // get that specific ingredient
     $ingredients =  Ingredient::where('id', $id)->get();
-    // $foodgroups = Foodgroup::get();
-    $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
-    // $currentIngredient = Ingredient::where('id', $id)->get();
-    dd($foodgroups);
-    // fill the form with data to edit
-    return view('update-ingredient', ['ingredient' => $currentIngredient]);
+    // get its names in all languages 
+    $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
+    // get all food group names (hardcoded in english)
+    $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
+    // call the form and pass the data to edit
+    return view(
+      'update-ingredient',
+      [
+        'ingredient' => $currentIngredient,
+        'ingredientNames' => $currentIngredientNames,
+        'foodgroupnames' => $foodgroupnames,
+      ]
+    );
   }
 
   /**
@@ -177,12 +104,12 @@ class IngredientController extends Controller
     //dd($request);
 
     Ingredient::where('id', $id)
-          ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
-        // show the list again
-        return redirect('/ingredients');
+      ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
+    // show the list again
+    return redirect('/ingredients');
   }
 
-  /**
+  /*
    * Remove the specified resource from storage.
    *
    * @param  int  $id
@@ -197,5 +124,4 @@ class IngredientController extends Controller
     // and back to the ingredients list
     return redirect('/ingredients');
   }
-
 }
