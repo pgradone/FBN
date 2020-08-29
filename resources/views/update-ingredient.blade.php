@@ -14,7 +14,7 @@
             @method('PUT')
             <ul>
               @foreach($ingredientNames as $ingredientName)
-              <li>{{$ingredientName->language->iso}} : <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id"></li>
+              <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a> <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id"></li>
               @endforeach
             </ul>
             <label for="picture">Picture :</label>
