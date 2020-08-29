@@ -21,14 +21,14 @@
   Name : {{ $ingredient->names[0]->name }}
   Origin : {{$ingredient->origin}}
   Nutriscore : {{$ingredient->nutriscore}}
-  <img href="https://wikipedia.org/wiki/{{ $ingredient->names[0]->name }}" src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%">
+  <a href="https://wikipedia.org/wiki/{{ $ingredient->names[0]->name }}"> <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%"></a>
   <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}" class="btn btn-primary">Edit</a>
-  <a href="{{ route('ingredients.delete', ['id' => $ingredient->id]) }}" class="btn btn-primary">Delete</a>
-  <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
+  <a href="{{ route('ingredients.delete', ['id' => $ingredient->id]) }}" class="btn btn-primary">Delete</a> <br>
+  <!-- <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
     @csrf
     @method('DELETE')
     <input type="submit" value="Delete">
-  </form>
+  </form> -->
   @endforeach
   <?php echo $ingredients->links(); ?>
   @else
