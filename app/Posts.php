@@ -22,4 +22,9 @@ class Posts extends Model
   {
     return $this->belongsTo('App\User', 'author_id');
   }
+  // return the instance of this parent's post
+  public function parent()
+  {
+    return $this->belongsTo($this->parent_post_id);
+  }
 }

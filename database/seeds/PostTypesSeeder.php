@@ -79,7 +79,6 @@ class PostTypesSeeder extends Seeder
           'name' => $type['name'],
         ]);
       }
-      
     }
   }
 }
