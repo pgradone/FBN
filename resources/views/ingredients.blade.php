@@ -14,9 +14,7 @@
   <h1>This is the INGREDIENTS page</h1>
   @if (count($ingredients) === 1)
 
-  <h2>I have one record</h2>
   @elseif (count($ingredients) > 1)
-  <h2>I have multiple records</h2>
   <?php echo $ingredients->links(); ?>
   @foreach ($ingredients as $ingredient)
   {{ $ingredient->id }}
@@ -33,7 +31,7 @@
   @endforeach
   <?php echo $ingredients->links(); ?>
   @else
-  <p>I don't have any records!</p>
+  <p>No records to display !</p>
 
   @endif
 </body>
