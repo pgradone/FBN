@@ -62,7 +62,7 @@ Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy')->name(
 Route::resource('ingredientNames', 'IngredientsNameController');
 
 // actually update the edited record
-Route::put('ingredientNames/update/{ingredient_id,language_id}', 'IngredientController@update')->name('ingredientNames.update');
+Route::get('ingredientNames/update/{ingredient_id}/{language_id}', 'IngredientsNameController@update');
 
 
 // ***========*** General Posts CRUD ***==============0

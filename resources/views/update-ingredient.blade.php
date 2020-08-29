@@ -16,7 +16,7 @@
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
                 <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id">
-                <a href="{{ route('ingredientsNameController.update', ['ingredient_id' => $ingredient->id, 'language_id' => $ingredientName->language_id]) }}" class="btn btn-primary">Update</a>
+                <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a>
               </li>
               @endforeach
             </ul>

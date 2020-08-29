@@ -69,11 +69,10 @@ class IngredientsNameController extends Controller
      */
     public function update(Request $request, $ingredient_id, $language_id)
     {
-        //
-        dd($request);
+        dd($request->name);
         // IngredientsName::where('ingredient_id', $ingredient_id)
-        //     ->where('language_id', $language_id)
-        //     ->update('name' => $request->name);
+        // ->where('language_id', $language_id)
+        // ->update('name' => $request->name);
     }
 
     /**
