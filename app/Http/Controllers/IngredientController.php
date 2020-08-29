@@ -72,28 +72,21 @@ class IngredientController extends Controller
    */
   public function edit($id)
   {
-    // EDIT the ingredient
-    // edit one book with eloquent
+    // EDIT one ingredient with eloquent
+    // get that specific ingredient
     $ingredients =  Ingredient::where('id', $id)->get();
-    $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
-    // $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
-    $foodgroupnames =  DB::table('foodgroup_names')->where('language_id', 2)->get();
-    // $foodgroupnames = Foodgroupname::paginate(10);
-    $foodgroups = Foodgroup::paginate(200);
-    // $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
-    // $currentIngredient = Ingredient::where('id', $id)->get();
-    $foodgroupnames = FoodgroupName::all();
-    // dd($foodgroupnames);
-    // dd($foodgroups);
-    // dd($ingredients);
-    // dd($currentIngredient);
-    // fill the form with data to edit
+    // get its names in all languages 
+    $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
+    // get all food group names (hardcoded in english)
+    $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
+    // call the form and pass the data to edit
     return view(
       'update-ingredient',
       [
         'ingredient' => $currentIngredient,
         'ingredientNames' => $currentIngredientNames,
+        'foodgroupnames' => $foodgroupnames,
       ]
     );
   }
