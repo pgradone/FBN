@@ -71,9 +71,9 @@ class IngredientsNameController extends Controller
     {
         dd($request->name);
         // IngredientsName::where('ingredient_id', $ingredient_id)
-            // ->where('language_id', $language_id)
-            // ->update('name' => $request->name);
-    // }
+        // ->where('language_id', $language_id)
+        // ->update('name' => $request->name);
+    }
 
     /**
      * Remove the specified resource from storage.
