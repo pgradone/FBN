@@ -14,7 +14,10 @@
             @method('PUT')
             <ul>
               @foreach($ingredientNames as $ingredientName)
-              <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a> <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id"></li>
+              <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
+                <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id">
+                <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}" class="btn btn-primary">Edit</a>
+              </li>
               @endforeach
             </ul>
             <label for="picture">Picture :</label>

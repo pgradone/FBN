@@ -55,7 +55,7 @@ Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredie
 // actually update the edited record
 Route::put('ingredients/edit/{id}', 'IngredientController@update');
 // Delete one specific record :
-Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy');
+Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy')->name('ingredients.delete');
 
 // Route::resource('ingredients', 'IngredientController');
 
