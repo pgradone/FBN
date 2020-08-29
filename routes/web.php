@@ -18,6 +18,10 @@ Route::get('/', function () {
   return view('welcome');
 });
 
+Route::get('/home2', function () {
+  return view('home2');
+});
+
 Auth::routes(['verify' => true]);
 
 Auth::logout();

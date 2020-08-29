@@ -14,12 +14,17 @@ class Post extends Model
   // returns all comments on that post
   public function comments()
   {
-    return $this->hasMany('App\Comment');
+    return $this->hasMany('App\Comment', 'on_post');
   }
 
   // returns the instance of the user who is author of that post
   public function author()
   {
-    return $this->hasOne('App\User', 'author_id');
+    return $this->belongsTo('App\User', 'author_id');
+  }
+  // return the instance of this parent's post
+  public function parent()
+  {
+    return $this->belongsTo($this->parent_post_id);
   }
 }
