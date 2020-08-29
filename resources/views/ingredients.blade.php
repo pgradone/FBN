@@ -17,17 +17,18 @@
   @elseif (count($ingredients) > 1)
   <?php echo $ingredients->links(); ?>
   @foreach ($ingredients as $ingredient)
-  {{ $ingredient->id }}
-  Origin:{{$ingredient->origin}}
-  Nutriscore:{{$ingredient->nutriscore}}
-  Picture:{{$ingredient->picture}}
-  <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%">
-  <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}">Edit</a>
-  <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
+  ID : {{ $ingredient->id }}
+  Name : {{ $ingredient->names[0]->name }}
+  Origin : {{$ingredient->origin}}
+  Nutriscore : {{$ingredient->nutriscore}}
+  <a href="https://wikipedia.org/wiki/{{ $ingredient->names[0]->name }}"> <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%"></a>
+  <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}" class="btn btn-primary">Edit</a>
+  <a href="{{ route('ingredients.delete', ['id' => $ingredient->id]) }}" class="btn btn-primary">Delete</a> <br>
+  <!-- <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
     @csrf
     @method('DELETE')
     <input type="submit" value="Delete">
-  </form>
+  </form> -->
   @endforeach
   <?php echo $ingredients->links(); ?>
   @else
