@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+// use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
-use App\Post;
+use App\Recipe;
 
 class RecipeSeeder extends Seeder
 {
@@ -22,18 +22,20 @@ class RecipeSeeder extends Seeder
 
     // fill the foodgroup names from foodgroup_names array
     foreach ($recipes as $recipe) {
-      Post::insert([
+      Recipe::insert([
         'id' => $recipe['id'],
         'author_id' => $recipe['author_id'],
-        'origin' => $recipe['origin'],
-        'origin' => $recipe['origin'],
-        'origin' => $recipe['origin'],
-        'origin' => $recipe['origin'],
-        'origin' => $recipe['origin'],
-        'origin' => $recipe['origin'],
-        'nutriscore' => $recipe['nutriscore'],
-        'picture' => $recipe['picture'],
-        'foodgroup_id' => $recipe['foodgroup_id'],
+        'language_id' => $recipe['language_id'],
+        'title' => $recipe['title'],
+        'body' => $recipe['body'],
+        'slug' => $recipe['slug'],
+        'cover_image' => $recipe['cover_image'],
+        'active' => $recipe['active'],
+        'summary' => $recipe['summary'],
+        'reference' => $recipe['reference'],
+        'status' => $recipe['status'],
+        'created_at' => $recipe['created_at'],
+        'updated_at' => $recipe['updated_at'],
       ]);
     }
   }
