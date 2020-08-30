@@ -44,9 +44,10 @@ Route::get('/recipes', function () {
   return view('recipes');
 });
 
-// Route::get('/blog', function () {
-//   return view('blog');
-// });
+Route::get('/blog', function () {
+  return view('blog');
+});
+
 Route::get('/faq', function () {
   return view('faq');
 });
