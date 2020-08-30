@@ -31,9 +31,6 @@ Route::group(['prefix' => 'auth'], function () {
 //   return view('welcome');
 // });
 
-Route::get('/home2', function () {
-  return view('home2');
-});
 
 Auth::routes(['verify' => true]);
 
