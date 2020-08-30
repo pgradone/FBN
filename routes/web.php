@@ -14,9 +14,23 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', function () {
-  return view('welcome');
+Route::get('/', 'PostController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
+
+//authentication
+// Route::resource('auth', 'Auth\AuthController');
+// Route::resource('password', 'Auth\PasswordController');
+Route::get('/logout', 'UserController@logout');
+Route::group(['prefix' => 'auth'], function () {
+  Auth::routes();
 });
+
+
+
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
 
 Auth::routes(['verify' => true]);
 
@@ -30,9 +44,9 @@ Route::get('/recipes', function () {
   return view('recipes');
 });
 
-Route::get('/blog', function () {
-  return view('blog');
-});
+// Route::get('/blog', function () {
+//   return view('blog');
+// });
 Route::get('/faq', function () {
   return view('faq');
 });
