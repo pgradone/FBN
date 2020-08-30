@@ -22,6 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('title')->unique();
             $table->text('body');
             $table->string('slug')->unique();
+            $table->string('cover_image');
             $table->boolean('active');
             $table->text('summary');
             $table->string('reference', 255);
