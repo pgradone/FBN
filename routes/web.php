@@ -14,9 +14,23 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', function () {
-  return view('welcome');
+Route::get('/', 'PostController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
+
+//authentication
+// Route::resource('auth', 'Auth\AuthController');
+// Route::resource('password', 'Auth\PasswordController');
+Route::get('/logout', 'UserController@logout');
+Route::group(['prefix' => 'auth'], function () {
+  Auth::routes();
 });
+
+
+
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
 
 Auth::routes(['verify' => true]);
 
@@ -30,9 +44,9 @@ Route::get('/recipes', function () {
   return view('recipes');
 });
 
-Route::get('/blog', function () {
-  return view('blog');
-});
+// Route::get('/blog', function () {
+//   return view('blog');
+// });
 Route::get('/faq', function () {
   return view('faq');
 });
@@ -55,9 +69,15 @@ Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredie
 // actually update the edited record
 Route::put('ingredients/edit/{id}', 'IngredientController@update');
 // Delete one specific record :
-Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy');
+Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy')->name('ingredients.delete');
 
-// Route::resource('ingredients', 'IngredientController');
+// ***========*** INGREDIENTS NAMES CRUD ***==============0
+
+Route::resource('ingredientNames', 'IngredientsNameController');
+
+// actually update the edited record
+Route::get('ingredientNames/update/{ingredient_id}/{language_id}', 'IngredientsNameController@update');
+
 
 // ***========*** General Posts CRUD ***==============0
 Route::resource('posts', 'PostController');
