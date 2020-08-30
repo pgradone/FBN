@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', 'PostController@index');
+// Route::get('/', 'PostController@index');
 Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
 
 //authentication
@@ -27,9 +27,9 @@ Route::group(['prefix' => 'auth'], function () {
 
 
 
-// Route::get('/', function () {
-//   return view('welcome');
-// });
+Route::get('/', function () {
+  return view('welcome');
+});
 
 
 Auth::routes(['verify' => true]);
