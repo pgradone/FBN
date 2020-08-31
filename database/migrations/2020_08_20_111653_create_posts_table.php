@@ -16,16 +16,17 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('parent_post_id')->references('id')->on('posts');
-            $table->foreign('author_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('author_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('language_id')->nullable()->references('id')->on('languages')->onUpdate('cascade')->default(2);
-            $table->foreignId('post_type_id')->nullable()->references('id')->on('post_types')->onUpdate('cascade');
+            $table->foreignId('post_type_id')->nullable()->references('id')->on('post_types')->onUpdate('cascade')->default(1);
             $table->string('title')->unique();
             $table->text('body');
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable()->unique();
+            $table->string('cover_image')->nullable();
             $table->boolean('active');
-                  $table->text('summary');
-            $table->string('reference',255);
-            $table->string('status',20);
+            $table->text('summary');
+            $table->string('reference', 255);
+            $table->string('status', 20);
             // $table->unsignedSmallInteger('post_type_id');
             $table->timestamps();
             $table->engine = 'InnoDB';

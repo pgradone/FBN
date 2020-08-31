@@ -12,16 +12,6 @@ class UserSeeder extends Seeder
    */
   public function run()
   {
-    // build users array
-    // $users = array(
-    //   array(
-    //     'role_id' => 2,
-    //     'name' => 'pot',
-    //     'email' => 'pgradone@gmail.com',
-    //     'created_at' => '2020-08-24 07:59:30',
-    //     'updated_at' => '2020-08-24 07:59:30',
-    //   ),
-    // );
     $users = array(
       array(
         'role' => 'admin',
@@ -60,7 +50,7 @@ class UserSeeder extends Seeder
     // fill the users from users array
     foreach ($users as $user) {
       DB::table('users')->insert([
-        'role_id' => $user['role_id'],
+        'role' => $user['role'],
         'name' => $user['name'],
         'email' => $user['email'],
         'password' => $user['password'],

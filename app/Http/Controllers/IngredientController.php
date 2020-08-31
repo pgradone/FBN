@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 // add this to access the DB methods!
 
+use App\IngredientsName;
 use App\Foodgroup;
 use App\FoodgroupName;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,7 @@ class IngredientController extends Controller
   public function index()
   {
     $ingredients = Ingredient::paginate(10);
-    // var_dump($ingredients);
+    // dd($ingredients);
     return view('ingredients', ['ingredients' => $ingredients]);
   }
 
@@ -71,16 +72,23 @@ class IngredientController extends Controller
    */
   public function edit($id)
   {
-    // EDIT the ingredient
-    // edit one book with eloquent
+    // EDIT one ingredient with eloquent
+    // get that specific ingredient
     $ingredients =  Ingredient::where('id', $id)->get();
-    // $foodgroups = Foodgroup::get();
-    $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
-    // $currentIngredient = Ingredient::where('id', $id)->get();
-    dd($foodgroups);
-    // fill the form with data to edit
-    return view('update-ingredient', ['ingredient' => $currentIngredient]);
+    // get its names in all languages 
+    $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
+    // get all food group names (hardcoded in english)
+    $foodgroupnames =  FoodgroupName::where('language_id', 2)->get();
+    // call the form and pass the data to edit
+    return view(
+      'update-ingredient',
+      [
+        'ingredient' => $currentIngredient,
+        'ingredientNames' => $currentIngredientNames,
+        'foodgroupnames' => $foodgroupnames,
+      ]
+    );
   }
 
   /**
@@ -96,9 +104,9 @@ class IngredientController extends Controller
     //dd($request);
 
     Ingredient::where('id', $id)
-          ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
-        // show the list again
-        return redirect('/ingredients');
+      ->update(['origin' => $request->origin, 'nutriscore' => $request->nutriscore, 'picture' => $request->picture, 'foodgroup_id' => $request->foodgroup_id]);
+    // show the list again
+    return redirect('/ingredients');
   }
 
   /*
@@ -116,5 +124,4 @@ class IngredientController extends Controller
     // and back to the ingredients list
     return redirect('/ingredients');
   }
-
 }
