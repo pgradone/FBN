@@ -4,6 +4,7 @@
 @section('content')
 <main class="container">
   <section class="row">
+
     <div class="card" style="width: 36rem;">
       <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}">
       <div class="card-body">
@@ -12,6 +13,7 @@
           <form method="POST" class="card-text">
             @csrf
             @method('PUT')
+
             <ul>
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
@@ -48,6 +50,7 @@
               <option class="form-control" value="D" <?php if ($ingredient->nutriscore == 'D') : ?> selected="selected" <?php endif; ?>>D</option>
               <option class="form-control" value="E" <?php if ($ingredient->nutriscore == 'E') : ?> selected="selected" <?php endif; ?>>E</option>
               <option class="form-control" value="F" <?php if ($ingredient->nutriscore == 'F') : ?> selected="selected" <?php endif; ?>>F</option>
+
             </select>
             <br>
             <input type="submit" name="submit" value="Update" class="btn btn-primary">

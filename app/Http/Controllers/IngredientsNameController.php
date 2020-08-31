@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\IngredientsName;
+
 use Illuminate\Http\Request;
 
 class IngredientsNameController extends Controller
@@ -67,6 +68,7 @@ class IngredientsNameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
     public function update(Request $request, $ingredient_id, $language_id)
     {
         dd($request->name);

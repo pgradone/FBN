@@ -70,6 +70,7 @@
                     </li>
                     <li>
                         <a class="nav-link custom-nav-item" href="/recipes">Recipes</a>
+
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link custom-nav-item " href="/blog">Blog</a>
@@ -159,9 +160,18 @@
         </div>
     </footer>
 
+
     <!-- Scripts -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
+
+<!-- FOOTER -->
+<footer class=" page-footer font-lg blue">
+    <div class="footer-copyright text-center align-center">© 2020 Powered by:
+        <a href="http://www.numericall.fr/">Numericall</a>
+    </div>
+</footer>
+
 
 </html>

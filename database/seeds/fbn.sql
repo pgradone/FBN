@@ -2,10 +2,11 @@
 -- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Aug 29, 2020 at 07:04 PM
--- Server version: 5.7.31-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.6
+
+-- Host: 127.0.0.1:3306
+-- Generation Time: Aug 28, 2020 at 09:14 AM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -33,10 +34,16 @@ CREATE TABLE `comments` (
   `language_id` bigint(20) UNSIGNED DEFAULT NULL,
   `on_post` bigint(20) UNSIGNED DEFAULT NULL,
   `from_user` bigint(20) UNSIGNED DEFAULT NULL,
+
   `body` longtext NOT NULL,
   `rating` varchar(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
+  PRIMARY KEY (`id`),
+  KEY `comments_language_id_foreign` (`language_id`),
+  KEY `comments_post_id_foreign` (`on_post`),
+  KEY `comments_user_id_foreign` (`from_user`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -1200,6 +1207,44 @@ INSERT INTO `foodgroup_names` (`foodgroup_id`, `language_id`, `name`, `created_a
 -- --------------------------------------------------------
 
 --
+
+-- Stand-in structure for view `food_v`
+-- (See below for the actual view)
+--
+DROP VIEW IF EXISTS `food_v`;
+CREATE TABLE IF NOT EXISTS `food_v` (
+`id` bigint(20) unsigned
+,`foodgroup_id` bigint(20) unsigned
+,`origin` varchar(2)
+,`nutriscore` varchar(2)
+,`picture` varchar(255)
+,`food_name_EN` varchar(100)
+,`food_name_FR` varchar(100)
+,`food_name_DE` varchar(100)
+,`food_name_PT` varchar(100)
+,`food_name_IT` varchar(100)
+,`food_name_ES` varchar(100)
+,`food_name_NL` varchar(100)
+,`group_EN` varchar(60)
+,`group_FR` varchar(60)
+,`group_DE` varchar(60)
+,`group_PT` varchar(60)
+,`group_IT` varchar(60)
+,`group_ES` varchar(60)
+,`group_NL` varchar(60)
+,`sub_group_EN` varchar(60)
+,`sub_group_FR` varchar(60)
+,`sub_group_DE` varchar(60)
+,`sub_group_PT` varchar(60)
+,`sub_group_IT` varchar(60)
+,`sub_group_ES` varchar(60)
+,`sub_group_NL` varchar(60)
+);
+
+-- --------------------------------------------------------
+
+--
+
 -- Table structure for table `ingredients`
 --
 
@@ -1218,6 +1263,7 @@ CREATE TABLE `ingredients` (
 --
 
 INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
+
 (1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, NULL),
 (2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, NULL),
 (3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, NULL),
@@ -1262,6 +1308,52 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 (42, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Safflower.jpg/220px-Safflower.jpg', 317, NULL, '2020-08-29 12:09:39'),
 (43, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Carum_carvi_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-172.jpg/220px-Carum_carvi_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-172.jpg', 217, NULL, '2020-08-29 12:10:08'),
 (44, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Carya_illinoinensis.jpg/220px-Carya_illinoinensis.jpg', 19, NULL, '2020-08-29 14:50:34'),
+
+(1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, '2020-08-27 07:07:34'),
+(2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, '2020-08-27 12:30:24'),
+(3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, '2020-08-27 12:32:02'),
+(4, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kiwi1.1.jpg/220px-Kiwi1.1.jpg', 528, NULL, '2020-08-27 07:09:42'),
+(5, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/220px-Mixed_onions.jpg', 526, NULL, '2020-08-27 07:10:14'),
+(6, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/White_onions_drying.jpg/220px-White_onions_drying.jpg', 526, NULL, '2020-08-27 08:19:45'),
+(7, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Leeks.JPG/220px-Leeks.JPG', 526, NULL, '2020-08-27 07:38:45'),
+(8, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Allium_sativum_Woodwill_1793.jpg/220px-Allium_sativum_Woodwill_1793.jpg', 117, NULL, '2020-08-27 07:39:11'),
+(9, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Allium_schoenoprasum_-_Bombus_lapidarius_-_Tootsi.jpg/220px-Allium_schoenoprasum_-_Bombus_lapidarius_-_Tootsi.jpg', 117, NULL, '2020-08-27 07:39:36'),
+(10, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Aloysia_citriodora_002.jpg/220px-Aloysia_citriodora_002.jpg', 117, NULL, '2020-08-27 07:40:02'),
+(11, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cashew_apples.jpg/220px-Cashew_apples.jpg', 19, NULL, '2020-08-27 07:41:37'),
+(12, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg/220px-%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg', 528, NULL, '2020-08-27 07:44:06'),
+(13, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Illustration_Anethum_graveolens_clean.jpg/220px-Illustration_Anethum_graveolens_clean.jpg', 117, NULL, '2020-08-27 07:44:28'),
+(14, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Custard_apple_or_Bullock%27s_heart_%28Annona_reticulata_L.%29%3B_fru_Wellcome_V0042682.jpg/220px-Custard_apple_or_Bullock%27s_heart_%28Annona_reticulata_L.%29%3B_fru_Wellcome_V0042682.jpg', 528, NULL, '2020-08-27 08:20:30'),
+(15, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Koehler1887-GardenAngelica.jpg/220px-Koehler1887-GardenAngelica.jpg', 217, NULL, '2020-08-27 08:21:10'),
+(16, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg/220px-Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg', 19, NULL, '2020-08-27 08:28:45'),
+(17, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Villtakjas_2008.jpg/220px-Villtakjas_2008.jpg', 626, NULL, '2020-08-27 08:29:10'),
+(18, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Armoracia_rusticana.jpg/220px-Armoracia_rusticana.jpg', 217, NULL, '2020-08-27 08:29:43'),
+(19, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Estragon_1511.jpg/250px-Estragon_1511.jpg', 117, NULL, '2020-08-27 08:30:08'),
+(20, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Artemisia_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-016.jpg/220px-Artemisia_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-016.jpg', 117, NULL, '2020-08-27 08:30:44'),
+(21, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Asparagus-Bundle.jpg/110px-Asparagus-Bundle.jpg', 726, NULL, '2020-08-27 08:31:19'),
+(22, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Avena_sativa_L.jpg/220px-Avena_sativa_L.jpg', 6, NULL, '2020-08-27 12:08:51'),
+(23, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Averrhoa_carambola_ARS_k5735-7.jpg/220px-Averrhoa_carambola_ARS_k5735-7.jpg', 528, NULL, '2020-08-27 12:09:22'),
+(24, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bertholletia_excelsa_compose.jpg/1024px-Bertholletia_excelsa_compose.jpg', 19, NULL, '2020-08-27 12:10:07'),
+(25, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Detroitdarkredbeets.png/220px-Detroitdarkredbeets.png', 426, NULL, '2020-08-27 12:10:52'),
+(26, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Borage_starflower_Rohtopurasruoho_01.jpg/220px-Borage_starflower_Rohtopurasruoho_01.jpg', 317, NULL, '2020-08-27 12:11:20'),
+(27, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Brassica_juncea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-168.jpg/220px-Brassica_juncea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-168.jpg', 126, NULL, '2020-08-27 12:11:51'),
+(28, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Rutabaga%2C_variety_nadmorska.JPG/220px-Rutabaga%2C_variety_nadmorska.JPG', 626, NULL, '2020-08-27 12:13:46'),
+(29, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Rutabaga%2C_variety_nadmorska.JPG/220px-Rutabaga%2C_variety_nadmorska.JPG', 626, NULL, '2020-08-27 12:14:08'),
+(30, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Common cabbage.jpg', 126, NULL, NULL),
+(31, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Cauliflower.jpg', 126, NULL, NULL),
+(32, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Brussel sprouts.jpg', 126, NULL, NULL),
+(33, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Kohlrabi.jpg', 626, NULL, NULL),
+(34, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Broccoli.jpg', 126, NULL, NULL),
+(35, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Chinese cabbage.jpg', 126, NULL, NULL),
+(36, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Turnip.jpg', 117, NULL, NULL),
+(37, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Pigeon pea.jpg', 320, NULL, NULL),
+(38, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Tea.jpg', 23, NULL, NULL),
+(39, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Capers.jpg', 217, NULL, NULL),
+(40, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Pepper.jpg', 226, NULL, NULL),
+(41, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Papaya.jpg', 528, NULL, NULL),
+(42, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Safflower.jpg', 317, NULL, NULL),
+(43, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Caraway.jpg', 217, NULL, NULL),
+(44, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Pecan nut.jpg', 19, NULL, NULL),
+
 (45, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Chestnut.jpg', 19, NULL, NULL),
 (46, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Roman camomile.jpg', 117, NULL, NULL),
 (47, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Chickpea.jpg', 320, NULL, NULL),
@@ -1698,7 +1790,8 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 (477, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Seatrout.jpg', 102, NULL, NULL),
 (478, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Sesbania flower.jpg', 2026, NULL, NULL),
 (479, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/American shad.jpg', 102, NULL, NULL),
-(480, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Shark.jpg', 102, NULL, NULL),
+(480, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Shark.jpg', 102, NULL, NULL);
+INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
 (481, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheefish.jpg', 102, NULL, NULL),
 (482, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheep.jpg', 701, NULL, NULL),
 (483, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheepshead.jpg', 102, NULL, NULL),
@@ -8591,8 +8684,13 @@ INSERT INTO `languages` (`id`, `iso`, `name`) VALUES
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `migrations`
@@ -8603,6 +8701,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2019_08_19_000000_create_failed_jobs_table', 1),
 (3, '2020_08_20_082241_create_languages_table', 1),
 (4, '2020_08_20_102020_create_post_types_table', 1),
+
 (5, '2020_08_20_102030_create_users_table', 1),
 (6, '2020_08_20_105100_create_foodgroups_table', 1),
 (7, '2020_08_20_105200_create_foodgroup_names_table', 1),
@@ -8692,6 +8791,7 @@ CREATE TABLE `recipes_contents` (
 
 --
 -- Table structure for table `users`
+
 --
 
 CREATE TABLE `users` (
@@ -8723,6 +8823,7 @@ INSERT INTO `users` (`id`, `language_id`, `name`, `email`, `email_verified_at`, 
 
 --
 -- Indexes for table `comments`
+
 --
 ALTER TABLE `comments`
   ADD PRIMARY KEY (`id`),
@@ -8730,11 +8831,32 @@ ALTER TABLE `comments`
   ADD KEY `comments_on_post_foreign` (`on_post`),
   ADD KEY `comments_from_user_foreign` (`from_user`);
 
+
 --
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`);
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `language_id` bigint(20) UNSIGNED DEFAULT 2,
+  `role_id` bigint(20) UNSIGNED DEFAULT 2,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','author','subscriber') DEFAULT 'author' COMMENT 'role as enum',
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `users_name_unique` (`name`),
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `users_language_id_foreign` (`language_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
 
 --
 -- Indexes for table `foodgroups`
@@ -8743,12 +8865,19 @@ ALTER TABLE `foodgroups`
   ADD PRIMARY KEY (`id`),
   ADD KEY `foodgroups_parent_group_id_foreign` (`parent_group_id`);
 
+
 --
 -- Indexes for table `foodgroup_names`
 --
 ALTER TABLE `foodgroup_names`
   ADD PRIMARY KEY (`foodgroup_id`,`language_id`),
   ADD KEY `foodgroup_names_language_id_foreign` (`language_id`);
+
+INSERT INTO `users` (`id`, `language_id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(2, 2, 2, 'gui', 'gui_pereira10@live.com.pt', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(3, 2, 3, 'fab', 'faballa.cisse@gmail.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(4, 2, 2, 'jef', 'JeffCigrand@me.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(7, 2, 1, 'pot', 'pgradone@gmail.com', '2020-08-25 22:00:00', '$2y$10$25gAtBgg.58Y/n3hj2bqXeXnZPCgBYx6C.IsSwDszetcWvHVbenVm', 'author', '9zbvdgYxLUjaHbsQIBbHsAccEG1b011AsqbY06JIC1H0e6WXvmzTF3ZHD6IG', '2020-08-27 06:13:48', '2020-08-27 06:13:48');
 
 --
 -- Indexes for table `ingredients`
@@ -8819,9 +8948,11 @@ ALTER TABLE `users`
   ADD UNIQUE KEY `users_email_unique` (`email`),
   ADD KEY `users_language_id_foreign` (`language_id`);
 
+
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
 
 --
 -- AUTO_INCREMENT for table `comments`
@@ -8876,9 +9007,11 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
+
   ADD CONSTRAINT `comments_from_user_foreign` FOREIGN KEY (`from_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_on_post_foreign` FOREIGN KEY (`on_post`) REFERENCES `posts` (`id`) ON UPDATE CASCADE;
+
 
 --
 -- Constraints for table `foodgroups`
@@ -8933,6 +9066,7 @@ ALTER TABLE `recipes_contents`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
