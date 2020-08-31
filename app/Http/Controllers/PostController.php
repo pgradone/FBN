@@ -26,7 +26,7 @@ class PostController extends Controller
     //page heading
     $title = 'Latest Posts';
     //return home.blade.php template from resources/views folder
-    return view('home')->withPosts($posts)->withTitle($title);
+    return view('home')->with('posts',$posts)->with('title',$title);
   }
 
   /**
