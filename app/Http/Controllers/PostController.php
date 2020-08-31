@@ -77,15 +77,15 @@ class PostController extends Controller
   }
 
 
-  public function show($slug)
-  {
-    $post = Post::where('slug', $slug)->first();
-    if (!$post) {
-      return redirect('/')->withErrors('requested page not found');
-    }
-    $comments = $post->comments;
-    return view('posts.show')->withPost($post)->withComments($comments);
-  }
+  // public function show($slug)
+  // {
+  //   $post = Post::where('slug', $slug)->first();
+  //   if (!$post) {
+  //     return redirect('/')->withErrors('requested page not found');
+  //   }
+  //   $comments = $post->comments;
+  //   return view('posts.show')->withPost($post)->withComments($comments);
+  // }
 
   public function edit(Request $request, $slug)
   {

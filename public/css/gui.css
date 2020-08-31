@@ -1,23 +1,44 @@
 /* navbar */
 .page-footer, .custom-navbar{
     background-color: #e0ebe8;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 0px;
 }
 
+
 /* navbar-brand */
 .custom-navbar-brand{
-    
-    font-size:3rem;
+    font-size:2rem;
     color: #1e836c;
     font-style: bold;
     
+}
+
+.custom-navbar-profile-user{
+    font-size:1.5rem;
+    color: #1e836c;
+    font-style: bold;
+}
+
+.custom-nav-item-profile {
+    height: auto;
+    width: 5rem;
+    font-size: 1.25rem;
+    border: solid 1px #1e836c;
+    border-radius: 10%;
 }
 
 /* navbar-item */
 .custom-nav-item {
     font-size: 1.25rem;
     color:#45b29a
+}
+
+/* navbar-item */
+.custom-nav-drop-item {
+    font-size: 1rem;
+    color:black;
+    
 }
 
  /* hover for the navbrand */
@@ -45,11 +66,12 @@ ul.nav a:hover {
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
     background-color: #cccccc;
-    height: 850px;
+    height: 55rem;
     /* background-position: top; */
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .recipesContainer {
@@ -60,6 +82,9 @@ ul.nav a:hover {
 
 }
 
+.custom-footer {
+    padding: 2rem;
+}
 
 
 .container {
