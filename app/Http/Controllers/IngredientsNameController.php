@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\IngredientsName;
+
 use Illuminate\Http\Request;
 
 class IngredientsNameController extends Controller
@@ -66,9 +68,13 @@ class IngredientsNameController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, $ingredient_id, $language_id)
     {
-        //
+        dd($request->name);
+        // IngredientsName::where('ingredient_id', $ingredient_id)
+        // ->where('language_id', $language_id)
+        // ->update('name' => $request->name);
     }
 
     /**

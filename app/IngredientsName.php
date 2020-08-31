@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class IngredientsName extends Model
 {
-    //
-    public function ingredient() {
-        $this->belongsTo('App\Ingredient');
-    }
+  public $incrementing = false;
+  protected $table = 'ingredients_names';
 
-    public function language() {
-        $this->belongsTo('App\Language');
-    }
+  public function ingredient()
+  {
+    return $this->belongsTo('App\Ingredient');
+  }
+
+  public function language()
+  {
+    return $this->belongsTo('App\Language');
+  }
 }

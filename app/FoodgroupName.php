@@ -6,11 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class FoodgroupName extends Model
 {
-    public function language() {
-        $this->belongsTo('App\Language');
-    }
 
-    public function food_group () {
-        $this->belongsTo('App\Foodgroup');
-    }
+  public $incrementing = false;
+  protected $table = 'foodgroup_names';
+  // protected $primaryKey = 'foodgroup_id';
+  public function language()
+  {
+    return $this->belongsTo('App\Language');
+  }
+
+  public function food_group()
+  {
+    return $this->belongsTo('App\Foodgroup');
+  }
 }

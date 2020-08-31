@@ -1,15 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
+
 -- Host: 127.0.0.1:3306
 -- Generation Time: Aug 28, 2020 at 09:14 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -30,20 +29,21 @@ USE `fbn`;
 -- Table structure for table `comments`
 --
 
-DROP TABLE IF EXISTS `comments`;
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `language_id` bigint(20) UNSIGNED DEFAULT NULL,
   `on_post` bigint(20) UNSIGNED DEFAULT NULL,
   `from_user` bigint(20) UNSIGNED DEFAULT NULL,
-  `body` text NOT NULL,
+
+  `body` longtext NOT NULL,
   `rating` varchar(2) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
   PRIMARY KEY (`id`),
   KEY `comments_language_id_foreign` (`language_id`),
   KEY `comments_post_id_foreign` (`on_post`),
   KEY `comments_user_id_foreign` (`from_user`)
+
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -52,16 +52,14 @@ CREATE TABLE IF NOT EXISTS `comments` (
 -- Table structure for table `failed_jobs`
 --
 
-DROP TABLE IF EXISTS `failed_jobs`;
-CREATE TABLE IF NOT EXISTS `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -69,15 +67,12 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- Table structure for table `foodgroups`
 --
 
-DROP TABLE IF EXISTS `foodgroups`;
-CREATE TABLE IF NOT EXISTS `foodgroups` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `foodgroups` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `parent_group_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `foodgroups_parent_group_id_foreign` (`parent_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2027 DEFAULT CHARSET=utf8mb4;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `foodgroups`
@@ -229,15 +224,12 @@ INSERT INTO `foodgroups` (`id`, `parent_group_id`, `created_at`, `updated_at`) V
 -- Table structure for table `foodgroup_names`
 --
 
-DROP TABLE IF EXISTS `foodgroup_names`;
-CREATE TABLE IF NOT EXISTS `foodgroup_names` (
+CREATE TABLE `foodgroup_names` (
   `foodgroup_id` bigint(20) UNSIGNED NOT NULL,
   `language_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(60) NOT NULL COMMENT 'food group name in given languages',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`foodgroup_id`,`language_id`),
-  KEY `foodgroup_names_language_id_foreign` (`language_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1215,6 +1207,7 @@ INSERT INTO `foodgroup_names` (`foodgroup_id`, `language_id`, `name`, `created_a
 -- --------------------------------------------------------
 
 --
+
 -- Stand-in structure for view `food_v`
 -- (See below for the actual view)
 --
@@ -1251,27 +1244,71 @@ CREATE TABLE IF NOT EXISTS `food_v` (
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `ingredients`
 --
 
-DROP TABLE IF EXISTS `ingredients`;
-CREATE TABLE IF NOT EXISTS `ingredients` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ingredients` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `origin` varchar(2) DEFAULT NULL COMMENT 'Plant or Animal based',
   `nutriscore` varchar(2) DEFAULT NULL COMMENT 'A-F nutritional compliance',
   `picture` varchar(255) DEFAULT NULL,
   `foodgroup_id` bigint(20) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ingredients_foodgroup_id_foreign` (`foodgroup_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=915 DEFAULT CHARSET=utf8mb4;
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `ingredients`
 --
 
 INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
+
+(1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, NULL),
+(2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, NULL),
+(3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, NULL),
+(4, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kiwi1.1.jpg/220px-Kiwi1.1.jpg', 528, NULL, '2020-08-29 14:45:22'),
+(5, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/220px-Mixed_onions.jpg', 526, NULL, NULL),
+(6, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/White_onions_drying.jpg/220px-White_onions_drying.jpg', 526, NULL, '2020-08-29 08:39:39'),
+(7, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Leeks.JPG/220px-Leeks.JPG', 526, NULL, NULL),
+(8, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Allium_sativum_Woodwill_1793.jpg/220px-Allium_sativum_Woodwill_1793.jpg', 117, NULL, NULL),
+(9, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Allium_schoenoprasum_-_Bombus_lapidarius_-_Tootsi.jpg/220px-Allium_schoenoprasum_-_Bombus_lapidarius_-_Tootsi.jpg', 117, NULL, NULL),
+(10, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Aloysia_citriodora_002.jpg/220px-Aloysia_citriodora_002.jpg', 117, NULL, NULL),
+(11, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Cashew_apples.jpg/220px-Cashew_apples.jpg', 19, NULL, NULL),
+(12, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg/220px-%E0%B4%95%E0%B5%88%E0%B4%A4%E0%B4%9A%E0%B5%8D%E0%B4%9A%E0%B4%95%E0%B5%8D%E0%B4%95.jpg', 528, NULL, NULL),
+(13, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Illustration_Anethum_graveolens_clean.jpg/220px-Illustration_Anethum_graveolens_clean.jpg', 117, NULL, NULL),
+(14, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Custard_apple_or_Bullock%27s_heart_%28Annona_reticulata_L.%29%3B_fru_Wellcome_V0042682.jpg/220px-Custard_apple_or_Bullock%27s_heart_%28Annona_reticulata_L.%29%3B_fru_Wellcome_V0042682.jpg', 528, NULL, NULL),
+(15, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Koehler1887-GardenAngelica.jpg/220px-Koehler1887-GardenAngelica.jpg', 217, NULL, NULL),
+(16, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg/220px-Arachis_hypogaea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-163.jpg', 19, NULL, NULL),
+(17, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Villtakjas_2008.jpg/220px-Villtakjas_2008.jpg', 626, NULL, NULL),
+(18, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Armoracia_rusticana.jpg/220px-Armoracia_rusticana.jpg', 217, NULL, NULL),
+(19, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Estragon_1511.jpg/250px-Estragon_1511.jpg', 117, NULL, NULL),
+(20, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Artemisia_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-016.jpg/220px-Artemisia_vulgaris_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-016.jpg', 117, NULL, NULL),
+(21, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Asparagus-Bundle.jpg/110px-Asparagus-Bundle.jpg', 726, NULL, NULL),
+(22, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Avena_sativa_L.jpg/220px-Avena_sativa_L.jpg', 6, NULL, NULL),
+(23, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Averrhoa_carambola_ARS_k5735-7.jpg/220px-Averrhoa_carambola_ARS_k5735-7.jpg', 528, NULL, NULL),
+(24, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Bertholletia_excelsa_compose.jpg/1024px-Bertholletia_excelsa_compose.jpg', 19, NULL, NULL),
+(25, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Detroitdarkredbeets.png/220px-Detroitdarkredbeets.png', 426, NULL, NULL),
+(26, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Borage_starflower_Rohtopurasruoho_01.jpg/220px-Borage_starflower_Rohtopurasruoho_01.jpg', 317, NULL, NULL),
+(27, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Brassica_juncea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-168.jpg/220px-Brassica_juncea_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-168.jpg', 126, NULL, NULL),
+(28, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Rutabaga%2C_variety_nadmorska.JPG/220px-Rutabaga%2C_variety_nadmorska.JPG', 626, NULL, NULL),
+(29, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Rutabaga%2C_variety_nadmorska.JPG/220px-Rutabaga%2C_variety_nadmorska.JPG', 626, NULL, NULL),
+(30, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/2015-12-20_Spitzkohlsalat_mit_M%C3%B6hren_anagoria.JPG/250px-2015-12-20_Spitzkohlsalat_mit_M%C3%B6hren_anagoria.JPG', 126, NULL, '2020-08-29 08:41:22'),
+(31, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/2/25/Cauliflower.JPG', 126, NULL, '2020-08-29 08:42:17'),
+(32, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Brussels_sprout_closeup.jpg/220px-Brussels_sprout_closeup.jpg', 126, NULL, '2020-08-29 08:58:56'),
+(33, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/GreenKohlrabi.jpg/220px-GreenKohlrabi.jpg', 626, NULL, '2020-08-29 08:59:23'),
+(34, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Broccoli_and_cross_section_edit.jpg/220px-Broccoli_and_cross_section_edit.jpg', 126, NULL, '2020-08-29 09:05:29'),
+(35, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/ChineseCabbage.jpg/220px-ChineseCabbage.jpg', 126, NULL, '2020-08-29 12:09:00'),
+(36, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Turnip_2622027.jpg/220px-Turnip_2622027.jpg', 117, NULL, '2020-08-29 14:51:17'),
+(37, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Guandu.jpg/150px-Guandu.jpg', 320, NULL, '2020-08-29 14:51:49'),
+(38, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Longjing_tea_steeping_in_gaiwan.jpg/220px-Longjing_tea_steeping_in_gaiwan.jpg', 23, NULL, '2020-08-29 14:52:22'),
+(39, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Illustration_Capparis_spinosa0.jpg/220px-Illustration_Capparis_spinosa0.jpg', 217, NULL, '2020-08-29 14:52:54'),
+(40, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Pfeffer-Gew%C3%BCrz.jpg/220px-Pfeffer-Gew%C3%BCrz.jpg', 226, NULL, '2020-08-29 14:53:34'),
+(41, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg/220px-Carica_papaya_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-029.jpg', 528, NULL, '2020-08-29 08:58:29'),
+(42, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Safflower.jpg/220px-Safflower.jpg', 317, NULL, '2020-08-29 12:09:39'),
+(43, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Carum_carvi_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-172.jpg/220px-Carum_carvi_-_K%C3%B6hler%E2%80%93s_Medizinal-Pflanzen-172.jpg', 217, NULL, '2020-08-29 12:10:08'),
+(44, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Carya_illinoinensis.jpg/220px-Carya_illinoinensis.jpg', 19, NULL, '2020-08-29 14:50:34'),
+
 (1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, '2020-08-27 07:07:34'),
 (2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, '2020-08-27 12:30:24'),
 (3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, '2020-08-27 12:32:02'),
@@ -1316,6 +1353,7 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 (42, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Safflower.jpg', 317, NULL, NULL),
 (43, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Caraway.jpg', 217, NULL, NULL),
 (44, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Pecan nut.jpg', 19, NULL, NULL),
+
 (45, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Chestnut.jpg', 19, NULL, NULL),
 (46, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Roman camomile.jpg', 117, NULL, NULL),
 (47, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Chickpea.jpg', 320, NULL, NULL),
@@ -1744,7 +1782,8 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 (470, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Pacific sardine.jpg', 102, NULL, NULL),
 (471, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Scallop.jpg', 302, NULL, NULL),
 (472, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Scup.jpg', 102, NULL, NULL),
-(473, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sea cucumber.jpg', 802, NULL, NULL),
+(473, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sea cucumber.jpg', 802, NULL, NULL);
+INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
 (474, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Steller sea lion.jpg', 902, NULL, NULL),
 (475, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Bearded seal.jpg', 902, NULL, NULL),
 (476, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Ringed seal.jpg', 902, NULL, NULL),
@@ -2194,15 +2233,12 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 -- Table structure for table `ingredients_names`
 --
 
-DROP TABLE IF EXISTS `ingredients_names`;
-CREATE TABLE IF NOT EXISTS `ingredients_names` (
+CREATE TABLE `ingredients_names` (
   `ingredient_id` bigint(20) UNSIGNED NOT NULL,
   `language_id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(100) NOT NULL COMMENT 'ingredients name in given languages',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`language_id`,`ingredient_id`),
-  KEY `ingredients_names_ingredient_id_foreign` (`ingredient_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -8619,15 +8655,11 @@ INSERT INTO `ingredients_names` (`ingredient_id`, `language_id`, `name`, `create
 -- Table structure for table `languages`
 --
 
-DROP TABLE IF EXISTS `languages`;
-CREATE TABLE IF NOT EXISTS `languages` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `languages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `iso` varchar(2) NOT NULL,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `languages_iso_unique` (`iso`),
-  UNIQUE KEY `languages_name_unique` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+  `name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `languages`
@@ -8649,10 +8681,13 @@ INSERT INTO `languages` (`id`, `iso`, `name`) VALUES
 -- Table structure for table `migrations`
 --
 
-DROP TABLE IF EXISTS `migrations`;
-CREATE TABLE IF NOT EXISTS `migrations` (
-  `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -8666,18 +8701,15 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2019_08_19_000000_create_failed_jobs_table', 1),
 (3, '2020_08_20_082241_create_languages_table', 1),
 (4, '2020_08_20_102020_create_post_types_table', 1),
-(5, '2020_08_20_102028_create_roles_table', 1),
-(6, '2020_08_20_102030_create_users_table', 1),
-(7, '2020_08_20_105100_create_foodgroups_table', 1),
-(8, '2020_08_20_105200_create_foodgroup_names_table', 1),
-(9, '2020_08_20_105300_create_ingredients_table', 1),
-(10, '2020_08_20_105305_create_ingredient_name_table', 1),
-(11, '2020_08_20_111653_create_posts_table', 1),
-(12, '2020_08_20_112000_create_recipes_contents_table', 1),
-(13, '2020_08_21_090936_create_comments_table', 1),
-(14, '2014_10_12_000000_create_users_table', 2),
-(15, '2020_08_24_120313_posts', 2),
-(16, '2020_08_24_120340_comments', 2);
+
+(5, '2020_08_20_102030_create_users_table', 1),
+(6, '2020_08_20_105100_create_foodgroups_table', 1),
+(7, '2020_08_20_105200_create_foodgroup_names_table', 1),
+(8, '2020_08_20_105300_create_ingredients_table', 1),
+(9, '2020_08_20_105305_create_ingredient_name_table', 1),
+(10, '2020_08_20_111653_create_posts_table', 1),
+(11, '2020_08_20_112000_create_recipes_contents_table', 1),
+(12, '2020_08_21_090936_create_comments_table', 1);
 
 -- --------------------------------------------------------
 
@@ -8685,13 +8717,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- Table structure for table `password_resets`
 --
 
-DROP TABLE IF EXISTS `password_resets`;
-CREATE TABLE IF NOT EXISTS `password_resets` (
+CREATE TABLE `password_resets` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`(250))
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -8699,9 +8729,8 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- Table structure for table `posts`
 --
 
-DROP TABLE IF EXISTS `posts`;
-CREATE TABLE IF NOT EXISTS `posts` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+CREATE TABLE `posts` (
+  `id` bigint(20) UNSIGNED NOT NULL,
   `parent_post_id` bigint(20) UNSIGNED NOT NULL,
   `author_id` bigint(20) UNSIGNED NOT NULL,
   `language_id` bigint(20) UNSIGNED DEFAULT NULL,
@@ -8714,12 +8743,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `reference` varchar(255) NOT NULL,
   `status` varchar(20) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `posts_parent_post_id_foreign` (`parent_post_id`),
-  KEY `posts_author_id_foreign` (`author_id`),
-  KEY `posts_language_id_foreign` (`language_id`),
-  KEY `posts_post_type_id_foreign` (`post_type_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -8728,28 +8752,25 @@ CREATE TABLE IF NOT EXISTS `posts` (
 -- Table structure for table `post_types`
 --
 
-DROP TABLE IF EXISTS `post_types`;
-CREATE TABLE IF NOT EXISTS `post_types` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `parent_type_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `name` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `post_types_parent_type_id_foreign` (`parent_type_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+CREATE TABLE `post_types` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `parent_type_id` bigint(20) UNSIGNED NOT NULL DEFAULT '1',
+  `name` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `post_types`
 --
 
 INSERT INTO `post_types` (`id`, `parent_type_id`, `name`) VALUES
-(1, NULL, 'post'),
-(2, NULL, 'quote'),
-(3, NULL, 'opinion'),
-(4, NULL, 'question'),
+(1, 1, 'post'),
+(2, 1, 'quote'),
+(3, 1, 'opinion'),
+(4, 1, 'question'),
 (5, 4, 'faq'),
 (6, 1, 'recipe'),
-(7, NULL, 'ad'),
-(8, NULL, 'article'),
+(7, 1, 'ad'),
+(8, 1, 'article'),
 (9, 8, 'news'),
 (10, 8, 'science');
 
@@ -8759,21 +8780,63 @@ INSERT INTO `post_types` (`id`, `parent_type_id`, `name`) VALUES
 -- Table structure for table `recipes_contents`
 --
 
-DROP TABLE IF EXISTS `recipes_contents`;
-CREATE TABLE IF NOT EXISTS `recipes_contents` (
+CREATE TABLE `recipes_contents` (
   `posts_id` bigint(20) UNSIGNED NOT NULL,
   `ingredients_id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`posts_id`,`ingredients_id`),
-  KEY `recipes_contents_ingredients_id_foreign` (`ingredients_id`)
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `users`
+
 --
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `language_id` bigint(20) UNSIGNED DEFAULT '2',
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','author','subscriber') NOT NULL DEFAULT 'author',
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `language_id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 2, 'pot', 'pgradone@gmail.com', NULL, '$2y$10$OVnbWsGCPPrKPfU092UxnO6HydTFS55KAilg2jCklHWQDaS0DrhIO', 'admin', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(2, 2, 'gui', 'gui_pereira10@live.com.pt', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(3, 2, 'fab', 'faballa.cisse@gmail.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'admin', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
+(4, 2, 'jef', 'JeffCigrand@me.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'admin', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `comments`
+
+--
+ALTER TABLE `comments`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `comments_language_id_foreign` (`language_id`),
+  ADD KEY `comments_on_post_foreign` (`on_post`),
+  ADD KEY `comments_from_user_foreign` (`from_user`);
+
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`);
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
@@ -8794,9 +8857,21 @@ CREATE TABLE IF NOT EXISTS `users` (
   KEY `users_language_id_foreign` (`language_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
+
 --
--- Dumping data for table `users`
+-- Indexes for table `foodgroups`
 --
+ALTER TABLE `foodgroups`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `foodgroups_parent_group_id_foreign` (`parent_group_id`);
+
+
+--
+-- Indexes for table `foodgroup_names`
+--
+ALTER TABLE `foodgroup_names`
+  ADD PRIMARY KEY (`foodgroup_id`,`language_id`),
+  ADD KEY `foodgroup_names_language_id_foreign` (`language_id`);
 
 INSERT INTO `users` (`id`, `language_id`, `role_id`, `name`, `email`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (2, 2, 2, 'gui', 'gui_pereira10@live.com.pt', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
@@ -8804,15 +8879,126 @@ INSERT INTO `users` (`id`, `language_id`, `role_id`, `name`, `email`, `email_ver
 (4, 2, 2, 'jef', 'JeffCigrand@me.com', NULL, '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2', 'author', NULL, '2020-08-24 05:59:30', '2020-08-24 05:59:30'),
 (7, 2, 1, 'pot', 'pgradone@gmail.com', '2020-08-25 22:00:00', '$2y$10$25gAtBgg.58Y/n3hj2bqXeXnZPCgBYx6C.IsSwDszetcWvHVbenVm', 'author', '9zbvdgYxLUjaHbsQIBbHsAccEG1b011AsqbY06JIC1H0e6WXvmzTF3ZHD6IG', '2020-08-27 06:13:48', '2020-08-27 06:13:48');
 
--- --------------------------------------------------------
+--
+-- Indexes for table `ingredients`
+--
+ALTER TABLE `ingredients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `ingredients_foodgroup_id_foreign` (`foodgroup_id`);
 
 --
--- Structure for view `food_v`
+-- Indexes for table `ingredients_names`
 --
-DROP TABLE IF EXISTS `food_v`;
+ALTER TABLE `ingredients_names`
+  ADD PRIMARY KEY (`language_id`,`ingredient_id`),
+  ADD KEY `ingredients_names_ingredient_id_foreign` (`ingredient_id`);
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `food_v`  AS  select `i`.`id` AS `id`,`i`.`foodgroup_id` AS `foodgroup_id`,`i`.`origin` AS `origin`,`i`.`nutriscore` AS `nutriscore`,`i`.`picture` AS `picture`,`in_en`.`name` AS `food_name_EN`,`in_fr`.`name` AS `food_name_FR`,`in_de`.`name` AS `food_name_DE`,`in_pt`.`name` AS `food_name_PT`,`in_it`.`name` AS `food_name_IT`,`in_es`.`name` AS `food_name_ES`,`in_nl`.`name` AS `food_name_NL`,`fgn_p_en`.`name` AS `group_EN`,`fgn_p_fr`.`name` AS `group_FR`,`fgn_p_de`.`name` AS `group_DE`,`fgn_p_pt`.`name` AS `group_PT`,`fgn_p_it`.`name` AS `group_IT`,`fgn_p_es`.`name` AS `group_ES`,`fgn_p_nl`.`name` AS `group_NL`,`fgn_en`.`name` AS `sub_group_EN`,`fgn_fr`.`name` AS `sub_group_FR`,`fgn_de`.`name` AS `sub_group_DE`,`fgn_pt`.`name` AS `sub_group_PT`,`fgn_it`.`name` AS `sub_group_IT`,`fgn_es`.`name` AS `sub_group_ES`,`fgn_nl`.`name` AS `sub_group_NL` from ((((((((((((((((((((((`ingredients` `i` left join `ingredients_names` `in_en` on(`i`.`id` = `in_en`.`ingredient_id` and `in_en`.`language_id` = 2)) left join `ingredients_names` `in_fr` on(`i`.`id` = `in_fr`.`ingredient_id` and `in_fr`.`language_id` = 3)) left join `ingredients_names` `in_de` on(`i`.`id` = `in_de`.`ingredient_id` and `in_de`.`language_id` = 4)) left join `ingredients_names` `in_pt` on(`i`.`id` = `in_pt`.`ingredient_id` and `in_pt`.`language_id` = 5)) left join `ingredients_names` `in_it` on(`i`.`id` = `in_it`.`ingredient_id` and `in_it`.`language_id` = 6)) left join `ingredients_names` `in_es` on(`i`.`id` = `in_es`.`ingredient_id` and `in_es`.`language_id` = 7)) left join `ingredients_names` `in_nl` on(`i`.`id` = `in_nl`.`ingredient_id` and `in_nl`.`language_id` = 8)) left join `foodgroups` `fg` on(`i`.`foodgroup_id` = `fg`.`id`)) left join `foodgroup_names` `fgn_en` on(`fg`.`id` = `fgn_en`.`foodgroup_id` and `fgn_en`.`language_id` = 2)) left join `foodgroup_names` `fgn_fr` on(`fg`.`id` = `fgn_fr`.`foodgroup_id` and `fgn_fr`.`language_id` = 3)) left join `foodgroup_names` `fgn_de` on(`fg`.`id` = `fgn_de`.`foodgroup_id` and `fgn_de`.`language_id` = 4)) left join `foodgroup_names` `fgn_pt` on(`fg`.`id` = `fgn_pt`.`foodgroup_id` and `fgn_pt`.`language_id` = 5)) left join `foodgroup_names` `fgn_it` on(`fg`.`id` = `fgn_it`.`foodgroup_id` and `fgn_it`.`language_id` = 6)) left join `foodgroup_names` `fgn_es` on(`fg`.`id` = `fgn_es`.`foodgroup_id` and `fgn_es`.`language_id` = 7)) left join `foodgroup_names` `fgn_nl` on(`fg`.`id` = `fgn_nl`.`foodgroup_id` and `fgn_nl`.`language_id` = 8)) left join `foodgroup_names` `fgn_p_en` on(`fg`.`parent_group_id` = `fgn_p_en`.`foodgroup_id` and `fgn_p_en`.`language_id` = 2)) left join `foodgroup_names` `fgn_p_fr` on(`fg`.`parent_group_id` = `fgn_p_fr`.`foodgroup_id` and `fgn_p_fr`.`language_id` = 3)) left join `foodgroup_names` `fgn_p_de` on(`fg`.`parent_group_id` = `fgn_p_de`.`foodgroup_id` and `fgn_p_de`.`language_id` = 4)) left join `foodgroup_names` `fgn_p_pt` on(`fg`.`parent_group_id` = `fgn_p_pt`.`foodgroup_id` and `fgn_p_pt`.`language_id` = 5)) left join `foodgroup_names` `fgn_p_it` on(`fg`.`parent_group_id` = `fgn_p_it`.`foodgroup_id` and `fgn_p_it`.`language_id` = 6)) left join `foodgroup_names` `fgn_p_es` on(`fg`.`parent_group_id` = `fgn_p_es`.`foodgroup_id` and `fgn_p_es`.`language_id` = 7)) left join `foodgroup_names` `fgn_p_nl` on(`fg`.`parent_group_id` = `fgn_p_nl`.`foodgroup_id` and `fgn_p_nl`.`language_id` = 8)) order by `i`.`id` ;
+--
+-- Indexes for table `languages`
+--
+ALTER TABLE `languages`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `languages_iso_unique` (`iso`),
+  ADD UNIQUE KEY `languages_name_unique` (`name`);
 
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_resets`
+--
+ALTER TABLE `password_resets`
+  ADD KEY `password_resets_email_index` (`email`);
+
+--
+-- Indexes for table `posts`
+--
+ALTER TABLE `posts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `posts_title_unique` (`title`),
+  ADD UNIQUE KEY `posts_slug_unique` (`slug`),
+  ADD KEY `posts_parent_post_id_foreign` (`parent_post_id`),
+  ADD KEY `posts_author_id_foreign` (`author_id`),
+  ADD KEY `posts_language_id_foreign` (`language_id`),
+  ADD KEY `posts_post_type_id_foreign` (`post_type_id`);
+
+--
+-- Indexes for table `post_types`
+--
+ALTER TABLE `post_types`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `parent_type_id` (`parent_type_id`);
+
+--
+-- Indexes for table `recipes_contents`
+--
+ALTER TABLE `recipes_contents`
+  ADD PRIMARY KEY (`posts_id`,`ingredients_id`),
+  ADD KEY `recipes_contents_ingredients_id_foreign` (`ingredients_id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_name_unique` (`name`),
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD KEY `users_language_id_foreign` (`language_id`);
+
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `foodgroups`
+--
+ALTER TABLE `foodgroups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2027;
+--
+-- AUTO_INCREMENT for table `ingredients`
+--
+ALTER TABLE `ingredients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915;
+--
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `post_types`
+--
+ALTER TABLE `post_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -8821,9 +9007,11 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
+
+  ADD CONSTRAINT `comments_from_user_foreign` FOREIGN KEY (`from_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `comments_post_id_foreign` FOREIGN KEY (`on_post`) REFERENCES `posts` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `comments_user_id_foreign` FOREIGN KEY (`from_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `comments_on_post_foreign` FOREIGN KEY (`on_post`) REFERENCES `posts` (`id`) ON UPDATE CASCADE;
+
 
 --
 -- Constraints for table `foodgroups`
@@ -8855,7 +9043,7 @@ ALTER TABLE `ingredients_names`
 -- Constraints for table `posts`
 --
 ALTER TABLE `posts`
-  ADD CONSTRAINT `posts_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `posts_author_id_foreign` FOREIGN KEY (`author_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `posts_parent_post_id_foreign` FOREIGN KEY (`parent_post_id`) REFERENCES `posts` (`id`),
   ADD CONSTRAINT `posts_post_type_id_foreign` FOREIGN KEY (`post_type_id`) REFERENCES `post_types` (`id`) ON UPDATE CASCADE;
@@ -8864,7 +9052,7 @@ ALTER TABLE `posts`
 -- Constraints for table `post_types`
 --
 ALTER TABLE `post_types`
-  ADD CONSTRAINT `post_types_parent_type_id_foreign` FOREIGN KEY (`parent_type_id`) REFERENCES `post_types` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `post_types_ibfk_1` FOREIGN KEY (`parent_type_id`) REFERENCES `post_types` (`id`) ON UPDATE CASCADE;
 
 --
 -- Constraints for table `recipes_contents`
@@ -8878,7 +9066,7 @@ ALTER TABLE `recipes_contents`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `users_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE;
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
