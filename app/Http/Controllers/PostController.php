@@ -1,15 +1,16 @@
 <?php
 
-use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Post;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\PostFormRequest;
+use Illuminate\Support\Str;
+
 
 class PostController extends Controller
 {
-  public function index()
+    public function index()
   {
     //fetch 5 posts from database which are active and latest
     $posts = Post::where('active', 1)->orderBy('created_at', 'desc')->paginate(5);
@@ -53,9 +54,19 @@ class PostController extends Controller
     return redirect('edit/' . $post->slug)->withMessage($message);
   }
 
-  public function show($slug)
+  // public function show($slug)
+  // {
+  //   $post = Post::where('slug', $slug)->first();
+  //   if (!$post) {
+  //     return redirect('/')->withErrors('requested page not found');
+  //   }
+  //   $comments = $post->comments;
+  //   return view('posts.show')->withPost($post)->withComments($comments);
+  // }
+
+  public function show($id)
   {
-    $post = Post::where('slug', $slug)->first();
+    $post = Post::where('id', $id)->first();
     if (!$post) {
       return redirect('/')->withErrors('requested page not found');
     }
@@ -63,13 +74,23 @@ class PostController extends Controller
     return view('posts.show')->withPost($post)->withComments($comments);
   }
 
-  public function edit(Request $request, $slug)
+  // public function edit(Request $request, $slug)
+  // {
+  //   $post = Post::where('slug', $slug)->first();
+  //   if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
+  //     return view('posts.edit')->with('post', $post);
+  //   return redirect('/')->withErrors('you have not sufficient permissions');
+  // }
+
+  public function edit($id, Request $request)
   {
-    $post = Post::where('slug', $slug)->first();
-    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
+    // edit one post with eloquent
+    $post = Post::where('id', $id)->first();
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
       return view('posts.edit')->with('post', $post);
-    return redirect('/')->withErrors('you have not sufficient permissions');
+      return redirect('/')->withErrors('you have not sufficient permissions');
   }
+
 
   public function update(Request $request)
   {
