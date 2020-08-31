@@ -10,6 +10,7 @@ class Ingredient extends Model
         'language_id' => 2,
     ];
 
+
     public function names()
     {
         return $this->hasMany('App\IngredientsName');

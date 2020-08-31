@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 // add this to access the DB methods!
 
+
 use App\IngredientsName;
 use App\Foodgroup;
 use App\FoodgroupName;
@@ -24,7 +25,11 @@ class IngredientController extends Controller
   public function index()
   {
     $ingredients = Ingredient::paginate(10);
+
     // dd($ingredients);
+
+    // var_dump($ingredients);
+
     return view('ingredients', ['ingredients' => $ingredients]);
   }
 
@@ -75,7 +80,10 @@ class IngredientController extends Controller
     // EDIT one ingredient with eloquent
     // get that specific ingredient
     $ingredients =  Ingredient::where('id', $id)->get();
+    // $foodgroups = Foodgroup::get();
+    $foodgroups = DB::table('foodgroups')->get(); 
     $currentIngredient = $ingredients[0];
+
     // get its names in all languages 
     $currentIngredientNames = IngredientsName::where('ingredient_id', $id)->get();
     // get all food group names (hardcoded in english)
@@ -89,6 +97,9 @@ class IngredientController extends Controller
         'foodgroupnames' => $foodgroupnames,
       ]
     );
+
+    // $currentIngredient = Ingredient::where('id', $id)->get();
+    dd($foodgroups);
   }
 
   /**

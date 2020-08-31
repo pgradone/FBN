@@ -58,6 +58,7 @@
                     </li>
                     <li>
                         <a class="nav-link custom-nav-item" href="/recipes">Recipes</a>
+
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link custom-nav-item " href="/blog">Blog</a>
@@ -90,6 +91,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -98,7 +100,15 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                       
+                            <a href="{{ url('/new-post') }}">Add a new post</a>
+                 
+                            <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
+                
+                            <a href="{{ url('/user/'.Auth::id()) }}">My Profile</a>
+                         
                         </div>
+
                     </li>
                     @endguest
                 </ul>
@@ -118,6 +128,7 @@
         </div>
     </footer>
 
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -129,5 +140,13 @@
         integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
     </script>
 </body>
+
+<!-- FOOTER -->
+<footer class=" page-footer font-lg blue">
+    <div class="footer-copyright text-center align-center">© 2020 Powered by:
+        <a href="http://www.numericall.fr/">Numericall</a>
+    </div>
+</footer>
+
 
 </html>

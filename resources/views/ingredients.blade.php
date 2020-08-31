@@ -14,6 +14,7 @@
   <h1>This is the INGREDIENTS page</h1>
   @if (count($ingredients) === 1)
 
+
   @elseif (count($ingredients) > 1)
   <?php echo $ingredients->links(); ?>
   @foreach ($ingredients as $ingredient)

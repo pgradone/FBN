@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Auth;
 |
  */
 
-Route::get('/', 'PostController@index');
-Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
+// Route::get('/', 'PostController@index');
+//Route::get('/home', ['as' => 'home', 'uses' => 'PostController@index']);
 
 //authentication
 // Route::resource('auth', 'Auth\AuthController');
@@ -27,14 +27,12 @@ Route::group(['prefix' => 'auth'], function () {
 
 
 
-// Route::get('/', function () {
-//   return view('welcome');
-// });
+Route::get('/', function () {
+  return view('welcome');
+});
 
 
-Auth::routes(['verify' => true]);
-
-Auth::logout();
+//Auth::routes(['verify' => true]);
 
 Route::get('/about', function () {
   return view('about');
@@ -44,9 +42,8 @@ Route::get('/recipes', function () {
   return view('recipes');
 });
 
-// Route::get('/blog', function () {
-//   return view('blog');
-// });
+Route::get('/blog', 'PostController@index');
+
 Route::get('/faq', function () {
   return view('faq');
 });
@@ -55,7 +52,7 @@ Route::get('/ingredients', function () {
   return view('ingredients');
 });
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 
 // ***========*** INGREDIENTS CRUD ***==============0
@@ -69,6 +66,7 @@ Route::get('ingredients/edit/{id}', 'IngredientController@edit')->name('ingredie
 // actually update the edited record
 Route::put('ingredients/edit/{id}', 'IngredientController@update');
 // Delete one specific record :
+
 Route::delete('/ingredients/delete/{id}', 'IngredientController@destroy')->name('ingredients.delete');
 
 // ***========*** INGREDIENTS NAMES CRUD ***==============0
@@ -80,9 +78,9 @@ Route::get('ingredientNames/update/{ingredient_id}/{language_id}', 'IngredientsN
 
 
 // ***========*** General Posts CRUD ***==============0
-Route::resource('posts', 'PostController');
+//Route::resource('posts', 'PostController');
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'PostController@index')->name('home');
 
 // *********** route all CRUD THROUGH Middleware ??? ********************
 // check for logged in user *** FAB - **********************
@@ -114,3 +112,5 @@ Route::get('user/{id}', 'UserController@profile')->where('id', '[0-9]+');
 Route::get('user/{id}/posts', 'UserController@user_posts')->where('id', '[0-9]+');
 // display single post
 Route::get('/{slug}', ['as' => 'post', 'uses' => 'PostController@show'])->where('slug', '[A-Za-z0-9-_]+');
+
+Route::get('/test', 'PostController@index');
