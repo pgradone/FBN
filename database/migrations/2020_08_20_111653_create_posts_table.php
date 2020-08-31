@@ -21,7 +21,8 @@ class CreatePostsTable extends Migration
             $table->foreignId('post_type_id')->nullable()->references('id')->on('post_types')->onUpdate('cascade')->default(1);
             $table->string('title')->unique();
             $table->text('body');
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable()->unique();
+            $table->string('cover_image')->nullable();
             $table->boolean('active');
             $table->text('summary');
             $table->string('reference', 255);
