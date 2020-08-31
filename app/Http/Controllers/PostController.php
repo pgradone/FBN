@@ -103,7 +103,7 @@ class PostController extends Controller
       $duplicate = Post::where('slug', $slug)->first();
       if ($duplicate) {
         if ($duplicate->id != $post_id) {
-          return redirect('edit/' . $post->slug)->withErrors('Title already exists.')->withInput();
+          return redirect('edit/blog' . $post->id)->withErrors('Title already exists.')->withInput();
         } else {
           $post->slug = $slug;
         }
@@ -115,11 +115,11 @@ class PostController extends Controller
       if ($request->has('save')) {
         $post->active = 0;
         $message = 'Post saved successfully';
-        $landing = 'edit/' . $post->slug;
+        $landing = 'edit/blog/' . $post->id;
       } else {
         $post->active = 1;
         $message = 'Post updated successfully';
-        $landing = $post->slug;
+        $landing = 'blog/'.$post->id;
       }
       $post->save();
       return redirect($landing)->withMessage($message);
