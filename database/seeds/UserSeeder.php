@@ -45,6 +45,14 @@ class UserSeeder extends Seeder
         'created_at' => '2020-08-24 07:59:30',
         'updated_at' => '2020-08-24 07:59:30',
       ),
+      array(
+        'role' => 'author',
+        'name' => 'avl',
+        'email' => 'annevanlishout@gmail.com',
+        'password' => '$2y$10$pbfHz0umBNpxsNwMr.IWe.sNqcEJUZjAnYulczqgjiNXSwiIuOZ/2',
+        'created_at' => '2020-08-24 07:59:30',
+        'updated_at' => '2020-08-24 07:59:30',
+      ),
     );
 
     // fill the users from users array
