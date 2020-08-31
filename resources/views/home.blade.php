@@ -10,12 +10,12 @@ There is no post till now. Login and write a new post now!!!
   @foreach( $posts as $post )
   <div class="list-group">
     <div class="list-group-item">
-      <h3><a href="{{ url('/'.$post->slug) }}">{{ $post->title }}</a>
+      <h3><a href="{{ url('/blog/'.$post->id) }}">{{ $post->title }}</a>
         @if(!Auth::guest() && ($post->author_id == Auth::user()->id || Auth::user()->is_admin()))
         @if($post->active == '1')
-        <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Post</a></button>
+        <button class="btn" style="float: right"><a href="{{ url('edit/blog/'.$post->id)}}">Edit Post</a></button>
         @else
-        <button class="btn" style="float: right"><a href="{{ url('edit/'.$post->slug)}}">Edit Draft</a></button>
+        <button class="btn" style="float: right"><a href="{{ url('edit/blog'.$post->id)}}">Edit Draft</a></button>
         @endif
         @endif
       </h3>

@@ -17,8 +17,9 @@
             <ul>
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
-                <input type="text" value="{{$ingredientName->name}}" name="'lang_' . $ingredientName->language_id">
-                <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a>
+                <input id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
+                <!-- <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a> -->
+                <button id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
               </li>
               @endforeach
             </ul>
