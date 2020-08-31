@@ -29,7 +29,7 @@ class LogSuccessfulLogin
 
   public function handle(Login $event)
   {
-    dd($event->user);
+    // dd($event->user);
     // LoginHistory::create([
     //     'user_name' => $event->user->name,
     //     'last_login_at' => date('Y-m-d H:i:s'),
