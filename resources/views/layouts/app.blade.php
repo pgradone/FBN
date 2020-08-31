@@ -102,6 +102,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
@@ -110,7 +111,15 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
+                       
+                            <a href="{{ url('/new-post') }}">Add a new post</a>
+                 
+                            <a href="{{ url('/user/'.Auth::id().'/posts') }}">My Posts</a>
+                
+                            <a href="{{ url('/user/'.Auth::id()) }}">My Profile</a>
+                         
                         </div>
+
                     </li>
                     @endguest
                 </ul>

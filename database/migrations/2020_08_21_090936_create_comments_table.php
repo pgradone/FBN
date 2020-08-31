@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
       $table->foreignId('on_post')->nullable()->references('id')->on('posts')->onUpdate('cascade');
       $table->foreignId('from_user')->nullable()->references('id')->on('users')->onUpdate('cascade');
       $table->longText('body');
-      $table->string('rating', 2);
+      $table->string('rating', 2)->nullable();
       // $table->foreignId('approver_user_id')->nullable()->references('id')->on('users')->onUpdate('cascade');
       // $table->foreignId('parent_comment_id')->nullable()->references('id')->on('comments')->onUpdate('cascade');
       $table->timestamps();

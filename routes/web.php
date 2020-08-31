@@ -42,9 +42,7 @@ Route::get('/recipes', function () {
   return view('recipes');
 });
 
-Route::get('/blog', function () {
-  return view('blog');
-});
+Route::get('/blog', 'PostController@index');
 
 Route::get('/faq', function () {
   return view('faq');
@@ -81,7 +79,7 @@ Route::get('ingredientNames/update/{ingredient_id}/{language_id}', 'IngredientsN
 // ***========*** General Posts CRUD ***==============0
 //Route::resource('posts', 'PostController');
 
-Route::get('/home', 'PostController@index')->name('home');
+//Route::get('/home', 'PostController@index')->name('home');
 
 // *********** route all CRUD THROUGH Middleware ??? ********************
 // check for logged in user *** FAB - **********************
