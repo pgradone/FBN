@@ -133,7 +133,7 @@
     </script>
 </body>
 
-<footer id="sticky-footer" class="custom-navbar ">
+<footer id="sticky-footer" class="page-footer">
     <div class="container-fluid text-center">
         <h3 class="footer-copyright text-center ">
             © 2020 Powered by:<a href="http://www.numericall.fr/">Numericall</a>
