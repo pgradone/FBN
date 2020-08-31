@@ -1,13 +1,17 @@
 /* navbar */
 .page-footer, .custom-navbar{
     background-color: #e0ebe8;
+    padding: 2rem;
+    margin-bottom: 0px;
 }
 
 /* navbar-brand */
 .custom-navbar-brand{
+    
     font-size:3rem;
     color: #1e836c;
     font-style: bold;
+    
 }
 
 /* navbar-item */
