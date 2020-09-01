@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-
   //comments table in database
   protected $guarded = [];
   // user who has commented
