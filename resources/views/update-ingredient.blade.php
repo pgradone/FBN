@@ -9,17 +9,20 @@
       <div class="card-body">
         <h5 class="card-title">Edit :</h5>
         <div class="form-group">
-          <form method="POST" class="card-text">
-            @csrf
-            @method('PUT')
+          <form>
             <ul>
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
                 <input class="updateIng" data-ing_id="{{$ingredientName->ingredient_id}}" data-lang_id="{{$ingredientName->language_id}}" id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
                 <!-- <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a> -->
-                <button id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
+                <!-- <input type='submit' class="btn btn-primary" id="lang_{{$ingredientName->language_id}}" value='Update'> -->
+                <button class="updateIng" id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
               </li>
               @endforeach
+            </form>
+            <form method="POST" class="card-text">
+            @csrf
+            @method('PUT')
             </ul>
             <label for="picture">Picture :</label>
             <input class="form-control" type="text" name="picture" id="picture" value="{{$ingredient->picture}}">
@@ -62,17 +65,22 @@
   $('.updateIng').click(function (e)
   {
     e.preventDefault();
+    console.log('clicked');
     let identification = e.target.id;
     let value = $('#' . identification).val();
     let ing_Id = $('#' . identification).data('ing_id');
     let lang_Id = $('#' . identification).data('lang_id');
+    
     $.ajax(
       {
-        url:'updateIngName',
+        headers:
+        {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        url:'/updateIngName',
         type: 'post',
         data:
         {
-          token: CSRF_TOKEN,
           ingId: ing_Id,
           langId: lang_Id,
           name: value
@@ -80,7 +88,12 @@
         },
         success: function(data)
         {
-          console.log(ingId . ' ' . langId . ' '. name);
+          let logString = ing_Id + ' ' + lang_Id + ' '+ value;
+          console.log(logString);
+        },
+        error: function(data)
+        {
+          console.log('error');
         }
       })
   })
