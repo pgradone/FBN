@@ -17,7 +17,7 @@
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
                 <input id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
                 <!-- <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a> -->
-                <button id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
+                <button class="udateIng" id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
               </li>
               @endforeach
             </ul>
@@ -58,5 +58,13 @@
     </div>
   </section>
 </main>
-
+<script>
+  $('.updateIng').click(function (e)
+  {
+    e.preventDefault();
+    let identification = e.target.id;
+    let value = $('#' . identification).val();
+    
+  })
+</script>
 @endsection
