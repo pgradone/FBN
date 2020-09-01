@@ -12,10 +12,10 @@ class CreateRecipesTable extends Migration {
      */
     public function up() {
         Schema::create('recipes', function (Blueprint $table) {
-            $table->id();
-            $table->name();
-            $table->description();
-            $table->image();
+            $table->increments('id');
+            $table->string('name')->unique();
+            $table->string('description');
+            $table->string('image');
         });
     }
 
