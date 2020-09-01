@@ -15,9 +15,9 @@
             <ul>
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
-                <input ingId="{{$ingredientName->ingredient_id}}" langId="{{$ingredientName->language_id}}" id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
+                <input class="updateIng" data-ing_id="{{$ingredientName->ingredient_id}}" data-lang_id="{{$ingredientName->language_id}}" id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
                 <!-- <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a> -->
-                <button class="updateIng" id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
+                <button id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
               </li>
               @endforeach
             </ul>
@@ -64,7 +64,25 @@
     e.preventDefault();
     let identification = e.target.id;
     let value = $('#' . identification).val();
-    
+    let ing_Id = $('#' . identification).data('ing_id');
+    let lang_Id = $('#' . identification).data('lang_id');
+    $.ajax(
+      {
+        url:'updateIngName',
+        type: 'post',
+        data:
+        {
+          token: CSRF_TOKEN,
+          ingId: ing_Id,
+          langId: lang_Id,
+          name: value
+
+        },
+        success: function(data)
+        {
+          console.log(ingId . ' ' . langId . ' '. name);
+        }
+      })
   })
 </script>
 @endsection
