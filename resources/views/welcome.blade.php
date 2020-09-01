@@ -24,6 +24,39 @@
 <div class="bg-light">
     <div class="recipesContainer">
 
+<<<<<<< HEAD
+=======
+        <div class="row center">
+            <!-- 1- grab the posts(recipes) $recipes  -->
+
+            <!-- 2 - foreach -->
+            <!-- foreach($recipes as $recipe) -->
+            <div class="col-md-4 col-sm-12">
+                <!-- Recipe Card 1 -->
+                <div class="card mb-4 box-shadow" style="width: auto;">
+
+                    <img class="card-img-top"
+                        src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                        alt="Card image cap">
+                    <div class="card-body">
+
+                        <!-- <p class="card-text">$recipe->title</p> -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <!-- buttons on the bottom on the right  -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                <!-- View only for admin itself -->
+                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                            </div>
+                            <!-- time to make the recipe -->
+
+                            <small class="text-muted">9 mins</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- endforeach -->
+>>>>>>> gui
 
     </div>
 </div>
