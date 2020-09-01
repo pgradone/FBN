@@ -1,4 +1,9 @@
 @extends('layouts.app')
+
+@section('css')
+<link href="{{ asset('css/general.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 
 
@@ -12,6 +17,7 @@
 </head>
 
 <body>
+    <section class="container">
     <h1 class="text-center">Fact Based Nutrition :</h1>
     <p class="text-center">
     <h2>About us:</h2>
@@ -23,6 +29,7 @@
     <br>
     - Inform the community at large by relating reliable scientific information with healthy eating.
     </p>
+    </section>
 </body>
 
 </html>
