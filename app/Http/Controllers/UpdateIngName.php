@@ -13,6 +13,6 @@ class UpdateIngName extends Controller
             ['ingredient_id', '=', $request -> ingId],
             ['language_id', '=', $request -> langId],
         ]) -> update(['name' => $request -> name]);
-        echo $request -> langId . "hello" . $request -> ingId . $request -> name;
+        //echo $request -> langId . "hello" . $request -> ingId . $request -> name;
     }
 }

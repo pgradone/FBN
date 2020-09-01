@@ -14,8 +14,6 @@
               @foreach($ingredientNames as $ingredientName)
               <li><a href="https://wikipedia.org/wiki/{{$ingredientName->name}}"> {{$ingredientName->language->iso}} : </a>
                 <input class="updateIng lang_{{$ingredientName->language_id}}" data-ing_id="{{$ingredientName->ingredient_id}}" data-lang_id="{{$ingredientName->language_id}}" id="lang_{{$ingredientName->language_id}}" type="text" value="{{$ingredientName->name}}" name="toto">
-                <script>let lang_Id = $('.lang_2').data('lang_id');
-    console.log(lang_Id);</script>
                 <!-- <a href="/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}" class="btn btn-primary">Update</a> -->
                 <!-- <input type='submit' class="btn btn-primary" id="lang_{{$ingredientName->language_id}}" value='Update'> -->
                 <button class="updateIng" id="lang_{{$ingredientName->language_id}}" value='/ingredientNames/update/{{$ingredientName->ingredient_id}}/{{$ingredientName->language_id}}'>Update</button>
@@ -72,7 +70,7 @@
     let value = $('.' + identification).val();
     let ing_Id = $('.' + identification).data('ing_id');
     let lang_Id = $('.' + identification).data('lang_id');
-    console.log(value);
+    //console.log(value);
     
     $.ajax(
       {
