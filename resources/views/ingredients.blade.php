@@ -30,11 +30,10 @@
         </td>
 
     </tr>
-</table>
-@endforeach
-@if (count($ingredients) === 1)
-@elseif (count($ingredients) > 1)
-@else
-<p>No records to display !</p>
-@endif
-@endsection
+    @endforeach
+    @if (count($ingredients) === 1)
+    @elseif (count($ingredients) > 1)
+    @else
+    <p>No records to display !</p>
+    @endif
+    @endsection

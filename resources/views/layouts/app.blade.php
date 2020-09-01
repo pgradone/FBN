@@ -114,9 +114,9 @@
         </nav>
 
     </div>
-    <div class="">
+    <main>
         @yield('content')
-    </div>
+    </main>
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
