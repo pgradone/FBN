@@ -28,5 +28,5 @@ class Post extends Model
   {
     return $this->belongsTo($this->parent_post_id);
   }
-    return $this->hasOne('App\User', 'author_id');
+  // return $this->hasOne('App\User', 'author_id');
 }

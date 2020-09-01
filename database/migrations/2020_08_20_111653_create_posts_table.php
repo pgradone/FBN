@@ -25,8 +25,8 @@ class CreatePostsTable extends Migration
       $table->string('cover_image')->nullable();
       $table->boolean('active')->nullable();
       $table->text('summary')->nullable();
-      $table->string('reference', 255);
-      $table->string('status', 20);
+      $table->string('reference', 255)->nullable();
+      $table->string('status', 20)->nullable();
       // $table->unsignedSmallInteger('post_type_id');
       $table->timestamps();
       $table->engine = 'InnoDB';
