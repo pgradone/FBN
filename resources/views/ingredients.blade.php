@@ -16,7 +16,6 @@
 
 
     @elseif (count($ingredients) > 1)
-    <?php echo $ingredients->links(); ?>
     @foreach ($ingredients as $ingredient)
     ID : {{ $ingredient->id }}
     Name : {{ $ingredient->names[0]->name }}
@@ -29,6 +28,8 @@
 
     @endforeach
     <?php echo $ingredients->links(); ?>
+
+
     @else
     <p>No records to display !</p>
 
