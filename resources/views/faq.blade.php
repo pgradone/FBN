@@ -26,7 +26,7 @@
                                         data-toggle="collapse" data-target="#collapseOne" aria-expanded="true"
                                         aria-controls="collapseOne">
                                         <i class="fa fa-amazon main"></i><i class="fa fa-angle-double-right mr-3"></i>
-                                        What is a plant based diet?
+                                        What is a Whole Food Plant Based diet?
                                     </button>
                                 </h5>
                             </div>
@@ -34,8 +34,8 @@
                             <div id="collapseOne" class="collapse show fade" aria-labelledby="headingOne"
                                 data-parent="#accordionExample">
                                 <div class="card-body">
-                                    The vegan diet is a very strict form of vegetarian diet in which only plant-based
-                                    foods are consumed.
+                                    A WFPB vegan diet is a low fat of vegan, composed only of plants, but without processed foods.
+                                    It shall not include any oil or margarines, even of plant origin
                                 </div>
                             </div>
                         </div>
