@@ -1,19 +1,48 @@
 /* navbar */
-.page-footer, .custom-navbar{
+.page-footer{
     background-color: #e0ebe8;
+    padding: 3rem;
+    
 }
+.custom-navbar {
+    background-color: #e0ebe8;
+    margin-bottom: 0px;
+}
+
 
 /* navbar-brand */
 .custom-navbar-brand{
-    font-size:3rem;
+    font-size:2rem;
     color: #1e836c;
     font-style: bold;
+    
+}
+
+.custom-navbar-profile-user{
+    font-size:1.5rem;
+    color: #1e836c;
+    font-style: bold;
+}
+
+.custom-nav-item-profile {
+    height: auto;
+    width: 5rem;
+    font-size: 1.25rem;
+    border: solid 1px #1e836c;
+    border-radius: 10%;
 }
 
 /* navbar-item */
 .custom-nav-item {
     font-size: 1.25rem;
     color:#45b29a
+}
+
+/* navbar-item */
+.custom-nav-drop-item {
+    font-size: 1rem;
+    color:black;
+    
 }
 
  /* hover for the navbrand */
@@ -41,11 +70,12 @@ ul.nav a:hover {
     /* padding: 5% 25%; */
     background-image: url("/images/HEADER-IMAGE-BIG1.jpg");
     background-color: #cccccc;
-    height: 850px;
+    height: 55rem;
     /* background-position: top; */
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+    margin-bottom: 2rem;
 }
 
 .recipesContainer {
@@ -56,6 +86,9 @@ ul.nav a:hover {
 
 }
 
+.custom-footer {
+    padding: 2rem;
+}
 
 
 .container {
@@ -83,4 +116,48 @@ ul.nav a:hover {
 .test {
     margin-left: 25%;
 
+}
+
+
+@import url('https://fonts.googleapis.com/css?family=Tajawal');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+section{
+	padding: 60px 0;
+}
+
+#accordion-style-1 h1,
+#accordion-style-1 a{
+    color:#007b5e;
+}
+#accordion-style-1 .btn-link {
+    font-weight: 400;
+    color: #007b5e;
+    background-color: transparent;
+    text-decoration: none !important;
+    font-size: 16px;
+    font-weight: bold;
+	padding-left: 25px;
+}
+
+#accordion-style-1 .card-body {
+    border-top: 2px solid #007b5e;
+}
+
+#accordion-style-1 .card-header .btn.collapsed .fa.main{
+	display:none;
+}
+
+#accordion-style-1 .card-header .btn .fa.main{
+	background: #007b5e;
+    padding: 13px 11px;
+    color: #ffffff;
+    width: 35px;
+    height: 41px;
+    position: absolute;
+    left: -1px;
+    top: 10px;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+	display:block;
 }
