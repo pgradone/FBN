@@ -28,7 +28,7 @@
             <!-- 1- grab the posts(recipes) $recipes  -->
 
             <!-- 2 - foreach -->
-            @foreach($recipes as $recipe)
+            <!-- foreach($recipes as $recipe) -->
             <div class="col-md-4 col-sm-12">
                 <!-- Recipe Card 1 -->
                 <div class="card mb-4 box-shadow" style="width: auto;">
@@ -38,7 +38,7 @@
                         alt="Card image cap">
                     <div class="card-body">
 
-                        <p class="card-text">{{$recipe->title}}</p>
+                        <!-- <p class="card-text">$recipe->title</p> -->
                         <div class="d-flex justify-content-between align-items-center">
                             <!-- buttons on the bottom on the right  -->
                             <div class="btn-group">
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            @endforeach
+            <!-- endforeach -->
 
         </div>
     </div>
