@@ -5,7 +5,7 @@
 <table class="table table-striped custab">
     <thead>
         <tr>
-            <th>ID</th>
+            <th>#ID</th>
             <th>Name</th>
             <th>Origin</th>
             <th>Nutriscore</th>
