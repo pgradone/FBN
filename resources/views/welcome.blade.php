@@ -117,8 +117,6 @@
                 </div>
             </div>
             <!-- endforeach -->
-
-
                                 </div>
                                 <div class=" col-md-6 col-sm-12">
                                     <div class="card  mb-4" style="width: auto;">
