@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link href="{{ asset('css/general.css') }}" rel="stylesheet">
+<link href="{{ asset('css/gui.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -18,17 +18,17 @@
 
 <body>
     <section class="container">
-    <h1 class="text-center">Fact Based Nutrition :</h1>
-    <p class="text-center">
-    <h2>About us:</h2>
-    - Guide, inform and motivate health-conscious individuals to improve their health by switching to a Whole Foods Plant Based (WFPB) diet.
-    <br>
-    - Gather and rate food recipes using compliant ingredients, by allowing registered users to contribute to their creation and rating.
-    <br>
-    - Post, document and reference reliable information by challenging established beliefs and debunking false myths about nutrition.
-    <br>
-    - Inform the community at large by relating reliable scientific information with healthy eating.
-    </p>
+        <h1 class="text-center">Fact Based Nutrition :</h1>
+        <p class="text-center">
+            <h2>About us:</h2>
+            - Guide, inform and motivate health-conscious individuals to improve their health by switching to a Whole Foods Plant Based (WFPB) diet.
+            <br>
+            - Gather and rate food recipes using compliant ingredients, by allowing registered users to contribute to their creation and rating.
+            <br>
+            - Post, document and reference reliable information by challenging established beliefs and debunking false myths about nutrition.
+            <br>
+            - Inform the community at large by relating reliable scientific information with healthy eating.
+        </p>
     </section>
 </body>
 

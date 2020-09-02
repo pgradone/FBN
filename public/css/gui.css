@@ -161,3 +161,28 @@ section{
     border-bottom-right-radius: 7px;
 	display:block;
 }
+
+.container {
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  h2, h1 {
+    margin-bottom: 20 px;
+  }
+
+  /* // change line color of ingredient */
+  /* // according to score */
+
+  .score_a, .score_b {
+      background-color: green;
+  }
+
+  .score_b, .score_c {
+      background-color: orange;
+  }
+
+  .score_d, .score_e {
+    background-color: red;
+}
