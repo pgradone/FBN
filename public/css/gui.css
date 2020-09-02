@@ -175,14 +175,14 @@ section{
   /* // change line color of ingredient */
   /* // according to score */
 
-  .score_a, .score_b {
+  .score_A, .score_B {
       background-color: green;
   }
 
-  .score_b, .score_c {
+  .score_B, .score_C {
       background-color: orange;
   }
 
-  .score_d, .score_e {
+  .score_D, .score_E {
     background-color: red;
 }
