@@ -13,14 +13,14 @@ use App\Http\Controllers\User;
 
 class PostController extends Controller
 {
-    public function index()
+  public function index()
   {
     //fetch 5 posts from database which are active and latest
     $posts = Post::where('active', 1)->orderBy('created_at', 'desc')->paginate(5);
     //page heading
     $title = 'Latest Posts';
     //return home.blade.php template from resources/views folder
-    return view('home')->with('posts',$posts)->with('title',$title);
+    return view('home')->with('posts', $posts)->with('title', $title);
   }
 
   /**
@@ -71,34 +71,6 @@ class PostController extends Controller
   }
 
 
-  public function show($id)
-  {
-    $post = Post::where('id', $id)->first();
-    if (!$post) {
-      return redirect('/')->withErrors('requested page not found');
-    }
-    $comments = $post->comments;
-    return view('posts.show')->withPost($post)->withComments($comments);
-  }
-
-  // public function edit(Request $request, $slug)
-  // {
-  //   $post = Post::where('slug', $slug)->first();
-  //   if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
-  //     return view('posts.edit')->with('post', $post);
-  //   return redirect('/')->withErrors('you have not sufficient permissions');
-  // }
-
-  public function edit($id, Request $request)
-  {
-    // edit one post with eloquent
-    $post = Post::where('id', $id)->first();
-    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
-      return view('posts.edit')->with('post', $post);
-      return redirect('/')->withErrors('you have not sufficient permissions');
-  }
-
-
   public function update(Request $request)
   {
     //
@@ -126,7 +98,7 @@ class PostController extends Controller
       } else {
         $post->active = 1;
         $message = 'Post updated successfully';
-        $landing = 'blog/'.$post->id;
+        $landing = 'blog/' . $post->id;
       }
       $post->save();
       return redirect($landing)->withMessage($message);
@@ -147,7 +119,7 @@ class PostController extends Controller
       $data['errors'] = 'Invalid Operation. You have not sufficient permissions';
     }
     return redirect('/')->with($data);
-    
+
     $post->author_id = $request->user()->id;
     if ($request->has('save')) {
       $post->active = 0;
@@ -158,7 +130,6 @@ class PostController extends Controller
     }
     $post->save();
     return redirect('edit/' . $post->slug)->withMessage($message);
-
   }
 
   /**
@@ -192,32 +163,8 @@ class PostController extends Controller
 
     // edit one post with eloquent
     $post = Post::where('id', $id)->get();
-    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit')->with('post', $post);
-      return redirect('/')->withErrors('you have not sufficient permissions');
-  }
-
-  /**
-   * Update the specified resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function update(Request $request, $id)
-  {
-    //
-  }
-
-  /**
-   * Remove the specified resource from storage.
-   *
-   * @param  int  $id
-   * @return \Illuminate\Http\Response
-   */
-  public function destroy($id)
-  {
-    //
-
+    return redirect('/')->withErrors('you have not sufficient permissions');
   }
 }
