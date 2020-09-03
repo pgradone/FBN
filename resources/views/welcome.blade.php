@@ -23,9 +23,70 @@
 <!-- Recipes Section -->
 <div class="bg-light">
     <div class="recipesContainer">
+    <div class="container-fluid jumbotron">
+    <div class="row">
+        <div class="col-sm-12">
+            <div id="inam" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="container">
+                            <div class="row ">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card mb-4">
+                                        <img src="
+                                        https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                            class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Why you should use skin masks ?</h4>
+                                            <p class="card-text">Skin masks help us to make are skin fresh and
+                                                also
+                                                they
+                                                protect our skin from the harm rays of sun</p>
+                                            <button type="button" class="btn btn-warning">Read More</button>
 
-<<<<<<< HEAD
-=======
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4">
+                                        <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                            class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Why you should use skin masks ?</h4>
+                                            <p class="card-text">Skin masks help us to make are skin fresh and
+                                                also
+                                                they
+                                                protect our skin from the harm rays of sun</p>
+                                            <button type="button" class="btn btn-warning">Read More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="carousel-item">
+                        <div class="container">
+                            <div class="row ">
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4">
+                                        <img src="
+                                        https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                            class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Why you should use skin masks ?</h4>
+                                            <p class="card-text">Skin masks help us to make are skin fresh and
+                                                also
+                                                they
+                                                protect our skin from the harm rays of sun</p>
+                                            <button type="button" class="btn btn-warning">Read More</button>
+
+                                        </div>
+
+
+                                    </div>
         <div class="row center">
             <!-- 1- grab the posts(recipes) $recipes  -->
 
@@ -56,8 +117,35 @@
                 </div>
             </div>
             <!-- endforeach -->
->>>>>>> gui
+                                </div>
+                                <div class=" col-md-6 col-sm-12">
+                                    <div class="card  mb-4" style="width: auto;">
+                                        <img src="https://images.unsplash.com/photo-1524859330668-c357331384f5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                            class="card-img-top">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Why you should use skin masks ?</h4>
+                                            <p class="card-text">Skin masks help us to make are skin fresh and
+                                                also
+                                                they
+                                                protect our skin from the harm rays of sun</p>
+                                            <button type="button" class="btn btn-warning">Read More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <!-- Carroussel slide buttons -->
+                <a href="#inam" class="carousel-control-prev" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a href="#inam" class="carousel-control-next" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 </div>
