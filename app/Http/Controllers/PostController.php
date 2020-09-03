@@ -73,7 +73,6 @@ class PostController extends Controller
 
   public function update(Request $request)
   {
-    //
     $post_id = $request->input('post_id');
     $post = Post::find($post_id);
     if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
