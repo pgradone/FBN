@@ -34,6 +34,7 @@ CREATE TABLE IF NOT EXISTS `comments` (
   `language_id` bigint(20) UNSIGNED DEFAULT NULL,
   `on_post` bigint(20) UNSIGNED DEFAULT NULL,
   `from_user` bigint(20) UNSIGNED DEFAULT NULL,
+
   `body` longtext NOT NULL,
   `rating` varchar(2) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -1211,7 +1212,6 @@ INSERT INTO `foodgroup_names` (`foodgroup_id`, `language_id`, `name`, `created_a
 (2026, 8, 'andere groenten', NULL, NULL);
 
 -- --------------------------------------------------------
-
 --
 -- Stand-in structure for view `food_v`
 -- (See below for the actual view)
@@ -1249,6 +1249,7 @@ CREATE TABLE IF NOT EXISTS `food_v` (
 -- --------------------------------------------------------
 
 --
+=======
 -- Table structure for table `ingredients`
 --
 
@@ -1270,6 +1271,7 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
 --
 
 INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
+
 (1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, NULL),
 (2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, NULL),
 (3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, NULL),
@@ -1750,7 +1752,8 @@ INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_i
 (477, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Seatrout.jpg', 102, NULL, NULL),
 (478, 'P', 'A', 'https://spoonacular.com/cdn/ingredients_500x500/Sesbania flower.jpg', 2026, NULL, NULL),
 (479, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/American shad.jpg', 102, NULL, NULL),
-(480, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Shark.jpg', 102, NULL, NULL),
+(480, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Shark.jpg', 102, NULL, NULL);
+INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
 (481, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheefish.jpg', 102, NULL, NULL),
 (482, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheep.jpg', 701, NULL, NULL),
 (483, 'A', '', 'https://spoonacular.com/cdn/ingredients_500x500/Sheepshead.jpg', 102, NULL, NULL),
@@ -8655,6 +8658,10 @@ CREATE TABLE IF NOT EXISTS `migrations` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
 --
 -- Dumping data for table `migrations`
 --
@@ -8664,6 +8671,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2019_08_19_000000_create_failed_jobs_table', 1),
 (3, '2020_08_20_082241_create_languages_table', 1),
 (4, '2020_08_20_102020_create_post_types_table', 1),
+
 (5, '2020_08_20_102030_create_users_table', 1),
 (6, '2020_08_20_105100_create_foodgroups_table', 1),
 (7, '2020_08_20_105200_create_foodgroup_names_table', 1),
@@ -8770,6 +8778,7 @@ CREATE TABLE IF NOT EXISTS `recipes_contents` (
 
 --
 -- Table structure for table `users`
+
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -8808,6 +8817,57 @@ INSERT INTO `users` (`id`, `language_id`, `name`, `email`, `email_verified_at`, 
 DROP TABLE IF EXISTS `food_v`;
 
 
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+
+--
+-- AUTO_INCREMENT for table `comments`
+--
+ALTER TABLE `comments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `foodgroups`
+--
+ALTER TABLE `foodgroups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2027;
+--
+-- AUTO_INCREMENT for table `ingredients`
+--
+ALTER TABLE `ingredients`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=915;
+--
+-- AUTO_INCREMENT for table `languages`
+--
+ALTER TABLE `languages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `posts`
+--
+ALTER TABLE `posts`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `post_types`
+--
+ALTER TABLE `post_types`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Constraints for dumped tables
 --
@@ -8816,9 +8876,11 @@ DROP TABLE IF EXISTS `food_v`;
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
+
   ADD CONSTRAINT `comments_from_user_foreign` FOREIGN KEY (`from_user`) REFERENCES `users` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `comments_on_post_foreign` FOREIGN KEY (`on_post`) REFERENCES `posts` (`id`) ON UPDATE CASCADE;
+
 
 --
 -- Constraints for table `foodgroups`
@@ -8874,6 +8936,7 @@ ALTER TABLE `recipes_contents`
 ALTER TABLE `users`
   ADD CONSTRAINT `users_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON UPDATE CASCADE;
 COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

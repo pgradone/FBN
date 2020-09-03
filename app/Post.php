@@ -14,6 +14,7 @@ class Post extends Model
   // returns all comments on that post
   public function comments()
   {
+
     return $this->hasMany('App\Comment', 'on_post');
   }
 
@@ -27,4 +28,5 @@ class Post extends Model
   {
     return $this->belongsTo($this->parent_post_id);
   }
+    return $this->hasOne('App\User', 'author_id');
 }
