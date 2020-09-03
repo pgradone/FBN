@@ -7,7 +7,6 @@ use App\Post;
 use App\Http\Requests\PostFormRequest;
 use Illuminate\Support\Str;
 
-use App\Http\Controllers\User;
 
 class PostController extends Controller
 {
@@ -21,14 +20,9 @@ class PostController extends Controller
     return view('home')->with('posts', $posts)->with('title', $title);
   }
 
-  /**
-   * Show the form for creating a new resource.
-   *
-   * @return \Illuminate\Http\Response
-   */
   public function create(Request $request)
   {
-
+    //
     if ($request->user()->can_post()) {
       return view('posts.create');
     } else {
@@ -36,18 +30,10 @@ class PostController extends Controller
     }
   }
 
-
-  /**
-   * Store a newly created resource in storage.
-   *
-   * @param  \Illuminate\Http\Request  $request
-   * @return \Illuminate\Http\Response
-   */
   public function store(PostFormRequest $request)
   {
     $post = new Post();
     $post->title = $request->get('title');
-
     $post->body = $request->get('body');
     $post->slug = Str::slug($post->title);
 
@@ -65,13 +51,49 @@ class PostController extends Controller
       $message = 'Post published successfully';
     }
     $post->save();
-    return redirect('edit/blog/' . $post->id)->withMessage($message);
+    return redirect('edit/' . $post->slug)->withMessage($message);
+  }
+
+  // public function show($slug)
+  // {
+  //   $post = Post::where('slug', $slug)->first();
+  //   if (!$post) {
+  //     return redirect('/')->withErrors('requested page not found');
+  //   }
+  //   $comments = $post->comments;
+  //   return view('posts.show')->withPost($post)->withComments($comments);
+  // }
+
+  public function show($id)
+  {
+    $post = Post::where('id', $id)->first();
+    if (!$post) {
+      return redirect('/')->withErrors('requested page not found');
+    }
+    $comments = $post->comments;
+    return view('posts.show')->withPost($post)->withComments($comments);
+  }
+
+  // public function edit(Request $request, $slug)
+  // {
+  //   $post = Post::where('slug', $slug)->first();
+  //   if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
+  //     return view('posts.edit')->with('post', $post);
+  //   return redirect('/')->withErrors('you have not sufficient permissions');
+  // }
+
+  public function edit($id, Request $request)
+  {
+    // edit one post with eloquent
+    $post = Post::where('id', $id)->first();
+    if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin())) 
+      return view('posts.edit')->with('post', $post);
+      return redirect('/')->withErrors('you have not sufficient permissions');
   }
 
 
   public function update(Request $request)
   {
-    //
     $post_id = $request->input('post_id');
     $post = Post::find($post_id);
     if ($post && ($post->author_id == $request->user()->id || $request->user()->is_admin())) {
@@ -117,6 +139,7 @@ class PostController extends Controller
       $data['errors'] = 'Invalid Operation. You have not sufficient permissions';
     }
     return redirect('/')->with($data);
+<<<<<<< HEAD
 
     $post->author_id = $request->user()->id;
     if ($request->has('save')) {
@@ -162,5 +185,7 @@ class PostController extends Controller
     if ($post && ($request->user()->id == $post->author_id || $request->user()->is_admin()))
       return view('posts.edit')->with('post', $post);
     return redirect('/')->withErrors('you have not sufficient permissions');
+=======
+>>>>>>> 1ea95883821566787e8d2aa2312b410123a9e918
   }
 }

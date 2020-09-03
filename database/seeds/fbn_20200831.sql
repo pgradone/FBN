@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 01, 2020 at 02:18 PM
+-- Generation Time: Sep 01, 2020 at 02:00 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -1271,7 +1271,7 @@ CREATE TABLE IF NOT EXISTS `ingredients` (
 
 INSERT INTO `ingredients` (`id`, `origin`, `nutriscore`, `picture`, `foodgroup_id`, `created_at`, `updated_at`) VALUES
 (1, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Gewone_engwortel_R0012880_Plant.JPG/220px-Gewone_engwortel_R0012880_Plant.JPG', 117, NULL, NULL),
-(2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, NULL),
+(2, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Savoy_Cabbage.jpg/220px-Savoy_Cabbage.jpg', 126, NULL, '2020-09-01 11:27:15'),
 (3, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Tilia-tomentosa.JPG/220px-Tilia-tomentosa.JPG', 117, NULL, NULL),
 (4, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Kiwi1.1.jpg/220px-Kiwi1.1.jpg', 528, NULL, NULL),
 (5, 'P', 'A', 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Mixed_onions.jpg/220px-Mixed_onions.jpg', 526, NULL, NULL),
@@ -8650,7 +8650,7 @@ INSERT INTO `languages` (`id`, `iso`, `name`) VALUES
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE IF NOT EXISTS `migrations` (
   `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `migration` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -8681,10 +8681,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE IF NOT EXISTS `password_resets` (
-  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  KEY `password_resets_email_index` (`email`)
+  KEY `password_resets_email_index` (`email`(250))
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -8700,10 +8700,10 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `author_id` bigint(20) UNSIGNED NOT NULL,
   `language_id` bigint(20) UNSIGNED DEFAULT NULL,
   `post_type_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `title` varchar(191) NOT NULL,
+  `title` varchar(255) NOT NULL,
   `body` text NOT NULL,
-  `slug` varchar(191) DEFAULT NULL,
-  `cover_image` varchar(191) DEFAULT NULL,
+  `slug` varchar(255) DEFAULT NULL,
+  `cover_image` varchar(255) DEFAULT NULL,
   `active` tinyint(1) DEFAULT NULL,
   `summary` text DEFAULT NULL,
   `reference` varchar(255) NOT NULL,
@@ -8776,10 +8776,10 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `language_id` bigint(20) UNSIGNED DEFAULT 2,
-  `name` varchar(191) NOT NULL,
-  `email` varchar(191) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(191) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `role` enum('admin','author','subscriber') NOT NULL DEFAULT 'author',
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -8807,6 +8807,7 @@ INSERT INTO `users` (`id`, `language_id`, `name`, `email`, `email_verified_at`, 
 --
 DROP TABLE IF EXISTS `food_v`;
 
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `food_v`  AS  select `i`.`id` AS `id`,`i`.`foodgroup_id` AS `foodgroup_id`,`i`.`origin` AS `origin`,`i`.`nutriscore` AS `nutriscore`,`i`.`picture` AS `picture`,`in_en`.`name` AS `food_name_EN`,`in_fr`.`name` AS `food_name_FR`,`in_de`.`name` AS `food_name_DE`,`in_pt`.`name` AS `food_name_PT`,`in_it`.`name` AS `food_name_IT`,`in_es`.`name` AS `food_name_ES`,`in_nl`.`name` AS `food_name_NL`,`fgn_p_en`.`name` AS `group_EN`,`fgn_p_fr`.`name` AS `group_FR`,`fgn_p_de`.`name` AS `group_DE`,`fgn_p_pt`.`name` AS `group_PT`,`fgn_p_it`.`name` AS `group_IT`,`fgn_p_es`.`name` AS `group_ES`,`fgn_p_nl`.`name` AS `group_NL`,`fgn_en`.`name` AS `sub_group_EN`,`fgn_fr`.`name` AS `sub_group_FR`,`fgn_de`.`name` AS `sub_group_DE`,`fgn_pt`.`name` AS `sub_group_PT`,`fgn_it`.`name` AS `sub_group_IT`,`fgn_es`.`name` AS `sub_group_ES`,`fgn_nl`.`name` AS `sub_group_NL` from ((((((((((((((((((((((`ingredients` `i` left join `ingredients_names` `in_en` on(`i`.`id` = `in_en`.`ingredient_id` and `in_en`.`language_id` = 2)) left join `ingredients_names` `in_fr` on(`i`.`id` = `in_fr`.`ingredient_id` and `in_fr`.`language_id` = 3)) left join `ingredients_names` `in_de` on(`i`.`id` = `in_de`.`ingredient_id` and `in_de`.`language_id` = 4)) left join `ingredients_names` `in_pt` on(`i`.`id` = `in_pt`.`ingredient_id` and `in_pt`.`language_id` = 5)) left join `ingredients_names` `in_it` on(`i`.`id` = `in_it`.`ingredient_id` and `in_it`.`language_id` = 6)) left join `ingredients_names` `in_es` on(`i`.`id` = `in_es`.`ingredient_id` and `in_es`.`language_id` = 7)) left join `ingredients_names` `in_nl` on(`i`.`id` = `in_nl`.`ingredient_id` and `in_nl`.`language_id` = 8)) left join `foodgroups` `fg` on(`i`.`foodgroup_id` = `fg`.`id`)) left join `foodgroup_names` `fgn_en` on(`fg`.`id` = `fgn_en`.`foodgroup_id` and `fgn_en`.`language_id` = 2)) left join `foodgroup_names` `fgn_fr` on(`fg`.`id` = `fgn_fr`.`foodgroup_id` and `fgn_fr`.`language_id` = 3)) left join `foodgroup_names` `fgn_de` on(`fg`.`id` = `fgn_de`.`foodgroup_id` and `fgn_de`.`language_id` = 4)) left join `foodgroup_names` `fgn_pt` on(`fg`.`id` = `fgn_pt`.`foodgroup_id` and `fgn_pt`.`language_id` = 5)) left join `foodgroup_names` `fgn_it` on(`fg`.`id` = `fgn_it`.`foodgroup_id` and `fgn_it`.`language_id` = 6)) left join `foodgroup_names` `fgn_es` on(`fg`.`id` = `fgn_es`.`foodgroup_id` and `fgn_es`.`language_id` = 7)) left join `foodgroup_names` `fgn_nl` on(`fg`.`id` = `fgn_nl`.`foodgroup_id` and `fgn_nl`.`language_id` = 8)) left join `foodgroup_names` `fgn_p_en` on(`fg`.`parent_group_id` = `fgn_p_en`.`foodgroup_id` and `fgn_p_en`.`language_id` = 2)) left join `foodgroup_names` `fgn_p_fr` on(`fg`.`parent_group_id` = `fgn_p_fr`.`foodgroup_id` and `fgn_p_fr`.`language_id` = 3)) left join `foodgroup_names` `fgn_p_de` on(`fg`.`parent_group_id` = `fgn_p_de`.`foodgroup_id` and `fgn_p_de`.`language_id` = 4)) left join `foodgroup_names` `fgn_p_pt` on(`fg`.`parent_group_id` = `fgn_p_pt`.`foodgroup_id` and `fgn_p_pt`.`language_id` = 5)) left join `foodgroup_names` `fgn_p_it` on(`fg`.`parent_group_id` = `fgn_p_it`.`foodgroup_id` and `fgn_p_it`.`language_id` = 6)) left join `foodgroup_names` `fgn_p_es` on(`fg`.`parent_group_id` = `fgn_p_es`.`foodgroup_id` and `fgn_p_es`.`language_id` = 7)) left join `foodgroup_names` `fgn_p_nl` on(`fg`.`parent_group_id` = `fgn_p_nl`.`foodgroup_id` and `fgn_p_nl`.`language_id` = 8)) order by `i`.`id` ;
 
 --
 -- Constraints for dumped tables
