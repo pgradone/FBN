@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{ asset('css/gui.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 
 <!DOCTYPE html>
@@ -18,18 +21,14 @@
   @elseif (count($ingredients) > 1)
   <?php echo $ingredients->links(); ?>
   @foreach ($ingredients as $ingredient)
-  ID : {{ $ingredient->id }}
-  Name : {{ $ingredient->names[0]->name }}
-  Origin : {{$ingredient->origin}}
-  Nutriscore : {{$ingredient->nutriscore}}
+  <span class="score_{{$ingredient->nutriscore}}">ID : {{ $ingredient->id }}
+    Name : {{ $ingredient->names[0]->name }}
+    Origin : {{$ingredient->origin}}
+    Nutriscore : {{$ingredient->nutriscore}} </span>
   <a href="https://wikipedia.org/wiki/{{ $ingredient->names[0]->name }}"> <img src="{{$ingredient->picture}}" alt="{{$ingredient->picture}}" style="width:3%"></a>
   <a href="{{ route('ingredients.edit', ['id' => $ingredient->id]) }}" class="btn btn-primary">Edit</a>
   <a href="{{ route('ingredients.delete', ['id' => $ingredient->id]) }}" class="btn btn-primary">Delete</a> <br>
-  <!-- <form action="/ingredients/delete/{{$ingredient->id}}" method="post">
-    @csrf
-    @method('DELETE')
-    <input type="submit" value="Delete">
-  </form> -->
+
   @endforeach
   <?php echo $ingredients->links(); ?>
   @else

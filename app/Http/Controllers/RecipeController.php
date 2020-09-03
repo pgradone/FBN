@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PostTypeController extends PostController
+class RecipeController extends PostController
 {
   // same as PostController
 }
